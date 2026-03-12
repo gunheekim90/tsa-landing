@@ -19,7 +19,7 @@ const services = [
     number: '02',
     title: 'Relayed',
     subtitle: '기업 AX/DX 도입 서비스',
-    description: '요구사항 정리서부터 받지 않습니다. 칸반 보드에 카드를 올리는 것으로 시작합니다. AI 시스템이 분석하고, 개발하고, 미리보기까지 자동으로 붙여드립니다. 여러분의 팀이 직접 이어갈 수 있도록 가이드와 워크플로우까지 함께 넘깁니다.',
+    description: '도입하고 끝이 아닙니다. AI 개발 에이전트를 설치해, 팀이 직접 명령으로 다음 개발을 이어갑니다.',
     url: 'https://relayed-front.vercel.app/',
     features: [
       'AI 에이전트 설치',
