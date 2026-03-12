@@ -1,21 +1,24 @@
 import { motion } from 'motion/react';
-import { User } from 'lucide-react';
+import { SketchAvatar } from './SketchAvatar';
 
 const team = [
   {
     name: 'Glenn',
     role: 'CEO',
     achievements: ['4번 창업 / 3번 엑싯 / 2번 투자유치'],
+    avatar: 'glenn' as const,
   },
   {
     name: 'Victor',
     role: 'COO',
     achievements: ['시리즈 A,B 투자 유치'],
+    avatar: 'victor' as const,
   },
   {
     name: 'Lily',
     role: 'Designer',
     achievements: ['업력 12년차 디자이너'],
+    avatar: 'lily' as const,
   },
 ];
 
@@ -51,10 +54,9 @@ export function Team() {
             >
               {/* Image */}
               <div className="relative aspect-[3/4] mb-6 overflow-hidden bg-white/5 flex items-center justify-center">
-                <User
-                  size={120}
-                  className="text-gray-700 group-hover:text-gray-600 transition-all duration-700"
-                  strokeWidth={1}
+                <SketchAvatar
+                  variant={member.avatar}
+                  className="w-3/4 h-3/4 opacity-60 group-hover:opacity-80 transition-all duration-700"
                 />
               </div>
 
