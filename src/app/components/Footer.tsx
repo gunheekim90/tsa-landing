@@ -1,5 +1,6 @@
 import { motion } from 'motion/react';
 import { Mail, MapPin } from 'lucide-react';
+import { trackEvent } from '@/lib/gtag';
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -39,6 +40,7 @@ export function Footer() {
                 <a
                   href="mailto:glenn.kim@twostepsahead.co.kr"
                   className="text-lg hover:text-gray-400 transition-colors"
+                  onClick={() => trackEvent('contact_click', { type: 'email' })}
                 >
                   glenn.kim@twostepsahead.co.kr
                 </a>
@@ -57,6 +59,7 @@ export function Footer() {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="block text-sm hover:text-gray-400 transition-colors"
+                    onClick={() => trackEvent('footer_service_click', { service: 'GeoRank24' })}
                   >
                     → georank24.com
                   </a>
@@ -65,6 +68,7 @@ export function Footer() {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="block text-sm hover:text-gray-400 transition-colors"
+                    onClick={() => trackEvent('footer_service_click', { service: 'Relayed' })}
                   >
                     → relayed-front.vercel.app
                   </a>

@@ -1,6 +1,7 @@
 import { motion } from 'motion/react';
 import { useState } from 'react';
 import { ChevronDown } from 'lucide-react';
+import { trackEvent } from '@/lib/gtag';
 
 const faqs = [
   {
@@ -64,7 +65,7 @@ export function FAQ() {
               className="border-b border-white/5"
             >
               <button
-                onClick={() => setOpenIndex(openIndex === index ? null : index)}
+                onClick={() => { if (openIndex !== index) trackEvent('faq_open', { question: faq.question }); setOpenIndex(openIndex === index ? null : index); }}
                 className="w-full text-left py-8 group"
               >
                 <div className="flex items-start justify-between gap-6">

@@ -1,5 +1,6 @@
 import { motion } from 'motion/react';
 import { ExternalLink } from 'lucide-react';
+import { trackEvent } from '@/lib/gtag';
 
 const services = [
   {
@@ -89,6 +90,7 @@ export function Services() {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-3 text-sm border-b border-white/20 pb-1 hover:border-white/40 transition-all group/link"
+                    onClick={() => trackEvent('service_click', { service_name: service.title, service_url: service.url })}
                   >
                     <span>Visit Service</span>
                     <ExternalLink className="w-4 h-4 group-hover/link:translate-x-1 group-hover/link:-translate-y-1 transition-transform" />

@@ -1,5 +1,6 @@
 import { motion } from 'motion/react';
 import { ArrowDown } from 'lucide-react';
+import { trackEvent } from '@/lib/gtag';
 
 export function Hero() {
   return (
@@ -56,6 +57,7 @@ export function Hero() {
               className="px-8 py-4 border border-white/20 hover:border-white/40 transition-all duration-300 text-sm tracking-wider"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
+              onClick={() => trackEvent('cta_click', { cta_name: 'hero_explore' })}
             >
               EXPLORE
             </motion.a>

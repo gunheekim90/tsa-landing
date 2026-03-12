@@ -1,5 +1,6 @@
 import { motion } from 'motion/react';
 import { useState } from 'react';
+import { trackEvent } from '@/lib/gtag';
 
 interface NavigationProps {
   scrollY: number;
@@ -45,6 +46,7 @@ export function Navigation({ scrollY }: NavigationProps) {
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
+                onClick={() => trackEvent('nav_click', { nav_item: item.name })}
               >
                 {item.name}
                 <span className="absolute -bottom-1 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-300" />
@@ -87,7 +89,7 @@ export function Navigation({ scrollY }: NavigationProps) {
                 key={item.name}
                 href={item.href}
                 className="block py-3 text-gray-400 hover:text-white transition-colors"
-                onClick={() => setIsOpen(false)}
+                onClick={() => { trackEvent('nav_click', { nav_item: item.name, mobile: 'true' }); setIsOpen(false); }}
               >
                 {item.name}
               </a>
