@@ -21,7 +21,7 @@ const services = [
     title: 'Relayed',
     subtitle: '기업 AX/DX 도입 서비스',
     description: '도입하고 끝이 아닙니다. AI 개발 에이전트를 설치해, 팀이 직접 명령으로 다음 개발을 이어갑니다.',
-    url: 'https://relayed-front.vercel.app/',
+    url: 'https://relayed.co.kr',
     features: [
       'AI 에이전트 설치',
       '자동 분석 및 개발',

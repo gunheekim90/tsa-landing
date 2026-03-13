@@ -64,13 +64,13 @@ export function Footer() {
                     → georank24.com
                   </a>
                   <a
-                    href="https://relayed-front.vercel.app/"
+                    href="https://relayed.co.kr"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="block text-sm hover:text-gray-400 transition-colors"
                     onClick={() => trackEvent('footer_service_click', { service: 'Relayed' })}
                   >
-                    → relayed-front.vercel.app
+                    → relayed.co.kr
                   </a>
                 </div>
               </div>
