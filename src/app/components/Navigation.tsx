@@ -21,6 +21,7 @@ export function Navigation({ scrollY }: NavigationProps) {
     <motion.nav
       initial={{ y: -100 }}
       animate={{ y: 0 }}
+      aria-label="메인 내비게이션"
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrollY > 50 ? 'bg-[#0a0a0a]/80 backdrop-blur-xl border-b border-white/5' : ''
       }`}
@@ -58,6 +59,8 @@ export function Navigation({ scrollY }: NavigationProps) {
           <button
             className="md:hidden text-white"
             onClick={() => setIsOpen(!isOpen)}
+            aria-label={isOpen ? '메뉴 닫기' : '메뉴 열기'}
+            aria-expanded={isOpen}
           >
             <div className="w-6 h-5 flex flex-col justify-between">
               <motion.span

@@ -52,12 +52,14 @@ export default function App() {
   return (
     <div className="min-h-screen bg-[#0a0a0a] text-white">
       <Navigation scrollY={scrollY} />
-      <Hero />
-      <div ref={aboutRef}><About /></div>
-      <div ref={servicesRef}><Services /></div>
-      <div ref={portfolioRef}><Portfolio /></div>
-      <div ref={teamRef}><Team /></div>
-      <div ref={faqRef}><FAQ /></div>
+      <main>
+        <Hero />
+        <div ref={aboutRef}><About /></div>
+        <div ref={servicesRef}><Services /></div>
+        <div ref={portfolioRef}><Portfolio /></div>
+        <div ref={teamRef}><Team /></div>
+        <div ref={faqRef}><FAQ /></div>
+      </main>
       <div ref={contactRef}><Footer /></div>
     </div>
   );
