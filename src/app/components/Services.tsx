@@ -29,6 +29,19 @@ const services = [
       '워크플로우 이전',
     ],
   },
+  {
+    number: '03',
+    title: 'LiteCX',
+    subtitle: 'AI CX Center + CTI 마이크로 AI 콜센터 SaaS',
+    description: '대형 콜센터 구축 없이 대표번호 기반 고객 응대, 예약 접수, 리드 분류, 상담 기록 관리, VOC 분석을 바로 시작할 수 있는 웹 기반 AI 콜센터 SaaS입니다.',
+    url: 'https://www.baisystem.net/',
+    features: [
+      'AI 음성 응답봇 · 실시간 STT',
+      '상담원 보조 응답 추천',
+      'VOC 분석 · 자동 요약 리포트',
+      'WebRTC 기반 PBX-Free 콘솔',
+    ],
+  },
 ];
 
 export function Services() {

@@ -72,6 +72,15 @@ export function Footer() {
                   >
                     → relayed.co.kr
                   </a>
+                  <a
+                    href="https://www.baisystem.net/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block text-sm hover:text-gray-400 transition-colors"
+                    onClick={() => trackEvent('footer_service_click', { service: 'LiteCX' })}
+                  >
+                    → baisystem.net
+                  </a>
                 </div>
               </div>
             </div>
@@ -89,7 +98,7 @@ export function Footer() {
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
             <div>
               <div className="text-2xl font-light mb-2">TwoStepsAhead</div>
-              <p className="text-xs text-gray-600">남들보다 두 수 앞을 봅니다</p>
+              <p className="text-xs text-gray-600">발견부터 응대까지, AI로 연결합니다</p>
             </div>
 
             <div className="flex gap-8 text-xs text-gray-600">

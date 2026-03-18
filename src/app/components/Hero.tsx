@@ -40,9 +40,7 @@ export function Hero() {
             transition={{ delay: 0.6, duration: 0.8 }}
             className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto mb-16 leading-relaxed"
           >
-            남들보다 두 수 앞을 보는 혁신
-            <br />
-            브랜드 최적화와 디지털 전환의 선구자
+            발견부터 응대까지, AI로 연결합니다
           </motion.p>
 
           {/* CTA */}
