@@ -1,8 +1,18 @@
 import { motion } from 'motion/react';
-import { ExternalLink } from 'lucide-react';
+import { ExternalLink, Download } from 'lucide-react';
 import { trackEvent } from '@/lib/gtag';
 
-const services = [
+interface Service {
+  number: string;
+  title: string;
+  subtitle: string;
+  description: string;
+  url: string;
+  features: string[];
+  download?: boolean;
+}
+
+const services: Service[] = [
   {
     number: '01',
     title: 'GeoRank24',
@@ -40,6 +50,20 @@ const services = [
       '상담원 보조 응답 추천',
       'VOC 분석 · 자동 요약 리포트',
       'WebRTC 기반 PBX-Free 콘솔',
+    ],
+  },
+  {
+    number: '04',
+    title: 'ChargeFLOW',
+    subtitle: '전기차 충전 통합 관리 SaaS 플랫폼',
+    description: '충전 사업자가 별도 개발 없이 충전기 관리, 결제, 로밍, AI 고객 상담, 친환경 에너지 연계까지 즉시 시작할 수 있는 턴키 SaaS. 1,467대 실 운영 환경에서 검증된 기술 기반.',
+    url: '/ChargeFLOW_사업계획서.pdf',
+    download: true,
+    features: [
+      'OCPP 1.6/2.0.1 이중 지원',
+      '태양광 · ESS · V2G 에너지 연계',
+      'AI 고객 상담 · 장애 예측',
+      '실시간 모니터링 · 원격 제어',
     ],
   },
 ];
@@ -83,7 +107,7 @@ export function Services() {
                     {service.title}
                   </h3>
                   <p className="text-sm text-gray-600 mb-6">{service.subtitle}</p>
-                  
+
                   <p className="text-gray-400 mb-8 leading-relaxed max-w-2xl">
                     {service.description}
                   </p>
@@ -98,16 +122,28 @@ export function Services() {
                   </div>
 
                   {/* Link */}
-                  <a
-                    href={service.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-3 text-sm border-b border-white/20 pb-1 hover:border-white/40 transition-all group/link"
-                    onClick={() => trackEvent('service_click', { service_name: service.title, service_url: service.url })}
-                  >
-                    <span>Visit Service</span>
-                    <ExternalLink className="w-4 h-4 group-hover/link:translate-x-1 group-hover/link:-translate-y-1 transition-transform" />
-                  </a>
+                  {service.download ? (
+                    <a
+                      href={service.url}
+                      download
+                      className="inline-flex items-center gap-3 text-sm border-b border-white/20 pb-1 hover:border-white/40 transition-all group/link"
+                      onClick={() => trackEvent('service_click', { service_name: service.title, action: 'download' })}
+                    >
+                      <span>Download Proposal</span>
+                      <Download className="w-4 h-4 group-hover/link:translate-y-0.5 transition-transform" />
+                    </a>
+                  ) : (
+                    <a
+                      href={service.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-3 text-sm border-b border-white/20 pb-1 hover:border-white/40 transition-all group/link"
+                      onClick={() => trackEvent('service_click', { service_name: service.title, service_url: service.url })}
+                    >
+                      <span>Visit Service</span>
+                      <ExternalLink className="w-4 h-4 group-hover/link:translate-x-1 group-hover/link:-translate-y-1 transition-transform" />
+                    </a>
+                  )}
                 </div>
               </div>
             </motion.div>
