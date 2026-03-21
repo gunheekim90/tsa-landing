@@ -57,7 +57,7 @@ const services: Service[] = [
     title: 'ChargeFLOW',
     subtitle: '전기차 충전 통합 관리 SaaS 플랫폼',
     description: '충전 사업자가 별도 개발 없이 충전기 관리, 결제, 로밍, AI 고객 상담, 친환경 에너지 연계까지 즉시 시작할 수 있는 턴키 SaaS. 1,467대 실 운영 환경에서 검증된 기술 기반.',
-    url: '/ChargeFLOW_사업계획서.pdf',
+    url: '/ChargeFLOW_제안서.pdf',
     download: true,
     features: [
       'OCPP 1.6/2.0.1 이중 지원',
