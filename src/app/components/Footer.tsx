@@ -73,13 +73,13 @@ export function Footer() {
                     → relayed.co.kr
                   </a>
                   <a
-                    href="https://www.baisystem.net/"
+                    href="https://litecx.com"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="block text-sm hover:text-gray-400 transition-colors"
                     onClick={() => trackEvent('footer_service_click', { service: 'LiteCX' })}
                   >
-                    → baisystem.net
+                    → litecx.com
                   </a>
                 </div>
               </div>
