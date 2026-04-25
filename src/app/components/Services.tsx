@@ -85,13 +85,6 @@ const futureProject = {
           '업무용 / 개인용 구분 불가, 월말 경비 보고서는 수작업',
         ],
         solution: 'RFID 카드 한 장으로 전국 어디서 충전하든 데이터가 자동 수집됩니다. 회사는 드라이버별 · 차량별 · 부서별 비용을 한눈에 보고, 월말 정산은 자동 처리됩니다.',
-        highlights: [
-          { label: '타깃', value: '전기택시 · 렌터카 · 법인차량 · 화물 운송' },
-          { label: '데이터', value: 'KECO 로밍 기반 전국 충전소 자동 수집' },
-          { label: '시장', value: '국내 법인 EV 충전 약 720~1,280억원/년' },
-          { label: '현황', value: '국내 전문 SaaS 부재 — 선점 단계' },
-        ],
-        teaser: '한솔 시스템을 직접 설계한 경험 위에서 출발합니다. 자세한 사업 구조와 파트너십 모델은 별도로 안내드립니다.',
       },
     },
   ],
@@ -197,7 +190,7 @@ export function Services() {
 
             <div className="grid md:grid-cols-12 gap-8 md:gap-16">
               <div className="md:col-span-5">
-                <h3 className="text-3xl md:text-4xl font-light mb-2">
+                <h3 className="text-3xl md:text-4xl font-light mb-2 text-[#a3ff12]">
                   {futureProject.title}
                 </h3>
                 <p className="text-sm text-gray-600 mb-6">{futureProject.subtitle}</p>
@@ -244,7 +237,7 @@ export function Services() {
                     className="grid md:grid-cols-12 gap-4 md:gap-8 items-start"
                   >
                     <div className="md:col-span-3">
-                      <h4 className="text-lg font-light">{ext.title}</h4>
+                      <h4 className="text-lg font-light text-[#a3ff12]">{ext.title}</h4>
                       <p className="text-xs text-gray-600 mt-1">{ext.tagline}</p>
                     </div>
                     <div className="md:col-span-9">
@@ -266,7 +259,7 @@ export function Services() {
                             <div className="text-xs text-gray-500 tracking-[0.2em] uppercase mb-4">
                               ChargeFLOW · Extended Line
                             </div>
-                            <DialogTitle className="text-3xl font-light mb-2">
+                            <DialogTitle className="text-3xl font-light mb-2 text-[#a3ff12]">
                               {ext.title}
                             </DialogTitle>
                             <p className="text-sm text-gray-500 mb-8">{ext.tagline}</p>
@@ -297,37 +290,24 @@ export function Services() {
                               </p>
                             </div>
 
-                            <div className="mb-10 grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-5">
-                              {ext.detail.highlights.map((h, i) => (
-                                <div key={i}>
-                                  <div className="text-xs text-gray-600 mb-1.5">{h.label}</div>
-                                  <div className="text-sm text-gray-300">{h.value}</div>
-                                </div>
-                              ))}
-                            </div>
-
-                            <p className="text-xs text-gray-600 leading-relaxed mb-8 italic">
-                              {ext.detail.teaser}
-                            </p>
-
                             <div className="flex flex-col sm:flex-row gap-3 pt-6 border-t border-white/5">
                               <DialogClose asChild>
-                                <a
-                                  href="#contact"
+                                <button
+                                  type="button"
                                   className="inline-flex items-center justify-center gap-2 bg-white text-black px-6 py-3 rounded-full text-sm hover:bg-gray-200 transition-colors group/cta"
-                                  onClick={() => trackEvent('extension_click', { name: ext.title, action: 'contact' })}
+                                  onClick={() => {
+                                    trackEvent('extension_click', { name: ext.title, action: 'contact' });
+                                    setTimeout(() => {
+                                      document
+                                        .getElementById('contact')
+                                        ?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                                    }, 150);
+                                  }}
                                 >
                                   <span>문의하기</span>
                                   <ArrowRight className="w-4 h-4 group-hover/cta:translate-x-1 transition-transform" />
-                                </a>
+                                </button>
                               </DialogClose>
-                              <a
-                                href="mailto:glenn.kim@twostepsahead.co.kr?subject=Fleet%20%EB%AC%B8%EC%9D%98"
-                                className="inline-flex items-center justify-center gap-2 border border-white/15 px-6 py-3 rounded-full text-sm hover:border-white/30 transition-colors"
-                                onClick={() => trackEvent('extension_click', { name: ext.title, action: 'email' })}
-                              >
-                                <span>이메일로 문의</span>
-                              </a>
                             </div>
                           </div>
                         </DialogContent>
