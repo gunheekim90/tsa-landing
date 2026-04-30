@@ -29,18 +29,18 @@ function useTrackSectionView(ref: React.RefObject<HTMLDivElement | null>, sectio
 
 export default function App() {
   const [scrollY, setScrollY] = useState(0);
-  const aboutRef = useRef<HTMLDivElement>(null);
-  const servicesRef = useRef<HTMLDivElement>(null);
-  const portfolioRef = useRef<HTMLDivElement>(null);
-  const teamRef = useRef<HTMLDivElement>(null);
-  const faqRef = useRef<HTMLDivElement>(null);
+  const researchRef = useRef<HTMLDivElement>(null);
+  const modelsRef = useRef<HTMLDivElement>(null);
+  const deploymentsRef = useRef<HTMLDivElement>(null);
+  const researchersRef = useRef<HTMLDivElement>(null);
+  const notesRef = useRef<HTMLDivElement>(null);
   const contactRef = useRef<HTMLDivElement>(null);
 
-  useTrackSectionView(aboutRef, 'about');
-  useTrackSectionView(servicesRef, 'services');
-  useTrackSectionView(portfolioRef, 'portfolio');
-  useTrackSectionView(teamRef, 'team');
-  useTrackSectionView(faqRef, 'faq');
+  useTrackSectionView(researchRef, 'research');
+  useTrackSectionView(modelsRef, 'models');
+  useTrackSectionView(deploymentsRef, 'deployments');
+  useTrackSectionView(researchersRef, 'researchers');
+  useTrackSectionView(notesRef, 'notes');
   useTrackSectionView(contactRef, 'contact');
 
   useEffect(() => {
@@ -50,15 +50,15 @@ export default function App() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a] text-white">
+    <div className="min-h-screen bg-grain bg-[color:var(--ink-base)] text-[color:var(--paper)]">
       <Navigation scrollY={scrollY} />
       <main>
         <Hero />
-        <div ref={aboutRef}><About /></div>
-        <div ref={servicesRef}><Services /></div>
-        <div ref={portfolioRef}><Portfolio /></div>
-        <div ref={teamRef}><Team /></div>
-        <div ref={faqRef}><FAQ /></div>
+        <div ref={researchRef}><About /></div>
+        <div ref={modelsRef}><Services /></div>
+        <div ref={deploymentsRef}><Portfolio /></div>
+        <div ref={researchersRef}><Team /></div>
+        <div ref={notesRef}><FAQ /></div>
       </main>
       <div ref={contactRef}><Footer /></div>
     </div>

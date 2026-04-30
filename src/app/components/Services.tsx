@@ -1,5 +1,5 @@
 import { motion } from 'motion/react';
-import { ExternalLink, Download, ArrowUpRight, ArrowRight } from 'lucide-react';
+import { ArrowUpRight, Download, ArrowRight } from 'lucide-react';
 import { trackEvent } from '@/lib/gtag';
 import {
   Dialog,
@@ -9,272 +9,384 @@ import {
   DialogTrigger,
 } from './ui/dialog';
 
-interface Service {
-  number: string;
-  title: string;
+type Status = 'live' | 'beta' | 'research';
+
+interface Model {
+  index: string;
+  code: string;
+  stageCode: 'D' | 'A' | 'C';
+  stagePosition: string;
+  status: Status;
+  brand: string;
   subtitle: string;
   description: string;
-  url: string;
+  metric: string;
   features: string[];
-  download?: boolean;
+  url: string;
 }
 
-const services: Service[] = [
+const models: Model[] = [
   {
-    number: '01',
-    title: 'GeoRank24',
-    subtitle: 'Brand SEO/GEO 최적화 서비스',
-    description: '검색 엔진과 지역 검색 최적화를 통해 브랜드의 온라인 가시성을 극대화합니다.',
-    url: 'https://georank24.com',
+    index: '01',
+    code: 'G24-DISCOVERY',
+    stageCode: 'D',
+    stagePosition: 'top of funnel',
+    status: 'live',
+    brand: 'GeoRank24',
+    subtitle: 'Brand SEO · GEO 최적화 모델',
+    description:
+      '검색과 AI 검색에서의 인용 가능성을 사전에 추정한다. 콘텐츠 발행 전에 GEO 점수, 인용 확률, 노출 경로를 알려준다.',
+    metric: 'MAPE 8.6% · 4M+ training rows',
     features: [
-      '검색 순위 최적화',
-      '로컬 SEO 전략',
-      '콘텐츠 최적화',
+      'GEO 점수 · 인용 확률',
+      '발행 전 진단',
+      '5 AI search · 12 countries',
       '실시간 모니터링',
     ],
+    url: 'https://georank24.com',
   },
   {
-    number: '02',
-    title: 'Relayed',
-    subtitle: '기업 AX/DX 도입 서비스',
-    description: '도입하고 끝이 아닙니다. AI 개발 에이전트를 설치해, 팀이 직접 명령으로 다음 개발을 이어갑니다.',
-    url: 'https://relayed.co.kr',
+    index: '02',
+    code: 'R-PIPELINE',
+    stageCode: 'A',
+    stagePosition: 'mid funnel',
+    status: 'live',
+    brand: 'Relayed',
+    subtitle: '기업 AX/DX 도입 · AI 에이전트',
+    description:
+      '도입하고 끝이 아니다. AI 에이전트가 마케팅·세일즈 팀의 반복 작업을 인계받아, 도입 이후에도 다음 빌드를 이어간다.',
+    metric: 'agent · 24/7 build loop',
     features: [
       'AI 에이전트 설치',
-      '자동 분석 및 개발',
-      '직접 유지보수 가능',
+      '자동 분석 · 개발',
+      '직접 유지보수',
       '워크플로우 이전',
     ],
+    url: 'https://relayed.co.kr',
   },
   {
-    number: '03',
-    title: 'LiteCX',
-    subtitle: 'AI CX Center + CTI 마이크로 AI 콜센터 SaaS',
-    description: '대형 콜센터 구축 없이 대표번호 기반 고객 응대, 예약 접수, 리드 분류, 상담 기록 관리, VOC 분석을 바로 시작할 수 있는 웹 기반 AI 콜센터 SaaS입니다.',
-    url: 'https://litecx.com',
+    index: '03',
+    code: 'LX-CONVERSATION',
+    stageCode: 'C',
+    stagePosition: 'bottom of funnel',
+    status: 'live',
+    brand: 'LiteCX',
+    subtitle: 'AI CX Center · CTI 마이크로 콜센터 SaaS',
+    description:
+      '대표번호 한 줄로 영업 응대·예약·VOC가 자동 처리된다. PBX-Free, WebRTC 콘솔, 실시간 STT 기반의 가벼운 CX 인프라.',
+    metric: 'pbx-free · realtime STT',
     features: [
       'AI 음성 응답봇 · 실시간 STT',
       '상담원 보조 응답 추천',
-      'VOC 분석 · 자동 요약 리포트',
-      'WebRTC 기반 PBX-Free 콘솔',
+      'VOC 분석 · 자동 요약',
+      'WebRTC PBX-Free 콘솔',
     ],
+    url: 'https://litecx.com',
   },
 ];
 
-const futureProject = {
-  title: 'ChargeFLOW',
+const horizon = {
+  index: '04',
+  code: 'CF-ENERGY',
+  stageCode: 'H' as const,
+  stagePosition: 'adjacent track',
+  status: 'beta' as Status,
+  brand: 'ChargeFLOW',
   subtitle: 'EV 충전 인프라 SaaS 트랙',
-  description: '충전기 관리, 결제, 로밍, AI 고객 상담, 친환경 에너지 연계까지 한 번에 다루는 턴키 SaaS. 현재 약 5,000대 실 운영 환경에서 검증을 진행하고 있습니다.',
-  url: '/ChargeFLOW_제안서.pdf',
+  description:
+    '충전기 관리, 결제, 로밍, AI 고객 상담, 친환경 에너지 연계까지 한 번에 다루는 턴키 SaaS. 현재 약 5,000대 실 운영 환경에서 검증을 진행하고 있다.',
+  metric: '~5,000 chargers · validating',
   features: [
-    'OCPP 1.6/2.0.1 이중 지원',
+    'OCPP 1.6 / 2.0.1 이중 지원',
     '태양광 · ESS · V2G 에너지 연계',
     'AI 고객 상담 · 장애 예측',
     '실시간 모니터링 · 원격 제어',
   ],
+  url: '/ChargeFLOW_제안서.pdf',
   extensions: [
     {
       title: 'Fleet',
       tagline: '법인 EV 충전비 관리 SaaS',
-      description: '법인 전기차 운영사를 위한 충전비 정산 SaaS. CPO 위에 올라가 드라이버 · 차량 · 부서별 비용을 자동 집계하고 월말 정산을 자동화합니다.',
+      description:
+        '법인 전기차 운영사를 위한 충전비 정산 SaaS. CPO 위에 올라가 드라이버 · 차량 · 부서별 비용을 자동 집계하고 월말 정산을 자동화한다.',
       detail: {
-        positioning: '충전 사업이 아니라, 정산 소프트웨어. CPO와 경쟁하지 않고 CPO 위에 올라가는 관리 레이어.',
+        positioning:
+          '충전 사업이 아니라, 정산 소프트웨어. CPO와 경쟁하지 않고 CPO 위에 올라가는 관리 레이어.',
         problem: [
           '드라이버 10명이 이번 달 각자 얼마 썼는지 모른다',
           '회사 · 공용 · 집 충전이 분산되어 영수증 수기로 취합',
           '업무용 / 개인용 구분 불가, 월말 경비 보고서는 수작업',
         ],
-        solution: 'RFID 카드 한 장으로 전국 어디서 충전하든 데이터가 자동 수집됩니다. 회사는 드라이버별 · 차량별 · 부서별 비용을 한눈에 보고, 월말 정산은 자동 처리됩니다.',
+        solution:
+          'RFID 카드 한 장으로 전국 어디서 충전하든 데이터가 자동 수집된다. 회사는 드라이버별 · 차량별 · 부서별 비용을 한눈에 보고, 월말 정산은 자동 처리된다.',
       },
     },
   ],
 };
 
+const statusStyle: Record<Status, string> = {
+  live: 'text-[color:var(--signal)] border-[color:var(--signal-line)]',
+  beta: 'text-[color:var(--stage-mid)] border-[color:rgba(200,232,112,0.3)]',
+  research: 'text-[color:var(--mute-1)] border-[color:var(--ink-line)]',
+};
+
+function StatusBadge({ status }: { status: Status }) {
+  return (
+    <span
+      className={`mono-meta inline-flex items-center gap-1.5 px-2 py-0.5 border rounded-full ${statusStyle[status]}`}
+    >
+      <span className="signal-dot" aria-hidden style={{ width: '0.3rem', height: '0.3rem' }} />
+      {status}
+    </span>
+  );
+}
+
+function ModelCard({ model, idx }: { model: Model; idx: number }) {
+  return (
+    <motion.article
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.9, delay: idx * 0.08, ease: [0.16, 1, 0.3, 1] }}
+      viewport={{ once: true, margin: '-15%' }}
+      className="group relative grid md:grid-cols-12 gap-6 md:gap-12 py-12 md:py-16 border-t border-[color:var(--ink-line)]"
+    >
+      {/* Left axis — stage code + index */}
+      <div className="md:col-span-3 lg:col-span-2 flex md:flex-col items-baseline justify-between md:justify-start gap-6">
+        <div className="flex items-baseline gap-3">
+          <span className="font-display text-7xl md:text-8xl leading-none text-[color:var(--paper)] group-hover:text-[color:var(--signal)] transition-colors duration-700">
+            {model.stageCode}
+          </span>
+          <span className="mono-meta text-[color:var(--mute-2)]">/{model.index}</span>
+        </div>
+        <div className="mono-eyebrow">{model.stagePosition}</div>
+      </div>
+
+      {/* Body */}
+      <div className="md:col-span-9 lg:col-span-10 flex flex-col gap-6">
+        <div className="flex flex-wrap items-center gap-3">
+          <span className="mono-meta text-[color:var(--paper)]">{model.code}</span>
+          <span className="text-[color:var(--mute-3)]">·</span>
+          <StatusBadge status={model.status} />
+          <span className="text-[color:var(--mute-3)]">·</span>
+          <span className="mono-meta">{model.metric}</span>
+        </div>
+
+        <div>
+          <h3 className="display-md text-[color:var(--paper)]">
+            {model.brand}
+            <span className="font-display italic text-[color:var(--mute-2)]">.</span>
+          </h3>
+          <p className="mt-2 mono-meta text-[color:var(--mute-1)]">{model.subtitle}</p>
+        </div>
+
+        <p className="text-[color:var(--paper-soft)] text-base md:text-lg leading-relaxed max-w-2xl">
+          {model.description}
+        </p>
+
+        <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-2 max-w-2xl">
+          {model.features.map((f) => (
+            <li key={f} className="flex items-start gap-3 text-sm text-[color:var(--mute-1)]">
+              <span className="mt-2 block w-2 h-px bg-[color:var(--signal-line)]" aria-hidden />
+              <span>{f}</span>
+            </li>
+          ))}
+        </ul>
+
+        <div className="flex flex-wrap items-center gap-6 pt-2">
+          <a
+            href={model.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() =>
+              trackEvent('service_click', { service_name: model.brand, service_url: model.url })
+            }
+            className="link-signal mono-meta text-[color:var(--paper)]"
+          >
+            <span>visit model</span>
+            <ArrowUpRight className="w-3.5 h-3.5" />
+          </a>
+          <span className="mono-meta text-[color:var(--mute-2)] hidden sm:inline">
+            {model.code.toLowerCase()}.tsa.lab
+          </span>
+        </div>
+      </div>
+    </motion.article>
+  );
+}
+
 export function Services() {
   return (
-    <section id="services" className="relative py-32 px-6 border-t border-white/5">
-      <div className="max-w-5xl mx-auto">
+    <section
+      id="models"
+      className="relative py-32 md:py-44 px-6 md:px-10 border-t border-[color:var(--ink-line)]"
+    >
+      <div className="max-w-[1400px] mx-auto">
         {/* Section header */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true, margin: "-100px" }}
-          className="mb-24"
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          viewport={{ once: true, margin: '-20%' }}
+          className="grid md:grid-cols-12 gap-6 md:gap-10 mb-20 md:mb-28"
         >
-          <div className="text-sm text-gray-600 mb-12 tracking-wider">02</div>
-          <h2 className="text-4xl md:text-5xl font-light">Services</h2>
+          <div className="md:col-span-3 lg:col-span-2">
+            <div className="mono-eyebrow">— 02 / models</div>
+          </div>
+          <div className="md:col-span-9 lg:col-span-10">
+            <h2 className="display-lg text-[color:var(--paper)]">
+              The <em className="font-display italic font-light">library.</em>
+            </h2>
+            <p className="mt-6 max-w-xl text-[color:var(--mute-1)] text-base md:text-lg leading-relaxed">
+              세 개의 모델이 펀넬을 따라 가동되고, 한 트랙이 인접 영역을 향해 뻗는다.
+              각 모델은 정확히 한 단계의 추론을 책임진다.
+            </p>
+          </div>
         </motion.div>
 
-        {/* Services list */}
-        <div className="space-y-24">
-          {services.map((service, index) => (
-            <motion.div
-              key={service.number}
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: index * 0.2 }}
-              viewport={{ once: true, margin: "-100px" }}
-              className="group"
-            >
-              <div className="grid md:grid-cols-12 gap-8 md:gap-16">
-                {/* Number */}
-                <div className="md:col-span-2">
-                  <div className="text-sm text-gray-600">{service.number}</div>
-                </div>
-
-                {/* Content */}
-                <div className="md:col-span-10">
-                  <h3 className="text-3xl md:text-4xl font-light mb-2 group-hover:text-gray-400 transition-colors duration-300">
-                    {service.title}
-                  </h3>
-                  <p className="text-sm text-gray-600 mb-6">{service.subtitle}</p>
-
-                  <p className="text-gray-400 mb-8 leading-relaxed max-w-2xl">
-                    {service.description}
-                  </p>
-
-                  {/* Features */}
-                  <div className="grid grid-cols-2 gap-4 mb-8 max-w-2xl">
-                    {service.features.map((feature, idx) => (
-                      <div key={idx} className="text-sm text-gray-500">
-                        — {feature}
-                      </div>
-                    ))}
-                  </div>
-
-                  {/* Link */}
-                  {service.download ? (
-                    <a
-                      href={service.url}
-                      download
-                      className="inline-flex items-center gap-3 text-sm border-b border-white/20 pb-1 hover:border-white/40 transition-all group/link"
-                      onClick={() => trackEvent('service_click', { service_name: service.title, action: 'download' })}
-                    >
-                      <span>Download Proposal</span>
-                      <Download className="w-4 h-4 group-hover/link:translate-y-0.5 transition-transform" />
-                    </a>
-                  ) : (
-                    <a
-                      href={service.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-3 text-sm border-b border-white/20 pb-1 hover:border-white/40 transition-all group/link"
-                      onClick={() => trackEvent('service_click', { service_name: service.title, service_url: service.url })}
-                    >
-                      <span>Visit Service</span>
-                      <ExternalLink className="w-4 h-4 group-hover/link:translate-x-1 group-hover/link:-translate-y-1 transition-transform" />
-                    </a>
-                  )}
-                </div>
-              </div>
-            </motion.div>
+        {/* Model cards */}
+        <div className="border-b border-[color:var(--ink-line)]">
+          {models.map((m, i) => (
+            <ModelCard key={m.code} model={m} idx={i} />
           ))}
         </div>
 
-        {/* Future / Upcoming */}
+        {/* Horizon — ChargeFLOW + Fleet */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+          viewport={{ once: true, margin: '-15%' }}
           className="mt-32"
         >
-          <div className="rounded-2xl border border-white/10 bg-white/[0.02] p-8 md:p-12">
-            <div className="flex items-center gap-3 mb-8">
-              <span className="inline-block w-1.5 h-1.5 rounded-full bg-white/40 animate-pulse" />
-              <span className="text-xs text-gray-500 tracking-[0.2em] uppercase">
-                Next Horizon · 준비 중인 미래 기술
-              </span>
-            </div>
+          <div className="relative rounded-3xl border border-[color:var(--ink-line)] bg-[color:var(--ink-surface)] overflow-hidden">
+            {/* Faint inner grid for the horizon panel */}
+            <div className="absolute inset-0 bg-grid-fine opacity-60 pointer-events-none" aria-hidden />
+            <div
+              className="absolute inset-0 pointer-events-none"
+              style={{
+                background:
+                  'radial-gradient(40% 60% at 90% 0%, rgba(106,108,255,0.12), transparent 70%)',
+              }}
+              aria-hidden
+            />
 
-            <div className="grid md:grid-cols-12 gap-8 md:gap-16">
-              <div className="md:col-span-5">
-                <h3 className="text-3xl md:text-4xl font-light mb-2 text-[#a3ff12]">
-                  {futureProject.title}
-                </h3>
-                <p className="text-sm text-gray-600 mb-6">{futureProject.subtitle}</p>
-                <p className="text-sm text-gray-500 leading-relaxed">
-                  발견 → 도입 → 응대로 이어지는 핵심 사이클을 넘어,
-                  TSA가 다음 단계로 준비하고 있는 인접 영역의 기술입니다.
-                </p>
+            <div className="relative p-8 md:p-14">
+              <div className="flex items-center gap-3 mb-10">
+                <span
+                  className="signal-dot"
+                  style={{ background: 'var(--stage-horizon)' }}
+                  aria-hidden
+                />
+                <span className="mono-eyebrow text-[color:var(--paper)]">
+                  Next Horizon · adjacent track
+                </span>
               </div>
 
-              <div className="md:col-span-7">
-                <p className="text-gray-400 mb-8 leading-relaxed">
-                  {futureProject.description}
-                </p>
-
-                <div className="grid grid-cols-2 gap-4 mb-8">
-                  {futureProject.features.map((feature, idx) => (
-                    <div key={idx} className="text-sm text-gray-500">
-                      — {feature}
-                    </div>
-                  ))}
+              <div className="grid md:grid-cols-12 gap-8 md:gap-12">
+                <div className="md:col-span-5">
+                  <div className="flex items-baseline gap-3 mb-3">
+                    <span className="font-display text-7xl leading-none text-[color:var(--signal)]">
+                      {horizon.stageCode}
+                    </span>
+                    <span className="mono-meta text-[color:var(--mute-2)]">/{horizon.index}</span>
+                  </div>
+                  <h3 className="display-md text-[color:var(--signal)]">
+                    {horizon.brand}
+                  </h3>
+                  <p className="mt-2 mono-meta text-[color:var(--mute-1)]">{horizon.subtitle}</p>
+                  <p className="mt-6 text-sm text-[color:var(--mute-1)] leading-relaxed max-w-md">
+                    핵심 펀넬 사이클을 넘어, TSA가 다음 단계로 준비하고 있는 인접 영역의 트랙입니다.
+                  </p>
                 </div>
 
-                <a
-                  href={futureProject.url}
-                  download
-                  className="inline-flex items-center gap-3 text-sm border-b border-white/20 pb-1 hover:border-white/40 transition-all group/link"
-                  onClick={() => trackEvent('service_click', { service_name: futureProject.title, action: 'download' })}
-                >
-                  <span>Download Proposal</span>
-                  <Download className="w-4 h-4 group-hover/link:translate-y-0.5 transition-transform" />
-                </a>
-              </div>
-            </div>
+                <div className="md:col-span-7">
+                  <div className="flex flex-wrap items-center gap-3 mb-5">
+                    <span className="mono-meta text-[color:var(--paper)]">{horizon.code}</span>
+                    <span className="text-[color:var(--mute-3)]">·</span>
+                    <StatusBadge status={horizon.status} />
+                    <span className="text-[color:var(--mute-3)]">·</span>
+                    <span className="mono-meta">{horizon.metric}</span>
+                  </div>
 
-            {/* Extended lineup */}
-            <div className="mt-12 pt-8 border-t border-white/5">
-              <div className="text-xs text-gray-600 tracking-[0.2em] uppercase mb-6">
-                Extended Line · 확장 라인업
+                  <p className="text-[color:var(--paper-soft)] text-base leading-relaxed mb-6 max-w-xl">
+                    {horizon.description}
+                  </p>
+
+                  <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-2 mb-8 max-w-xl">
+                    {horizon.features.map((f) => (
+                      <li
+                        key={f}
+                        className="flex items-start gap-3 text-sm text-[color:var(--mute-1)]"
+                      >
+                        <span className="mt-2 block w-2 h-px bg-[color:var(--signal-line)]" aria-hidden />
+                        <span>{f}</span>
+                      </li>
+                    ))}
+                  </ul>
+
+                  <a
+                    href={horizon.url}
+                    download
+                    onClick={() =>
+                      trackEvent('service_click', { service_name: horizon.brand, action: 'download' })
+                    }
+                    className="link-signal mono-meta text-[color:var(--paper)]"
+                  >
+                    <span>download proposal</span>
+                    <Download className="w-3.5 h-3.5" />
+                  </a>
+                </div>
               </div>
-              <div className="space-y-6">
-                {futureProject.extensions.map((ext) => (
+
+              {/* Extended line */}
+              <div className="mt-14 pt-10 border-t border-[color:var(--ink-line)]">
+                <div className="mono-eyebrow mb-6">Extended Line · 확장 라인업</div>
+                {horizon.extensions.map((ext) => (
                   <div
                     key={ext.title}
-                    className="grid md:grid-cols-12 gap-4 md:gap-8 items-start"
+                    className="grid md:grid-cols-12 gap-4 md:gap-10 items-start"
                   >
                     <div className="md:col-span-3">
-                      <h4 className="text-lg font-light text-[#a3ff12]">{ext.title}</h4>
-                      <p className="text-xs text-gray-600 mt-1">{ext.tagline}</p>
+                      <h4 className="font-display text-2xl text-[color:var(--signal)]">
+                        {ext.title}
+                      </h4>
+                      <p className="mt-1 mono-meta">{ext.tagline}</p>
                     </div>
                     <div className="md:col-span-9">
-                      <p className="text-sm text-gray-500 leading-relaxed mb-4">
+                      <p className="text-sm text-[color:var(--mute-1)] leading-relaxed mb-5 max-w-2xl">
                         {ext.description}
                       </p>
                       <Dialog>
                         <DialogTrigger asChild>
                           <button
-                            className="inline-flex items-center gap-2 text-xs text-gray-400 hover:text-white transition-colors group/btn"
-                            onClick={() => trackEvent('extension_click', { name: ext.title, action: 'open_detail' })}
+                            className="link-signal mono-meta text-[color:var(--paper)]"
+                            onClick={() =>
+                              trackEvent('extension_click', { name: ext.title, action: 'open_detail' })
+                            }
                           >
-                            <span>자세히 보기</span>
-                            <ArrowUpRight className="w-3.5 h-3.5 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" />
+                            <span>read detail</span>
+                            <ArrowUpRight className="w-3.5 h-3.5" />
                           </button>
                         </DialogTrigger>
-                        <DialogContent className="bg-[#0a0a0a] border-white/10 text-white max-w-2xl sm:max-w-2xl p-0 gap-0 max-h-[85vh] overflow-y-auto">
+                        <DialogContent className="bg-[color:var(--ink-base)] border-[color:var(--ink-line)] text-[color:var(--paper)] max-w-2xl sm:max-w-2xl p-0 gap-0 max-h-[85vh] overflow-y-auto rounded-2xl">
                           <div className="p-8 md:p-10">
-                            <div className="text-xs text-gray-500 tracking-[0.2em] uppercase mb-4">
+                            <div className="mono-eyebrow mb-5">
                               ChargeFLOW · Extended Line
                             </div>
-                            <DialogTitle className="text-3xl font-light mb-2 text-[#a3ff12]">
+                            <DialogTitle className="display-md mb-2 text-[color:var(--signal)]">
                               {ext.title}
                             </DialogTitle>
-                            <p className="text-sm text-gray-500 mb-8">{ext.tagline}</p>
+                            <p className="mono-meta mb-8">{ext.tagline}</p>
 
-                            <p className="text-base text-gray-300 leading-relaxed mb-10">
+                            <p className="text-[color:var(--paper-soft)] text-base leading-relaxed mb-10">
                               {ext.detail.positioning}
                             </p>
 
                             <div className="mb-10">
-                              <div className="text-xs text-gray-600 tracking-[0.2em] uppercase mb-4">
-                                Problem
-                              </div>
+                              <div className="mono-eyebrow mb-4">Problem</div>
                               <ul className="space-y-2">
                                 {ext.detail.problem.map((p, i) => (
-                                  <li key={i} className="text-sm text-gray-400 leading-relaxed">
+                                  <li key={i} className="text-sm text-[color:var(--mute-1)] leading-relaxed">
                                     — {p}
                                   </li>
                                 ))}
@@ -282,19 +394,17 @@ export function Services() {
                             </div>
 
                             <div className="mb-10">
-                              <div className="text-xs text-gray-600 tracking-[0.2em] uppercase mb-4">
-                                Solution
-                              </div>
-                              <p className="text-sm text-gray-400 leading-relaxed">
+                              <div className="mono-eyebrow mb-4">Solution</div>
+                              <p className="text-sm text-[color:var(--mute-1)] leading-relaxed">
                                 {ext.detail.solution}
                               </p>
                             </div>
 
-                            <div className="flex flex-col sm:flex-row gap-3 pt-6 border-t border-white/5">
+                            <div className="flex flex-col sm:flex-row gap-3 pt-6 border-t border-[color:var(--ink-line)]">
                               <DialogClose asChild>
                                 <button
                                   type="button"
-                                  className="inline-flex items-center justify-center gap-2 bg-white text-black px-6 py-3 rounded-full text-sm hover:bg-gray-200 transition-colors group/cta"
+                                  className="inline-flex items-center justify-center gap-2 bg-[color:var(--signal)] text-[color:var(--ink-base)] px-6 py-3 rounded-full text-sm font-medium hover:bg-[color:var(--paper)] transition-colors group/cta"
                                   onClick={() => {
                                     trackEvent('extension_click', { name: ext.title, action: 'contact' });
                                     setTimeout(() => {

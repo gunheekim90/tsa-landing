@@ -1,97 +1,249 @@
-import { motion } from 'motion/react';
+import {
+  motion,
+  useScroll,
+  useTransform,
+  useMotionValueEvent,
+  type MotionValue,
+} from 'motion/react';
+import { useRef, useState } from 'react';
 
-const cycle = [
+const stages = [
   {
-    step: '고객 유입',
-    service: 'GeoRank24',
-    description: '검색에서 발견되게 만든다',
+    code: 'D',
+    label: 'Discovery',
+    position: 'top of funnel',
+    question: 'Who finds you?',
+    model: 'G24-DISCOVERY',
+    answer:
+      '검색·AI 검색 인용 가능성을 사전에 추정한다. GEO 점수, 인용 확률, 노출 경로를 발행 전에 알려준다.',
+    metric: 'MAPE 8.6% · 4M+ rows',
   },
   {
-    step: '내부 운영',
-    service: 'Relayed',
-    description: 'AI로 만들고 직접 운영하게 한다',
+    code: 'A',
+    label: 'Activation',
+    position: 'mid funnel',
+    question: 'What activates them?',
+    model: 'R-PIPELINE',
+    answer:
+      'AI 에이전트가 마케팅·세일즈 팀의 반복 작업을 인계받아, 도입 이후에도 계속 다음 빌드를 이어간다.',
+    metric: 'agent · 24/7',
   },
   {
-    step: '고객 응대',
-    service: 'LiteCX',
-    description: 'AI로 고객을 응대하고 관리한다',
+    code: 'C',
+    label: 'Conversation',
+    position: 'bottom of funnel',
+    question: 'How do they close?',
+    model: 'LX-CONVERSATION',
+    answer:
+      '대표번호 한 줄로 영업 응대·예약·VOC가 자동으로 굴러간다. PBX-Free, WebRTC 콘솔, 실시간 STT.',
+    metric: 'pbx-free · realtime',
   },
+  {
+    code: 'H',
+    label: 'Horizon',
+    position: 'adjacent track',
+    question: 'What powers the adjacent?',
+    model: 'CF-ENERGY',
+    answer:
+      'EV 충전 인프라와 법인 정산. 펀넬 밖의 인접 영역에서 데이터·결제·에너지 흐름을 모델링한다.',
+    metric: '~5,000 chargers · validating',
+  },
+] as const;
+
+const segments: [number, number, number, number][] = [
+  [0.00, 0.06, 0.22, 0.28],
+  [0.28, 0.34, 0.50, 0.56],
+  [0.56, 0.62, 0.78, 0.84],
+  [0.84, 0.90, 1.00, 1.00],
 ];
 
-export function About() {
+type Stage = (typeof stages)[number];
+
+function GhostLetter({
+  letter,
+  progress,
+  segment,
+}: {
+  letter: string;
+  progress: MotionValue<number>;
+  segment: [number, number, number, number];
+}) {
+  const opacity = useTransform(progress, segment, [0, 0.06, 0.06, 0]);
   return (
-    <section id="about" className="relative py-32 px-6">
-      <div className="max-w-5xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true, margin: "-100px" }}
-        >
-          {/* Section number */}
-          <div className="text-sm text-gray-600 mb-12 tracking-wider">01</div>
+    <motion.span
+      style={{ opacity }}
+      className="absolute font-display text-[clamp(20rem,42vw,40rem)] leading-none text-[color:var(--paper)]"
+      aria-hidden
+    >
+      {letter}
+    </motion.span>
+  );
+}
 
-          {/* Main content */}
-          <div className="grid md:grid-cols-2 gap-16">
-            <div>
-              <h2 className="text-4xl md:text-5xl font-light mb-8 leading-tight">
-                발견부터 응대까지
-                <br />
-                AI로 연결합니다
-              </h2>
-            </div>
+function StageCard({
+  stage,
+  index,
+  progress,
+  segment,
+}: {
+  stage: Stage;
+  index: number;
+  progress: MotionValue<number>;
+  segment: [number, number, number, number];
+}) {
+  const opacity = useTransform(progress, segment, [0, 1, 1, 0]);
+  const y = useTransform(progress, segment, [16, 0, 0, -16]);
+  return (
+    <motion.div
+      style={{ opacity, y }}
+      className="absolute inset-0 grid md:grid-cols-12 gap-6 md:gap-10"
+    >
+      <div className="md:col-span-4 flex flex-col gap-2">
+        <div className="mono-eyebrow text-[color:var(--signal)]">
+          stage {String(index).padStart(2, '0')} · {stage.position}
+        </div>
+        <div className="font-display text-4xl md:text-5xl leading-none text-[color:var(--paper)]">
+          {stage.label}.
+        </div>
+        <div className="mono-meta text-[color:var(--mute-1)] mt-2">{stage.model}</div>
+      </div>
 
-            <div className="space-y-6">
-              <p className="text-lg text-gray-400 leading-relaxed">
-                고객이 브랜드를 찾고, 팀이 제품을 만들고, 고객을 응대하는 것 —
-                비즈니스의 전체 사이클을 AI로 엮어, 각 단계가 끊기지 않고
-                하나의 흐름으로 돌아가게 만듭니다.
-              </p>
+      <div className="md:col-span-8 flex flex-col gap-5">
+        <p className="font-display italic text-2xl md:text-3xl text-[color:var(--paper-soft)] leading-snug max-w-xl">
+          “{stage.question}”
+        </p>
+        <p className="text-[color:var(--mute-1)] text-base md:text-lg leading-relaxed max-w-xl">
+          {stage.answer}
+        </p>
+        <div className="mono-meta text-[color:var(--paper)] flex items-center gap-3 mt-2">
+          <span className="signal-dot" aria-hidden />
+          <span>signal · {stage.metric}</span>
+        </div>
+      </div>
+    </motion.div>
+  );
+}
 
-              <div className="pt-8 grid grid-cols-2 gap-8">
-                <div>
-                  <div className="text-4xl font-light mb-2">50+</div>
-                  <div className="text-sm text-gray-600">Projects</div>
-                </div>
-                <div>
-                  <div className="text-4xl font-light mb-2">30+</div>
-                  <div className="text-sm text-gray-600">Clients</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </motion.div>
+export function About() {
+  const ref = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end end'] });
+  const [active, setActive] = useState(0);
 
-        {/* Service Cycle */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          viewport={{ once: true, margin: "-100px" }}
-          className="mt-24"
-        >
-          <div className="grid md:grid-cols-3 gap-px bg-white/5 border border-white/5">
-            {cycle.map((item, index) => (
-              <div key={item.service} className="bg-[#0a0a0a] p-8 md:p-10 relative">
-                {/* Arrow between items (desktop) */}
-                {index < cycle.length - 1 && (
-                  <div className="hidden md:block absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 z-10 text-white/20 text-xl">
-                    →
-                  </div>
-                )}
-                <div className="text-xs text-gray-600 uppercase tracking-wider mb-4">
-                  {item.step}
-                </div>
-                <div className="text-xl font-light mb-3">
-                  {item.service}
-                </div>
-                <p className="text-sm text-gray-500 leading-relaxed">
-                  {item.description}
-                </p>
-              </div>
+  useMotionValueEvent(scrollYProgress, 'change', (p) => {
+    if (p < 0.28) setActive(0);
+    else if (p < 0.56) setActive(1);
+    else if (p < 0.84) setActive(2);
+    else setActive(3);
+  });
+
+  const handleStageClick = (i: number) => {
+    if (!ref.current) return;
+    const segMid = (segments[i][1] + segments[i][2]) / 2;
+    const top = ref.current.offsetTop + ref.current.offsetHeight * segMid - window.innerHeight * 0.5;
+    window.scrollTo({ top, behavior: 'smooth' });
+  };
+
+  return (
+    <section
+      id="research"
+      ref={ref}
+      className="relative"
+      style={{ height: '420vh' }}
+      aria-label="Research"
+    >
+      <div className="sticky top-0 h-[100svh] overflow-hidden">
+        <div className="absolute inset-0 bg-grid opacity-50 pointer-events-none" aria-hidden />
+
+        {/* Giant ghost letter (current stage) */}
+        <div className="absolute -left-10 md:left-0 top-0 bottom-0 w-[55vw] flex items-center pointer-events-none select-none">
+          {stages.map((s, i) => (
+            <GhostLetter key={s.code} letter={s.code} progress={scrollYProgress} segment={segments[i]} />
+          ))}
+        </div>
+
+        <div className="relative z-10 h-full max-w-[1400px] mx-auto px-6 md:px-10 grid grid-cols-12 gap-6 md:gap-10">
+          {/* Stage navigator */}
+          <aside className="hidden md:flex col-span-3 lg:col-span-2 flex-col justify-center gap-1">
+            <div className="mono-eyebrow mb-6">— 01 / research</div>
+            {stages.map((s, i) => (
+              <button
+                key={s.code}
+                type="button"
+                onClick={() => handleStageClick(i)}
+                aria-label={`go to ${s.label}`}
+                className="group flex items-center gap-3 py-2 text-left"
+              >
+                <span
+                  className={`block h-px transition-all duration-500 ${
+                    active === i ? 'w-10 bg-[color:var(--signal)]' : 'w-4 bg-[color:var(--mute-3)]'
+                  }`}
+                />
+                <span
+                  className={`font-mono text-xs tracking-wide transition-colors duration-500 ${
+                    active === i ? 'text-[color:var(--paper)]' : 'text-[color:var(--mute-2)]'
+                  }`}
+                >
+                  {String(i).padStart(2, '0')} · {s.label.toLowerCase()}
+                </span>
+              </button>
             ))}
+          </aside>
+
+          {/* Heading + stage card stack */}
+          <div className="col-span-12 md:col-span-9 lg:col-span-10 flex flex-col justify-center gap-12">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+              viewport={{ once: true, margin: '-30%' }}
+              className="max-w-3xl"
+            >
+              <span className="mono-eyebrow">research lead</span>
+              <h2 className="display-lg mt-4 text-[color:var(--paper)]">
+                Marketing is a sequence
+                <br />
+                of <em className="font-display italic font-light text-[color:var(--signal)]">inferences.</em>
+              </h2>
+              <p className="mt-6 text-[color:var(--mute-1)] text-base md:text-lg leading-relaxed max-w-xl">
+                마케팅은 추론의 연속이다. 펀넬의 각 단계마다 다른 질문에 답하는 모델이 가동된다.
+                네 단계, 네 모델, 그리고 인접 영역으로 뻗는 다섯 번째 트랙.
+              </p>
+            </motion.div>
+
+            <div className="relative h-[260px] md:h-[300px]">
+              {stages.map((s, i) => (
+                <StageCard
+                  key={s.code}
+                  stage={s}
+                  index={i}
+                  progress={scrollYProgress}
+                  segment={segments[i]}
+                />
+              ))}
+            </div>
+
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+              className="grid grid-cols-3 gap-6 md:gap-10 pt-6 border-t border-[color:var(--ink-line)] mono-meta"
+            >
+              <div>
+                <div className="font-display text-3xl md:text-4xl text-[color:var(--paper)]">50+</div>
+                <div className="mt-1 text-[color:var(--mute-1)]">deployments</div>
+              </div>
+              <div>
+                <div className="font-display text-3xl md:text-4xl text-[color:var(--paper)]">30+</div>
+                <div className="mt-1 text-[color:var(--mute-1)]">clients · KR/global</div>
+              </div>
+              <div>
+                <div className="font-display text-3xl md:text-4xl text-[color:var(--paper)]">04</div>
+                <div className="mt-1 text-[color:var(--mute-1)]">models · +1 horizon</div>
+              </div>
+            </motion.div>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

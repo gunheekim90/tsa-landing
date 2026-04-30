@@ -2,6 +2,50 @@
 
 :root {
   --font-size: 16px;
+
+  /* —— TSA · The Revenue Layer · design tokens ——
+     Editorial × Technical Mono. Dark base, warm off-white,
+     a single neon-lime signal. Used by the v2 landing rebuild. */
+
+  /* Surfaces */
+  --ink-base: #050505;       /* page background */
+  --ink-surface: #0a0a0a;    /* cards / sections */
+  --ink-elev: #111111;       /* elevated panels */
+  --ink-line: #1a1a1a;       /* hairlines */
+
+  /* Text */
+  --paper: #f5f5f1;          /* primary text on dark */
+  --paper-soft: #e6e6e0;
+  --mute-1: #a8a8a8;
+  --mute-2: #6a6a6a;
+  --mute-3: #3a3a3a;
+
+  /* Signal — single brand accent */
+  --signal: #a3ff12;
+  --signal-soft: rgba(163, 255, 18, 0.12);
+  --signal-line: rgba(163, 255, 18, 0.35);
+
+  /* Funnel stage tints (used in model cards / research diagram) */
+  --stage-top: #a3ff12;
+  --stage-mid: #c8e870;
+  --stage-bottom: #f5f5f1;
+  --stage-horizon: #6a6cff;
+
+  /* Type families */
+  --font-display: 'Fraunces', 'Times New Roman', serif;
+  --font-sans: 'Geist', system-ui, -apple-system, 'Helvetica Neue', sans-serif;
+  --font-mono: 'Geist Mono', ui-monospace, 'SF Mono', 'JetBrains Mono', monospace;
+
+  /* Type scale (display) */
+  --display-xl: clamp(3.5rem, 9vw, 8rem);
+  --display-lg: clamp(2.5rem, 6vw, 5rem);
+  --display-md: clamp(2rem, 4.5vw, 3.5rem);
+
+  /* Motion */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1);
+
+  /* Legacy tokens preserved below for incremental migration */
   --background: #ffffff;
   --foreground: oklch(0.145 0 0);
   --card: #ffffff;
@@ -79,6 +123,27 @@
 }
 
 @theme inline {
+  /* TSA v2 design tokens exposed as Tailwind utilities */
+  --color-ink-base: var(--ink-base);
+  --color-ink-surface: var(--ink-surface);
+  --color-ink-elev: var(--ink-elev);
+  --color-ink-line: var(--ink-line);
+  --color-paper: var(--paper);
+  --color-paper-soft: var(--paper-soft);
+  --color-mute-1: var(--mute-1);
+  --color-mute-2: var(--mute-2);
+  --color-mute-3: var(--mute-3);
+  --color-signal: var(--signal);
+  --color-signal-soft: var(--signal-soft);
+  --color-signal-line: var(--signal-line);
+  --color-stage-top: var(--stage-top);
+  --color-stage-mid: var(--stage-mid);
+  --color-stage-bottom: var(--stage-bottom);
+  --color-stage-horizon: var(--stage-horizon);
+  --font-display: var(--font-display);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -124,8 +189,25 @@
     @apply border-border outline-ring/50;
   }
 
+  html {
+    background: var(--ink-base);
+    color: var(--paper);
+    font-family: var(--font-sans);
+    font-feature-settings: 'ss01', 'ss02', 'cv11';
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
   body {
-    @apply bg-background text-foreground;
+    background: var(--ink-base);
+    color: var(--paper);
+    font-family: var(--font-sans);
+  }
+
+  ::selection {
+    background: var(--signal);
+    color: var(--ink-base);
   }
 
   /* Hide scrollbar for Chrome, Safari and Opera */
@@ -188,5 +270,145 @@
     font-size: var(--text-base);
     font-weight: var(--font-weight-normal);
     line-height: 1.5;
+  }
+}
+
+/* ——————————————————————————————————————————————————————
+   v2 utilities · The Revenue Layer
+   —————————————————————————————————————————————————————— */
+@layer utilities {
+  .font-display {
+    font-family: var(--font-display);
+    font-optical-sizing: auto;
+    letter-spacing: -0.02em;
+  }
+  .font-mono {
+    font-family: var(--font-mono);
+    font-feature-settings: 'ss02', 'zero';
+  }
+
+  /* Editorial display text — tight tracking, optical sizing */
+  .display-xl {
+    font-family: var(--font-display);
+    font-size: var(--display-xl);
+    line-height: 0.92;
+    letter-spacing: -0.035em;
+    font-weight: 300;
+  }
+  .display-lg {
+    font-family: var(--font-display);
+    font-size: var(--display-lg);
+    line-height: 0.96;
+    letter-spacing: -0.03em;
+    font-weight: 300;
+  }
+  .display-md {
+    font-family: var(--font-display);
+    font-size: var(--display-md);
+    line-height: 1.02;
+    letter-spacing: -0.025em;
+    font-weight: 400;
+  }
+
+  /* Mono caption — used for system labels, model versions */
+  .mono-eyebrow {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 400;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--mute-1);
+  }
+  .mono-meta {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 400;
+    letter-spacing: 0.06em;
+    color: var(--mute-2);
+  }
+
+  /* Signal underline — animated link affordance */
+  .link-signal {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--paper);
+    transition: color 0.3s var(--ease-out-expo);
+  }
+  .link-signal::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -2px;
+    height: 1px;
+    background: var(--signal);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.5s var(--ease-out-expo);
+  }
+  .link-signal:hover {
+    color: var(--signal);
+  }
+  .link-signal:hover::after {
+    transform: scaleX(1);
+  }
+
+  /* Hairline — used for section separators, card borders */
+  .hairline {
+    border-color: var(--ink-line);
+  }
+
+  /* Grain overlay — subtle film grain on the page */
+  .bg-grain::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.035;
+    z-index: 1;
+    background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.7 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+    mix-blend-mode: overlay;
+  }
+
+  /* Grid backdrop — faint orthogonal grid for hero / research sections */
+  .bg-grid {
+    background-image:
+      linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+  .bg-grid-fine {
+    background-image:
+      linear-gradient(to right, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+    background-size: 16px 16px;
+  }
+
+  /* Signal dot — pulsing brand indicator */
+  .signal-dot {
+    position: relative;
+    width: 0.4rem;
+    height: 0.4rem;
+    border-radius: 999px;
+    background: var(--signal);
+    box-shadow: 0 0 0 0 var(--signal);
+    animation: signal-pulse 2.4s var(--ease-out-expo) infinite;
+  }
+  @keyframes signal-pulse {
+    0%   { box-shadow: 0 0 0 0 rgba(163, 255, 18, 0.55); }
+    70%  { box-shadow: 0 0 0 10px rgba(163, 255, 18, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(163, 255, 18, 0); }
+  }
+
+  /* Reveal stroke — used to draw a hairline under section headings */
+  @keyframes draw-x {
+    from { transform: scaleX(0); }
+    to   { transform: scaleX(1); }
+  }
+  .reveal-x {
+    transform-origin: left;
+    animation: draw-x 1.2s var(--ease-out-expo) both;
   }
 }
