@@ -145,6 +145,171 @@ function StatusBadge({ status }: { status: Status }) {
   );
 }
 
+const citoraPipeline = [
+  {
+    step: 'COLLECT',
+    detail:
+      '12개국 실 ISP IP 환경에서 7개 AI 플랫폼을 60대 EC2 워커가 매주 화요일 03:00 KST에 자동 캡처합니다.',
+  },
+  {
+    step: 'LABEL',
+    detail:
+      '스크린샷·URL·랭킹·텍스트 토큰을 248개 피처로 정규화하여 BigQuery에 누적합니다 (4M+ rows).',
+  },
+  {
+    step: 'TRAIN',
+    detail: '주 1회 가중치를 갱신하며 MAPE 8.6% 정확도를 유지합니다.',
+  },
+  {
+    step: 'PREDICT',
+    detail:
+      'URL 한 줄을 입력하시면 7개 플랫폼별 인용 확률(0–100%)과 우선 개선 액션을 출력합니다.',
+  },
+];
+
+const citoraInsights = [
+  'AI는 검색하지 않고 답을 짓습니다 — 인용된 출처가 곧 가시성입니다.',
+  '핵심 출처와 단순 언급의 가시성 격차는 약 5배입니다.',
+  '사용자는 SEO 키워드가 아니라 life context로 질문합니다.',
+  '형식(Schema · FAQ · 명확한 출처)이 인용 여부를 결정합니다.',
+];
+
+function CitoraDialog({ children }: { children: React.ReactNode }) {
+  return (
+    <Dialog>
+      <DialogTrigger asChild>{children}</DialogTrigger>
+      <DialogContent className="bg-[color:var(--ink-base)] border-[color:var(--ink-line)] text-[color:var(--paper)] max-w-3xl sm:max-w-3xl p-0 gap-0 max-h-[88vh] overflow-y-auto rounded-2xl">
+        <div className="p-8 md:p-10">
+          {/* Header */}
+          <div className="flex items-center gap-3 mb-6">
+            <span className="signal-dot" aria-hidden />
+            <span className="mono-eyebrow text-[color:var(--paper)]">
+              model · core · TwoStepsAhead flagship
+            </span>
+          </div>
+          <DialogTitle className="display-md text-[color:var(--paper)] mb-3">
+            <em className="font-display italic font-light text-[color:var(--signal)]">Citora</em>
+            <span className="text-[color:var(--mute-2)] font-display"> · v0.4</span>
+          </DialogTitle>
+          <p className="mono-meta text-[color:var(--mute-1)]">
+            노출 측정 + 인용 예측 엔진 · v1 launch 2026 H2
+          </p>
+
+          {/* Etymology */}
+          <section className="mt-8 pt-6 border-t border-[color:var(--ink-line)]">
+            <div className="mono-eyebrow mb-3">— 이름의 의미</div>
+            <p className="text-[color:var(--paper-soft)] text-base leading-relaxed">
+              <span className="font-display italic text-[color:var(--signal)]">Citora</span>는
+              라틴어 <span className="font-display italic">citare</span>(소환하다·인용하다)에서
+              출발한 작명입니다. AI 검색이 어떤 콘텐츠를 <em className="font-display italic">cite</em>할지
+              사전에 추정한다는 본질을 모델 이름에 그대로 담았습니다.
+            </p>
+          </section>
+
+          {/* What it measures */}
+          <section className="mt-8 pt-6 border-t border-[color:var(--ink-line)]">
+            <div className="mono-eyebrow mb-3">— 무엇을 측정하나요</div>
+            <p className="text-sm md:text-base text-[color:var(--paper-soft)] leading-relaxed">
+              ChatGPT · Claude · Perplexity · Gemini · AI Mode · AI Overview · DeepSeek 등 7개 AI
+              플랫폼에서 어떤 콘텐츠가 인용될지를 발행 전에 추정합니다. URL 한 줄을 입력하시면
+              플랫폼별 인용 확률(0–100%)과 GEO 점수, 우선 개선 액션을 한 번에 출력합니다.
+            </p>
+          </section>
+
+          {/* Pipeline */}
+          <section className="mt-8 pt-6 border-t border-[color:var(--ink-line)]">
+            <div className="mono-eyebrow mb-4">— 4-step pipeline</div>
+            <ol className="space-y-4">
+              {citoraPipeline.map((p, i) => (
+                <li key={p.step} className="grid grid-cols-12 gap-3">
+                  <div className="col-span-3 sm:col-span-2 mono-meta text-[color:var(--mute-2)]">
+                    {String(i + 1).padStart(2, '0')}
+                  </div>
+                  <div className="col-span-9 sm:col-span-10">
+                    <div className="font-mono text-sm text-[color:var(--signal)] tracking-wider">
+                      {p.step}
+                    </div>
+                    <div className="mt-1 text-sm text-[color:var(--mute-1)] leading-relaxed">
+                      {p.detail}
+                    </div>
+                  </div>
+                </li>
+              ))}
+            </ol>
+          </section>
+
+          {/* Specs */}
+          <section className="mt-8 pt-6 border-t border-[color:var(--ink-line)]">
+            <div className="mono-eyebrow mb-4">— specs</div>
+            <dl className="grid grid-cols-2 sm:grid-cols-3 gap-x-6 gap-y-5">
+              {[
+                ['platforms', '7 AI'],
+                ['countries', '12'],
+                ['features', '248'],
+                ['training data', '4M+ rows'],
+                ['accuracy', 'MAPE 8.6%'],
+                ['cases', '192 verified'],
+                ['avg GEO', '97.1'],
+                ['cycle', 'weekly · Tue 03:00 KST'],
+                ['horizon', '7 days'],
+              ].map(([k, v]) => (
+                <div key={k}>
+                  <dt className="mono-meta text-[color:var(--mute-2)] mb-1">{k}</dt>
+                  <dd className="font-mono text-sm text-[color:var(--paper)]">{v}</dd>
+                </div>
+              ))}
+            </dl>
+          </section>
+
+          {/* Insights */}
+          <section className="mt-8 pt-6 border-t border-[color:var(--ink-line)]">
+            <div className="mono-eyebrow mb-4">— field notes</div>
+            <ul className="space-y-2">
+              {citoraInsights.map((line, i) => (
+                <li key={i} className="text-sm text-[color:var(--mute-1)] leading-relaxed">
+                  — {line}
+                </li>
+              ))}
+            </ul>
+          </section>
+
+          {/* CTA */}
+          <div className="mt-10 pt-6 border-t border-[color:var(--ink-line)] flex flex-col sm:flex-row gap-3">
+            <a
+              href="https://georank24.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() =>
+                trackEvent('citora_click', { action: 'visit_georank24' })
+              }
+              className="inline-flex items-center justify-center gap-2 bg-[color:var(--signal)] text-[color:var(--ink-base)] px-6 py-3 rounded-full text-sm font-medium hover:bg-[color:var(--paper)] transition-colors group/cta"
+            >
+              <span>georank24.com에서 측정 받기</span>
+              <ArrowUpRight className="w-4 h-4 group-hover/cta:translate-x-0.5 group-hover/cta:-translate-y-0.5 transition-transform" />
+            </a>
+            <DialogClose asChild>
+              <button
+                type="button"
+                onClick={() => {
+                  trackEvent('citora_click', { action: 'inquiry' });
+                  setTimeout(() => {
+                    document
+                      .getElementById('contact')
+                      ?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                  }, 150);
+                }}
+                className="inline-flex items-center justify-center gap-2 border border-[color:var(--ink-line)] hover:border-[color:var(--signal-line)] hover:text-[color:var(--signal)] text-[color:var(--paper)] px-6 py-3 rounded-full text-sm transition-colors"
+              >
+                도입 문의하기
+              </button>
+            </DialogClose>
+          </div>
+        </div>
+      </DialogContent>
+    </Dialog>
+  );
+}
+
 function ModelCard({ model, idx }: { model: Model; idx: number }) {
   return (
     <motion.article
@@ -168,7 +333,22 @@ function ModelCard({ model, idx }: { model: Model; idx: number }) {
       {/* Body */}
       <div className="md:col-span-9 lg:col-span-10 flex flex-col gap-6">
         <div className="flex flex-wrap items-center gap-3">
-          <span className="mono-meta text-[color:var(--paper)]">{model.code}</span>
+          {model.core ? (
+            <CitoraDialog>
+              <button
+                type="button"
+                onClick={() =>
+                  trackEvent('citora_click', { action: 'open_detail', from: 'model_code' })
+                }
+                className="link-signal mono-meta text-[color:var(--paper)] inline-flex items-center gap-1.5"
+              >
+                <span>{model.code}</span>
+                <ArrowUpRight className="w-3 h-3 opacity-60" aria-hidden />
+              </button>
+            </CitoraDialog>
+          ) : (
+            <span className="mono-meta text-[color:var(--paper)]">{model.code}</span>
+          )}
           <span className="text-[color:var(--mute-3)]">·</span>
           <StatusBadge status={model.status} />
           {model.core && (
