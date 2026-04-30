@@ -102,44 +102,45 @@ export function Hero() {
         className="relative z-10 w-full"
       >
         <div className="max-w-[1400px] mx-auto px-6 md:px-10 grid grid-cols-12 gap-6 md:gap-10 pt-32 md:pt-40 pb-24">
-          {/* Left mono stack */}
-          <aside className="col-span-12 lg:col-span-3 flex flex-col gap-8 lg:gap-10 mono-meta">
+          {/* Left mono sidebar — desktop only.
+              On mobile, brand + headline + summary alone carry the hero. */}
+          <aside
+            aria-hidden
+            className="hidden lg:flex lg:col-span-3 lg:col-start-1 lg:row-start-1 flex-col justify-end gap-8 mono-meta"
+          >
             <motion.div
               initial={{ opacity: 0, x: -10 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.2, duration: 0.6 }}
+              transition={{ delay: 0.4, duration: 0.6 }}
               className="flex flex-col gap-2"
             >
               <span className="text-[color:var(--mute-2)]">— index</span>
               <span className="font-mono text-[color:var(--paper)]">00 · hero</span>
             </motion.div>
-
             <motion.div
               initial={{ opacity: 0, x: -10 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.35, duration: 0.6 }}
+              transition={{ delay: 0.55, duration: 0.6 }}
               className="flex flex-col gap-2"
             >
               <span className="text-[color:var(--mute-2)]">— focus</span>
-              <span className="font-mono text-[color:var(--paper)]">marketing × sales</span>
-              <span className="font-mono text-[color:var(--mute-1)]">full-funnel models</span>
+              <span className="font-mono text-[color:var(--paper)]">discovery measurement</span>
+              <span className="font-mono text-[color:var(--mute-1)]">+ full-funnel models</span>
             </motion.div>
-
             <motion.div
               initial={{ opacity: 0, x: -10 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.5, duration: 0.6 }}
+              transition={{ delay: 0.7, duration: 0.6 }}
               className="flex flex-col gap-2"
             >
               <span className="text-[color:var(--mute-2)]">— lab</span>
               <span className="font-mono text-[color:var(--paper)]">Seoul, KR</span>
-              <span className="font-mono text-[color:var(--mute-1)]">est. 50+ deployments</span>
+              <span className="font-mono text-[color:var(--mute-1)]">50+ deployments</span>
             </motion.div>
-
             <motion.div
               initial={{ opacity: 0, x: -10 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.65, duration: 0.6 }}
+              transition={{ delay: 0.85, duration: 0.6 }}
               className="flex items-center gap-2"
             >
               <span className="signal-dot" aria-hidden />
@@ -147,16 +148,20 @@ export function Hero() {
             </motion.div>
           </aside>
 
-          {/* Headline cluster */}
-          <div className="col-span-12 lg:col-span-9 flex flex-col gap-10">
-            <motion.span
+          {/* Headline cluster (visually first on every viewport) */}
+          <div className="col-span-12 lg:col-span-9 lg:col-start-4 lg:row-start-1 order-1 lg:order-2 flex flex-col gap-8 md:gap-10">
+            {/* Wordmark — TSA brand at the top */}
+            <motion.div
               initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2, duration: 0.6 }}
-              className="mono-eyebrow"
+              transition={{ delay: 0.15, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+              className="flex flex-col gap-2"
             >
-              Two&nbsp;Steps&nbsp;Ahead&nbsp;·&nbsp;Marketing&nbsp;Intelligence&nbsp;Lab
-            </motion.span>
+              <span className="font-display text-3xl md:text-4xl lg:text-5xl font-light leading-none tracking-tight text-[color:var(--paper)]">
+                Two<span className="text-[color:var(--signal)]">Steps</span>Ahead
+              </span>
+              <span className="mono-eyebrow">— marketing intelligence lab · measurement-first</span>
+            </motion.div>
 
             <motion.h1
               initial={{ opacity: 0 }}
@@ -170,7 +175,13 @@ export function Hero() {
                 transition={{ delay: 0.4, duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
                 className="block"
               >
-                We&nbsp;build
+                We&nbsp;
+                <em
+                  className="font-display"
+                  style={{ fontStyle: 'italic', fontWeight: 300 }}
+                >
+                  measure
+                </em>
               </motion.span>
               <motion.span
                 initial={{ y: 40, opacity: 0 }}
@@ -178,23 +189,9 @@ export function Hero() {
                 transition={{ delay: 0.55, duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
                 className="block"
               >
-                <em
-                  className="font-display"
-                  style={{ fontStyle: 'italic', fontWeight: 300 }}
-                >
-                  models
-                </em>{' '}
-                for&nbsp;the
-              </motion.span>
-              <motion.span
-                initial={{ y: 40, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ delay: 0.7, duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-                className="block"
-              >
-                entire&nbsp;
+                how brands get&nbsp;
                 <span className="relative inline-block">
-                  <span className="relative z-10">revenue</span>
+                  <span className="relative z-10">found</span>
                   <motion.span
                     initial={{ scaleX: 0 }}
                     animate={{ scaleX: 1 }}
@@ -203,7 +200,20 @@ export function Hero() {
                     aria-hidden
                   />
                 </span>
-                &nbsp;funnel.
+              </motion.span>
+              <motion.span
+                initial={{ y: 40, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ delay: 0.7, duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+                className="block"
+              >
+                in the&nbsp;
+                <em
+                  className="font-display"
+                  style={{ fontStyle: 'italic', fontWeight: 300 }}
+                >
+                  AI era.
+                </em>
               </motion.span>
             </motion.h1>
 
@@ -214,13 +224,15 @@ export function Hero() {
               className="grid md:grid-cols-12 gap-6 md:gap-10 max-w-4xl"
             >
               <div className="md:col-span-7 text-[color:var(--mute-1)] text-base md:text-lg leading-relaxed">
-                발견부터 전환까지 — 마케팅과 세일즈의 전 구간을 추론 문제로 다루는 서울 기반 연구소.
-                넷의 모델이 펀넬을 따라 가동되고, 다섯 번째 트랙이 인접 영역을 향해 뻗는다.
+                <span className="text-[color:var(--paper)]">노출 측정이 시작이다.</span>{' '}
+                TwoStepsAhead는 검색과 AI 검색에서 어떤 콘텐츠가 인용될지 발행 전에 알려주는{' '}
+                <span className="text-[color:var(--paper)]">GeoRank24</span>를 코어 모델로,
+                그 위에 활성화·응대·인접 영역을 잇는 모델 라이브러리를 운영한다.
               </div>
               <div className="md:col-span-5 mono-meta border-l border-[color:var(--ink-line)] pl-5 flex flex-col gap-2">
-                <span className="text-[color:var(--mute-1)]">model · library</span>
-                <span className="text-[color:var(--paper)]">G24 · R · LX · CF</span>
-                <span className="text-[color:var(--mute-2)]">+1 horizon track</span>
+                <span className="text-[color:var(--mute-1)]">core model</span>
+                <span className="text-[color:var(--paper)]">G24-DISCOVERY</span>
+                <span className="text-[color:var(--mute-2)]">MAPE 8.6% · 4M+ rows</span>
               </div>
             </motion.div>
 

@@ -23,6 +23,7 @@ interface Model {
   metric: string;
   features: string[];
   url: string;
+  core?: boolean;
 }
 
 const models: Model[] = [
@@ -30,12 +31,13 @@ const models: Model[] = [
     index: '01',
     code: 'G24-DISCOVERY',
     stageCode: 'D',
-    stagePosition: 'top of funnel',
+    stagePosition: 'top of funnel · core',
     status: 'live',
+    core: true,
     brand: 'GeoRank24',
-    subtitle: 'Brand SEO · GEO 최적화 모델',
+    subtitle: 'TwoStepsAhead의 코어 모델 · 노출 측정 + 인용 예측',
     description:
-      '검색과 AI 검색에서의 인용 가능성을 사전에 추정한다. 콘텐츠 발행 전에 GEO 점수, 인용 확률, 노출 경로를 알려준다.',
+      'TwoStepsAhead는 노출 측정 모델을 고도화하는 회사다. GeoRank24는 검색과 AI 검색에서 어떤 콘텐츠가 인용될지 발행 전에 추정한다 — GEO 점수, 인용 확률, 노출 경로를 한 번에.',
     metric: 'MAPE 8.6% · 4M+ training rows',
     features: [
       'GEO 점수 · 인용 확률',
@@ -167,6 +169,14 @@ function ModelCard({ model, idx }: { model: Model; idx: number }) {
           <span className="mono-meta text-[color:var(--paper)]">{model.code}</span>
           <span className="text-[color:var(--mute-3)]">·</span>
           <StatusBadge status={model.status} />
+          {model.core && (
+            <>
+              <span className="text-[color:var(--mute-3)]">·</span>
+              <span className="mono-meta inline-flex items-center gap-1.5 px-2 py-0.5 border border-[color:var(--signal-line)] text-[color:var(--signal)] rounded-full">
+                core · TSA flagship
+              </span>
+            </>
+          )}
           <span className="text-[color:var(--mute-3)]">·</span>
           <span className="mono-meta">{model.metric}</span>
         </div>
@@ -237,8 +247,8 @@ export function Services() {
               The <em className="font-display italic font-light">library.</em>
             </h2>
             <p className="mt-6 max-w-xl text-[color:var(--mute-1)] text-base md:text-lg leading-relaxed">
-              세 개의 모델이 펀넬을 따라 가동되고, 한 트랙이 인접 영역을 향해 뻗는다.
-              각 모델은 정확히 한 단계의 추론을 책임진다.
+              <span className="text-[color:var(--paper)]">노출 측정 모델 G24-DISCOVERY</span>를 코어로,
+              그 위에 활성화·응대를 잇는 라이브러리. 각 모델은 펀넬의 한 단계만 책임진다.
             </p>
           </div>
         </motion.div>

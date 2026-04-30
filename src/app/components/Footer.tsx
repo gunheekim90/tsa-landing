@@ -53,8 +53,9 @@ export function Footer() {
               </span>
             </h2>
             <p className="mt-8 max-w-2xl text-[color:var(--mute-1)] text-base md:text-lg leading-relaxed">
-              풀 펀넬 프로젝트, 단일 모델 도입, 또는 인접 영역의 공동 연구 — 어떤 형태든 환영합니다.
-              초기 진단은 무료로 제공합니다.
+              <span className="text-[color:var(--paper)]">노출 측정(GeoRank24)</span>,
+              단일 모델 도입, 풀 펀넬 프로젝트, 인접 영역 공동 연구 — 모두 환영합니다.
+              초기 진단은 무료.
             </p>
 
             <div className="mt-10 flex flex-col sm:flex-row gap-4">
@@ -87,11 +88,13 @@ export function Footer() {
         >
           {/* Column · brand */}
           <div className="md:col-span-4 lg:col-span-3">
-            <div className="font-display text-2xl text-[color:var(--paper)]">TwoStepsAhead</div>
+            <div className="font-display text-2xl text-[color:var(--paper)]">
+              Two<span className="text-[color:var(--signal)]">Steps</span>Ahead
+            </div>
             <p className="mt-2 mono-meta">
               marketing intelligence lab
               <br />
-              the revenue layer · v0.7
+              measurement-first · v0.7
             </p>
           </div>
 

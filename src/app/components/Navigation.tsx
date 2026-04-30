@@ -56,12 +56,12 @@ export function Navigation({ scrollY }: NavigationProps) {
             className="group flex items-center gap-4"
             onClick={() => trackEvent('nav_click', { nav_item: 'home' })}
           >
-            <span className="font-display text-[1.05rem] leading-none tracking-tight text-[color:var(--paper)] transition-colors group-hover:text-[color:var(--signal)]">
-              TwoStepsAhead
+            <span className="font-display text-[1.05rem] leading-none tracking-tight text-[color:var(--paper)] transition-colors">
+              Two<span className="text-[color:var(--signal)] group-hover:text-[color:var(--paper)] transition-colors">Steps</span>Ahead
             </span>
             <span className="hidden lg:flex items-center gap-2 mono-meta">
               <span className="signal-dot" aria-hidden />
-              <span>rev.layer · v0.7</span>
+              <span>measurement · v0.7</span>
             </span>
           </a>
 
