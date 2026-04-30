@@ -256,76 +256,91 @@ export function Services() {
           </div>
         </motion.div>
 
-        {/* Model cards */}
+        {/* Model cards + horizon trigger row */}
         <div className="border-b border-[color:var(--ink-line)]">
           {models.map((m, i) => (
             <ModelCard key={m.code} model={m} idx={i} />
           ))}
-        </div>
 
-        {/* Horizon — ChargeFLOW + Fleet */}
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-          viewport={{ once: true, margin: '-15%' }}
-          className="mt-32"
-        >
-          <div className="relative rounded-3xl border border-[color:var(--ink-line)] bg-[color:var(--ink-surface)] overflow-hidden">
-            {/* Faint inner grid for the horizon panel */}
-            <div className="absolute inset-0 bg-grid-fine opacity-60 pointer-events-none" aria-hidden />
-            <div
-              className="absolute inset-0 pointer-events-none"
-              style={{
-                background:
-                  'radial-gradient(40% 60% at 90% 0%, rgba(106,108,255,0.12), transparent 70%)',
-              }}
-              aria-hidden
-            />
-
-            <div className="relative p-8 md:p-14">
-              <div className="flex items-center gap-3 mb-10">
-                <span
-                  className="signal-dot"
-                  style={{ background: 'var(--stage-horizon)' }}
-                  aria-hidden
-                />
-                <span className="mono-eyebrow text-[color:var(--paper)]">
-                  Next Horizon · adjacent track
-                </span>
-              </div>
-
-              <div className="grid md:grid-cols-12 gap-8 md:gap-12">
-                <div className="md:col-span-5">
-                  <div className="flex items-baseline gap-3 mb-3">
-                    <span className="font-display text-7xl leading-none text-[color:var(--signal)]">
-                      {horizon.stageCode}
-                    </span>
-                    <span className="mono-meta text-[color:var(--mute-2)]">/{horizon.index}</span>
-                  </div>
-                  <h3 className="display-md text-[color:var(--signal)]">
-                    {horizon.brand}
-                  </h3>
-                  <p className="mt-2 mono-meta text-[color:var(--mute-1)]">{horizon.subtitle}</p>
-                  <p className="mt-6 text-sm text-[color:var(--mute-1)] leading-relaxed max-w-md">
-                    핵심 펀넬 사이클을 넘어, TwoStepsAhead가 다음 단계로 준비하고 있는 인접 영역의 트랙입니다.
-                  </p>
+          {/* Horizon — compact trigger that opens a single combined dialog */}
+          <Dialog>
+            <DialogTrigger asChild>
+              <motion.button
+                type="button"
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+                viewport={{ once: true, margin: '-15%' }}
+                onClick={() => trackEvent('extension_click', { name: 'horizon_open', action: 'open_detail' })}
+                className="group w-full text-left grid md:grid-cols-12 gap-4 md:gap-10 items-center py-6 md:py-7 border-t border-[color:var(--ink-line)] hover:bg-[color:var(--ink-surface)] transition-colors"
+              >
+                <div className="md:col-span-3 lg:col-span-2 flex items-center gap-3">
+                  <span
+                    className="block w-1.5 h-1.5 rounded-full"
+                    style={{ background: 'var(--stage-horizon)' }}
+                    aria-hidden
+                  />
+                  <span className="mono-eyebrow">— next horizon</span>
                 </div>
+                <div className="md:col-span-9 lg:col-span-10 flex items-baseline justify-between gap-6">
+                  <span className="text-sm md:text-base text-[color:var(--paper-soft)] leading-relaxed">
+                    그 밖에 관심을 갖고 있는{' '}
+                    <span className="text-[color:var(--paper)]">친환경 미래 기술 사업</span>{' '}
+                    더보기
+                  </span>
+                  <span className="shrink-0 mono-meta text-[color:var(--mute-1)] group-hover:text-[color:var(--signal)] transition-colors duration-500 inline-flex items-center gap-2">
+                    open
+                    <ArrowUpRight className="w-3.5 h-3.5 transition-transform duration-500 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                  </span>
+                </div>
+              </motion.button>
+            </DialogTrigger>
 
-                <div className="md:col-span-7">
-                  <div className="flex flex-wrap items-center gap-3 mb-5">
-                    <span className="mono-meta text-[color:var(--paper)]">{horizon.code}</span>
+            <DialogContent className="bg-[color:var(--ink-base)] border-[color:var(--ink-line)] text-[color:var(--paper)] max-w-3xl sm:max-w-3xl p-0 gap-0 max-h-[88vh] overflow-y-auto rounded-2xl">
+              <div className="p-8 md:p-10">
+                {/* Dialog header */}
+                <div className="flex items-center gap-3 mb-6">
+                  <span
+                    className="signal-dot"
+                    style={{ background: 'var(--stage-horizon)' }}
+                    aria-hidden
+                  />
+                  <span className="mono-eyebrow text-[color:var(--paper)]">
+                    Next Horizon · 친환경 미래 기술
+                  </span>
+                </div>
+                <DialogTitle className="display-md text-[color:var(--paper)] mb-3">
+                  관심을 갖고 있는
+                  <br />
+                  <em className="font-display italic font-light text-[color:var(--signal)]">
+                    인접 영역의 트랙들
+                  </em>
+                </DialogTitle>
+                <p className="text-sm text-[color:var(--mute-1)] leading-relaxed max-w-xl">
+                  핵심 펀넬 사이클을 넘어, TwoStepsAhead가 다음 단계로 준비하고 있는 영역들입니다.
+                  현재는 EV 충전 인프라와 법인 정산 트랙을 함께 검증하고 있습니다.
+                </p>
+
+                {/* ChargeFLOW summary */}
+                <section className="mt-10 pt-8 border-t border-[color:var(--ink-line)]">
+                  <div className="flex flex-wrap items-baseline gap-3 mb-4">
+                    <h3 className="font-display text-2xl text-[color:var(--signal)]">
+                      {horizon.brand}
+                    </h3>
                     <span className="text-[color:var(--mute-3)]">·</span>
+                    <span className="mono-meta">{horizon.subtitle}</span>
+                  </div>
+                  <div className="flex flex-wrap items-center gap-3 mb-5">
                     <StatusBadge status={horizon.status} />
                     <span className="text-[color:var(--mute-3)]">·</span>
                     <span className="mono-meta">{horizon.metric}</span>
                   </div>
 
-                  <p className="text-[color:var(--paper-soft)] text-base leading-relaxed mb-6 max-w-xl">
+                  <p className="text-[color:var(--paper-soft)] text-sm md:text-base leading-relaxed mb-5">
                     {horizon.description}
                   </p>
 
-                  <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-2 mb-8 max-w-xl">
+                  <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-1.5 mb-6">
                     {horizon.features.map((f) => (
                       <li
                         key={f}
@@ -348,100 +363,73 @@ export function Services() {
                     <span>download proposal</span>
                     <Download className="w-3.5 h-3.5" />
                   </a>
+                </section>
+
+                {/* Fleet detail */}
+                {horizon.extensions.map((ext) => (
+                  <section
+                    key={ext.title}
+                    className="mt-10 pt-8 border-t border-[color:var(--ink-line)]"
+                  >
+                    <div className="mono-eyebrow mb-4">
+                      Extended Line · 확장 라인업
+                    </div>
+                    <div className="flex flex-wrap items-baseline gap-3 mb-2">
+                      <h3 className="font-display text-2xl text-[color:var(--signal)]">
+                        {ext.title}
+                      </h3>
+                      <span className="text-[color:var(--mute-3)]">·</span>
+                      <span className="mono-meta">{ext.tagline}</span>
+                    </div>
+
+                    <p className="text-[color:var(--paper-soft)] text-sm md:text-base leading-relaxed mb-6">
+                      {ext.detail.positioning}
+                    </p>
+
+                    <div className="mb-6">
+                      <div className="mono-eyebrow mb-3">Problem</div>
+                      <ul className="space-y-1.5">
+                        {ext.detail.problem.map((p, i) => (
+                          <li key={i} className="text-sm text-[color:var(--mute-1)] leading-relaxed">
+                            — {p}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    <div className="mb-2">
+                      <div className="mono-eyebrow mb-3">Solution</div>
+                      <p className="text-sm text-[color:var(--mute-1)] leading-relaxed">
+                        {ext.detail.solution}
+                      </p>
+                    </div>
+                  </section>
+                ))}
+
+                {/* CTA */}
+                <div className="mt-10 pt-6 border-t border-[color:var(--ink-line)] flex flex-col sm:flex-row gap-3">
+                  <DialogClose asChild>
+                    <button
+                      type="button"
+                      className="inline-flex items-center justify-center gap-2 bg-[color:var(--signal)] text-[color:var(--ink-base)] px-6 py-3 rounded-full text-sm font-medium hover:bg-[color:var(--paper)] transition-colors group/cta"
+                      onClick={() => {
+                        trackEvent('extension_click', { name: 'horizon', action: 'contact' });
+                        setTimeout(() => {
+                          document
+                            .getElementById('contact')
+                            ?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        }, 150);
+                      }}
+                    >
+                      <span>문의하기</span>
+                      <ArrowRight className="w-4 h-4 group-hover/cta:translate-x-1 transition-transform" />
+                    </button>
+                  </DialogClose>
                 </div>
               </div>
-
-              {/* Extended line */}
-              <div className="mt-14 pt-10 border-t border-[color:var(--ink-line)]">
-                <div className="mono-eyebrow mb-6">Extended Line · 확장 라인업</div>
-                {horizon.extensions.map((ext) => (
-                  <div
-                    key={ext.title}
-                    className="grid md:grid-cols-12 gap-4 md:gap-10 items-start"
-                  >
-                    <div className="md:col-span-3">
-                      <h4 className="font-display text-2xl text-[color:var(--signal)]">
-                        {ext.title}
-                      </h4>
-                      <p className="mt-1 mono-meta">{ext.tagline}</p>
-                    </div>
-                    <div className="md:col-span-9">
-                      <p className="text-sm text-[color:var(--mute-1)] leading-relaxed mb-5 max-w-2xl">
-                        {ext.description}
-                      </p>
-                      <Dialog>
-                        <DialogTrigger asChild>
-                          <button
-                            className="link-signal mono-meta text-[color:var(--paper)]"
-                            onClick={() =>
-                              trackEvent('extension_click', { name: ext.title, action: 'open_detail' })
-                            }
-                          >
-                            <span>read detail</span>
-                            <ArrowUpRight className="w-3.5 h-3.5" />
-                          </button>
-                        </DialogTrigger>
-                        <DialogContent className="bg-[color:var(--ink-base)] border-[color:var(--ink-line)] text-[color:var(--paper)] max-w-2xl sm:max-w-2xl p-0 gap-0 max-h-[85vh] overflow-y-auto rounded-2xl">
-                          <div className="p-8 md:p-10">
-                            <div className="mono-eyebrow mb-5">
-                              ChargeFLOW · Extended Line
-                            </div>
-                            <DialogTitle className="display-md mb-2 text-[color:var(--signal)]">
-                              {ext.title}
-                            </DialogTitle>
-                            <p className="mono-meta mb-8">{ext.tagline}</p>
-
-                            <p className="text-[color:var(--paper-soft)] text-base leading-relaxed mb-10">
-                              {ext.detail.positioning}
-                            </p>
-
-                            <div className="mb-10">
-                              <div className="mono-eyebrow mb-4">Problem</div>
-                              <ul className="space-y-2">
-                                {ext.detail.problem.map((p, i) => (
-                                  <li key={i} className="text-sm text-[color:var(--mute-1)] leading-relaxed">
-                                    — {p}
-                                  </li>
-                                ))}
-                              </ul>
-                            </div>
-
-                            <div className="mb-10">
-                              <div className="mono-eyebrow mb-4">Solution</div>
-                              <p className="text-sm text-[color:var(--mute-1)] leading-relaxed">
-                                {ext.detail.solution}
-                              </p>
-                            </div>
-
-                            <div className="flex flex-col sm:flex-row gap-3 pt-6 border-t border-[color:var(--ink-line)]">
-                              <DialogClose asChild>
-                                <button
-                                  type="button"
-                                  className="inline-flex items-center justify-center gap-2 bg-[color:var(--signal)] text-[color:var(--ink-base)] px-6 py-3 rounded-full text-sm font-medium hover:bg-[color:var(--paper)] transition-colors group/cta"
-                                  onClick={() => {
-                                    trackEvent('extension_click', { name: ext.title, action: 'contact' });
-                                    setTimeout(() => {
-                                      document
-                                        .getElementById('contact')
-                                        ?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                                    }, 150);
-                                  }}
-                                >
-                                  <span>문의하기</span>
-                                  <ArrowRight className="w-4 h-4 group-hover/cta:translate-x-1 transition-transform" />
-                                </button>
-                              </DialogClose>
-                            </div>
-                          </div>
-                        </DialogContent>
-                      </Dialog>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </motion.div>
+            </DialogContent>
+          </Dialog>
+        </div>
       </div>
     </section>
   );
