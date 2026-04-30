@@ -3,9 +3,9 @@ import { ArrowUpRight } from 'lucide-react';
 import { trackEvent } from '@/lib/gtag';
 
 const models = [
-  { code: 'G24-DISCOVERY',  url: 'https://georank24.com', label: 'georank24.com' },
-  { code: 'R-PIPELINE',     url: 'https://relayed.co.kr', label: 'relayed.co.kr' },
-  { code: 'LX-CONVERSATION', url: 'https://litecx.com',   label: 'litecx.com' },
+  { code: 'Citora',         url: 'https://georank24.com', label: 'georank24.com' },
+  { code: 'Relayed-Agent',  url: 'https://relayed.co.kr', label: 'relayed.co.kr' },
+  { code: 'LiteCX-Voice',   url: 'https://litecx.com',    label: 'litecx.com' },
 ];
 
 export function Footer() {
@@ -53,9 +53,9 @@ export function Footer() {
               </span>
             </h2>
             <p className="mt-8 max-w-2xl text-[color:var(--mute-1)] text-base md:text-lg leading-relaxed">
-              <span className="text-[color:var(--paper)]">노출 측정(GeoRank24)</span>,
-              단일 모델 도입, 풀 펀넬 프로젝트, 인접 영역 공동 연구 — 모두 환영합니다.
-              초기 진단은 무료.
+              <span className="text-[color:var(--paper)]">Citora 진단(GeoRank24)</span>,
+              단일 모델 도입, 풀 펀넬 프로젝트, 인접 영역 공동 연구 — 어떤 형태든 환영합니다.
+              초기 진단은 무료로 제공해드립니다.
             </p>
 
             <div className="mt-10 flex flex-col sm:flex-row gap-4">
@@ -146,7 +146,7 @@ export function Footer() {
             </div>
             <div>
               <div className="text-[color:var(--mute-2)] mb-1">— track</div>
-              <div className="text-[color:var(--paper)]">CF-ENERGY</div>
+              <div className="text-[color:var(--paper)]">ChargeFLOW</div>
               <div className="text-[color:var(--mute-1)]">+ Fleet (beta)</div>
             </div>
           </div>

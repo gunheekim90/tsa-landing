@@ -128,7 +128,7 @@ export function Team() {
               behind the models.
             </h2>
             <p className="mt-6 max-w-xl text-[color:var(--mute-1)] text-base md:text-lg leading-relaxed">
-              여섯 명의 연구자·엔지니어·디자이너. 각자의 관심 영역이 라이브러리의 한 모델을 떠받친다.
+              여섯 명의 연구자·엔지니어·디자이너로 구성되어 있습니다. 각자의 관심 영역이 라이브러리의 한 모델을 떠받칩니다.
             </p>
           </div>
         </motion.div>

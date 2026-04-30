@@ -123,9 +123,9 @@ export function Hero() {
               transition={{ delay: 0.55, duration: 0.6 }}
               className="flex flex-col gap-2"
             >
-              <span className="text-[color:var(--mute-2)]">— focus</span>
-              <span className="font-mono text-[color:var(--paper)]">discovery measurement</span>
-              <span className="font-mono text-[color:var(--mute-1)]">+ full-funnel models</span>
+              <span className="text-[color:var(--mute-2)]">— core</span>
+              <span className="font-mono text-[color:var(--paper)]">Citora · v0.4</span>
+              <span className="font-mono text-[color:var(--mute-1)]">7 AI · 12 countries</span>
             </motion.div>
             <motion.div
               initial={{ opacity: 0, x: -10 }}
@@ -224,15 +224,16 @@ export function Hero() {
               className="grid md:grid-cols-12 gap-6 md:gap-10 max-w-4xl"
             >
               <div className="md:col-span-7 text-[color:var(--mute-1)] text-base md:text-lg leading-relaxed">
-                <span className="text-[color:var(--paper)]">노출 측정이 시작이다.</span>{' '}
-                TwoStepsAhead는 검색과 AI 검색에서 어떤 콘텐츠가 인용될지 발행 전에 알려주는{' '}
-                <span className="text-[color:var(--paper)]">GeoRank24</span>를 코어 모델로,
-                그 위에 활성화·응대·인접 영역을 잇는 모델 라이브러리를 운영한다.
+                <span className="text-[color:var(--paper)]">AI는 모든 콘텐츠를 인용하지 않습니다.</span>{' '}
+                TwoStepsAhead는 코어 모델{' '}
+                <span className="text-[color:var(--paper)]">Citora</span>로
+                7개 AI 플랫폼·12개국에서의 인용 가능성을 발행 전에 추정하고,
+                그 위에 활성화·응대·인접 영역을 잇는 모델 라이브러리를 운영합니다.
               </div>
               <div className="md:col-span-5 mono-meta border-l border-[color:var(--ink-line)] pl-5 flex flex-col gap-2">
                 <span className="text-[color:var(--mute-1)]">core model</span>
-                <span className="text-[color:var(--paper)]">G24-DISCOVERY</span>
-                <span className="text-[color:var(--mute-2)]">MAPE 8.6% · 4M+ rows</span>
+                <span className="text-[color:var(--paper)]">Citora · v0.4</span>
+                <span className="text-[color:var(--mute-2)]">MAPE 8.6% · 4M+ rows · 192 cases</span>
               </div>
             </motion.div>
 

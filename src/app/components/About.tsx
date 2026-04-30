@@ -13,43 +13,43 @@ const stages = [
     label: 'Discovery',
     position: 'top of funnel · core',
     question: 'Who finds you?',
-    model: 'G24-DISCOVERY',
-    role: 'core model',
+    model: 'Citora · v0.4',
+    role: 'core',
     answer:
-      'TwoStepsAhead의 코어 모델. 검색과 AI 검색에서 어떤 콘텐츠가 인용될지 사전에 추정한다. GEO 점수, 인용 확률, 노출 경로를 발행 전에 알려주는 측정·예측 엔진.',
-    metric: 'MAPE 8.6% · 4M+ rows · 5 AI search · 12 countries',
+      'TwoStepsAhead가 직접 학습·운영하는 코어 모델입니다. AI는 모든 콘텐츠를 인용하지 않습니다 — Citora는 검색과 AI 검색에서 어떤 콘텐츠가 인용될지 발행 전에 알려드립니다. GEO 점수, 인용 확률, 노출 경로를 한 번에 출력합니다.',
+    metric: '7 AI platforms · 12 countries · MAPE 8.6%',
   },
   {
     code: 'A',
     label: 'Activation',
     position: 'mid funnel',
     question: 'What activates them?',
-    model: 'R-PIPELINE',
+    model: 'Relayed-Agent',
     role: 'extended',
     answer:
-      'AI 에이전트가 마케팅·세일즈 팀의 반복 작업을 인계받아, 도입 이후에도 다음 빌드를 이어간다. 측정 결과를 실행 가능한 워크플로우로 옮기는 단계.',
-    metric: 'agent · 24/7',
+      'AI 에이전트가 마케팅·세일즈 팀의 반복 작업을 인계받아, 도입 이후에도 다음 빌드를 이어갑니다. Citora의 측정 결과를 실행 가능한 워크플로우로 옮기는 단계입니다.',
+    metric: 'agent · 24/7 build loop',
   },
   {
     code: 'C',
     label: 'Conversation',
     position: 'bottom of funnel',
     question: 'How do they close?',
-    model: 'LX-CONVERSATION',
+    model: 'LiteCX-Voice',
     role: 'extended',
     answer:
-      '대표번호 한 줄로 영업 응대·예약·VOC가 자동 처리된다. PBX-Free, WebRTC 콘솔, 실시간 STT 기반의 가벼운 CX 인프라.',
-    metric: 'pbx-free · realtime',
+      '대표번호 한 줄로 영업 응대·예약·VOC가 자동 처리됩니다. PBX-Free, WebRTC 콘솔, 실시간 STT 기반의 가벼운 CX 인프라로 전환 단계의 응대를 책임집니다.',
+    metric: 'pbx-free · realtime STT',
   },
   {
     code: 'H',
     label: 'Horizon',
     position: 'adjacent track',
     question: 'What powers the adjacent?',
-    model: 'CF-ENERGY',
+    model: 'ChargeFLOW',
     role: 'horizon',
     answer:
-      'EV 충전 인프라와 법인 정산. 펀넬 밖의 인접 영역에서 데이터·결제·에너지 흐름을 모델링한다.',
+      '펀넬 밖 인접 영역의 트랙입니다. EV 충전 인프라와 법인 정산을 함께 다루며, 데이터·결제·에너지 흐름을 모델링합니다.',
     metric: '~5,000 chargers · validating',
   },
 ] as const;
@@ -216,9 +216,10 @@ export function About() {
                 <em className="font-display italic font-light text-[color:var(--signal)]">who finds you?</em>
               </h2>
               <p className="mt-6 text-[color:var(--mute-1)] text-base md:text-lg leading-relaxed max-w-xl">
-                <span className="text-[color:var(--paper)]">노출 측정이 첫 모델이다.</span>{' '}
-                GeoRank24가 검색·AI 검색에서의 인용 가능성을 발행 전에 추정하고,
-                그로부터 활성화·응대·인접 영역으로 펀넬이 이어진다.
+                <span className="text-[color:var(--paper)]">노출 측정이 첫 모델입니다.</span>{' '}
+                코어 모델 <span className="text-[color:var(--paper)]">Citora</span>가
+                7개 AI 플랫폼 · 12개국에서의 인용 가능성을 발행 전에 추정하고,
+                그 위에 활성화·응대·인접 영역의 모델이 풀 펀넬로 이어집니다.
               </p>
             </motion.div>
 

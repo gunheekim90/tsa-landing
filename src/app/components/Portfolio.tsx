@@ -116,8 +116,8 @@ export function Portfolio() {
             In <em className="font-display italic font-light">production.</em>
           </h2>
           <p className="mt-6 max-w-2xl text-[color:var(--mute-1)] text-base md:text-lg leading-relaxed">
-            10개 이상의 운영 사례. 각 사례에는 가동된 모델의 펀넬 단계가 함께 기록된다.
-            드래그 또는 스와이프로 가로로 둘러볼 수 있다.
+            10개 이상의 운영 사례입니다. 각 사례에는 가동된 모델의 펀넬 단계가 함께 기록됩니다.
+            드래그 또는 스와이프로 가로로 둘러보실 수 있습니다.
           </p>
 
           {/* Stage legend */}

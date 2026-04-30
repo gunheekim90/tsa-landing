@@ -29,53 +29,55 @@ interface Model {
 const models: Model[] = [
   {
     index: '01',
-    code: 'G24-DISCOVERY',
+    code: 'Citora · v0.4',
     stageCode: 'D',
     stagePosition: 'top of funnel · core',
     status: 'live',
     core: true,
     brand: 'GeoRank24',
-    subtitle: 'TwoStepsAhead의 코어 모델 · 노출 측정 + 인용 예측',
+    subtitle: 'TwoStepsAhead의 코어 모델 · 노출 측정 + 인용 예측 엔진',
     description:
-      'TwoStepsAhead는 노출 측정 모델을 고도화하는 회사다. GeoRank24는 검색과 AI 검색에서 어떤 콘텐츠가 인용될지 발행 전에 추정한다 — GEO 점수, 인용 확률, 노출 경로를 한 번에.',
-    metric: 'MAPE 8.6% · 4M+ training rows',
+      'AI는 모든 콘텐츠를 인용하지 않습니다. Citora는 7개 AI 플랫폼 · 12개국 환경에서 어떤 콘텐츠가 인용될지를 발행 전에 알려드립니다. GEO 점수, 인용 확률, 노출 경로를 한 번에 출력하는 측정·예측 엔진입니다.',
+    metric: 'MAPE 8.6% · 4M+ rows · 248 features',
     features: [
-      'GEO 점수 · 인용 확률',
-      '발행 전 진단',
-      '5 AI search · 12 countries',
-      '실시간 모니터링',
+      'GEO 점수 · 인용 확률 (0–100%)',
+      'ChatGPT · Claude · Perplexity · Gemini',
+      'AI Mode · AI Overview · DeepSeek',
+      '12개국 실 ISP IP · 60대 EC2',
+      '주 1회 재학습 · 매주 월 09:00 리포트',
+      '192건 검증 사례 · 평균 GEO 97.1',
     ],
     url: 'https://georank24.com',
   },
   {
     index: '02',
-    code: 'R-PIPELINE',
+    code: 'Relayed-Agent',
     stageCode: 'A',
     stagePosition: 'mid funnel',
     status: 'live',
     brand: 'Relayed',
     subtitle: '기업 AX/DX 도입 · AI 에이전트',
     description:
-      '도입하고 끝이 아니다. AI 에이전트가 마케팅·세일즈 팀의 반복 작업을 인계받아, 도입 이후에도 다음 빌드를 이어간다.',
+      '도입하고 끝이 아닙니다. AI 에이전트가 마케팅·세일즈 팀의 반복 작업을 인계받아, 도입 이후에도 다음 빌드를 이어갑니다. Citora의 측정 결과를 실행 가능한 워크플로우로 옮기는 단계입니다.',
     metric: 'agent · 24/7 build loop',
     features: [
       'AI 에이전트 설치',
       '자동 분석 · 개발',
-      '직접 유지보수',
+      '직접 유지보수 가능',
       '워크플로우 이전',
     ],
     url: 'https://relayed.co.kr',
   },
   {
     index: '03',
-    code: 'LX-CONVERSATION',
+    code: 'LiteCX-Voice',
     stageCode: 'C',
     stagePosition: 'bottom of funnel',
     status: 'live',
     brand: 'LiteCX',
     subtitle: 'AI CX Center · CTI 마이크로 콜센터 SaaS',
     description:
-      '대표번호 한 줄로 영업 응대·예약·VOC가 자동 처리된다. PBX-Free, WebRTC 콘솔, 실시간 STT 기반의 가벼운 CX 인프라.',
+      '대표번호 한 줄로 영업 응대·예약·VOC가 자동 처리됩니다. PBX-Free, WebRTC 콘솔, 실시간 STT 기반의 가벼운 CX 인프라로 전환 단계의 응대를 책임집니다.',
     metric: 'pbx-free · realtime STT',
     features: [
       'AI 음성 응답봇 · 실시간 STT',
@@ -89,14 +91,14 @@ const models: Model[] = [
 
 const horizon = {
   index: '04',
-  code: 'CF-ENERGY',
+  code: 'ChargeFLOW',
   stageCode: 'H' as const,
   stagePosition: 'adjacent track',
   status: 'beta' as Status,
   brand: 'ChargeFLOW',
   subtitle: 'EV 충전 인프라 SaaS 트랙',
   description:
-    '충전기 관리, 결제, 로밍, AI 고객 상담, 친환경 에너지 연계까지 한 번에 다루는 턴키 SaaS. 현재 약 5,000대 실 운영 환경에서 검증을 진행하고 있다.',
+    '충전기 관리, 결제, 로밍, AI 고객 상담, 친환경 에너지 연계까지 한 번에 다루는 턴키 SaaS입니다. 현재 약 5,000대 실 운영 환경에서 검증을 진행하고 있습니다.',
   metric: '~5,000 chargers · validating',
   features: [
     'OCPP 1.6 / 2.0.1 이중 지원',
@@ -110,17 +112,17 @@ const horizon = {
       title: 'Fleet',
       tagline: '법인 EV 충전비 관리 SaaS',
       description:
-        '법인 전기차 운영사를 위한 충전비 정산 SaaS. CPO 위에 올라가 드라이버 · 차량 · 부서별 비용을 자동 집계하고 월말 정산을 자동화한다.',
+        '법인 전기차 운영사를 위한 충전비 정산 SaaS입니다. CPO 위에 올라가 드라이버 · 차량 · 부서별 비용을 자동 집계하고 월말 정산을 자동화합니다.',
       detail: {
         positioning:
-          '충전 사업이 아니라, 정산 소프트웨어. CPO와 경쟁하지 않고 CPO 위에 올라가는 관리 레이어.',
+          '충전 사업이 아니라, 정산 소프트웨어입니다. CPO와 경쟁하지 않고 CPO 위에 올라가는 관리 레이어입니다.',
         problem: [
-          '드라이버 10명이 이번 달 각자 얼마 썼는지 모른다',
-          '회사 · 공용 · 집 충전이 분산되어 영수증 수기로 취합',
-          '업무용 / 개인용 구분 불가, 월말 경비 보고서는 수작업',
+          '드라이버 10명이 이번 달 각자 얼마 썼는지 알 수 없습니다',
+          '회사 · 공용 · 집 충전이 분산되어 영수증을 수기로 취합합니다',
+          '업무용 / 개인용 구분이 어렵고, 월말 경비 보고서는 수작업입니다',
         ],
         solution:
-          'RFID 카드 한 장으로 전국 어디서 충전하든 데이터가 자동 수집된다. 회사는 드라이버별 · 차량별 · 부서별 비용을 한눈에 보고, 월말 정산은 자동 처리된다.',
+          'RFID 카드 한 장으로 전국 어디서 충전하든 데이터가 자동 수집됩니다. 드라이버별 · 차량별 · 부서별 비용을 한눈에 확인하고, 월말 정산이 자동으로 처리됩니다.',
       },
     },
   ],
@@ -247,8 +249,9 @@ export function Services() {
               The <em className="font-display italic font-light">library.</em>
             </h2>
             <p className="mt-6 max-w-xl text-[color:var(--mute-1)] text-base md:text-lg leading-relaxed">
-              <span className="text-[color:var(--paper)]">노출 측정 모델 G24-DISCOVERY</span>를 코어로,
-              그 위에 활성화·응대를 잇는 라이브러리. 각 모델은 펀넬의 한 단계만 책임진다.
+              노출 측정 모델 <span className="text-[color:var(--paper)]">Citora</span>를 코어로,
+              그 위에 활성화·응대 모델이 풀 펀넬로 이어집니다.
+              각 모델은 정확히 한 단계의 추론을 책임집니다.
             </p>
           </div>
         </motion.div>
@@ -305,7 +308,7 @@ export function Services() {
                   </h3>
                   <p className="mt-2 mono-meta text-[color:var(--mute-1)]">{horizon.subtitle}</p>
                   <p className="mt-6 text-sm text-[color:var(--mute-1)] leading-relaxed max-w-md">
-                    핵심 펀넬 사이클을 넘어, TSA가 다음 단계로 준비하고 있는 인접 영역의 트랙입니다.
+                    핵심 펀넬 사이클을 넘어, TwoStepsAhead가 다음 단계로 준비하고 있는 인접 영역의 트랙입니다.
                   </p>
                 </div>
 

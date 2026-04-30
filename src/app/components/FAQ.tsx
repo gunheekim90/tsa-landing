@@ -4,34 +4,39 @@ import { trackEvent } from '@/lib/gtag';
 
 const notes = [
   {
-    question: '어디부터 도입해야 하나요?',
+    question: 'Citora는 무엇을 측정하나요?',
     answer:
-      '펀넬 위치에 맞춰 시작합니다. 발견 단계가 약하면 G24-DISCOVERY부터, 운영 자동화가 병목이면 R-PIPELINE, 응대·전환 단계라면 LX-CONVERSATION. 한 모델만 도입하든, 풀 펀넬을 한 번에 가동하든 모듈러로 구성됩니다.',
+      'Citora는 검색과 AI 검색에서의 인용 가능성을 발행 전에 추정하는 측정·예측 모델입니다. ChatGPT, Claude, Perplexity, Gemini, AI Mode, AI Overview, DeepSeek 등 7개 AI 플랫폼과 12개국 실 ISP IP 환경에서의 인용 확률, GEO 점수, 노출 경로를 한 번에 출력합니다. 현재 v0.4가 운영 중이며, 매주 화요일 03:00 KST에 자동 캡처를 수행합니다.',
   },
   {
-    question: 'TwoStepsAhead는 어떤 기업에게 적합한가요?',
+    question: '어디부터 도입하면 좋은가요?',
     answer:
-      '디지털 전환이 필요한 모든 기업. 발견 단계의 가시성을 끌어올리고 싶은 브랜드(G24-DISCOVERY), 마케팅·세일즈 운영을 AI 에이전트로 자동화하고 직접 운영하고 싶은 팀(R-PIPELINE), 대형 콜센터 없이 응대 체계를 즉시 갖추고 싶은 조직(LX-CONVERSATION)에게 최적화되어 있습니다. 스타트업부터 대기업까지 30+ 클라이언트와 함께했습니다.',
+      '펀넬 위치에 맞춰 시작하시면 됩니다. 발견 단계의 가시성이 약하시면 코어 모델 Citora(GeoRank24)부터, 운영 자동화가 병목이시면 Relayed-Agent, 응대·전환 단계라면 LiteCX-Voice를 권장드립니다. 한 모델만 도입하시든, 풀 펀넬을 한 번에 가동하시든 모듈러로 구성됩니다.',
+  },
+  {
+    question: 'TwoStepsAhead는 어떤 기업에 적합한가요?',
+    answer:
+      '디지털 전환이 필요한 모든 기업에 적합합니다. 발견 단계의 가시성을 끌어올리고 싶으신 브랜드는 Citora(GeoRank24), 마케팅·세일즈 운영을 AI 에이전트로 자동화하고 싶으신 팀은 Relayed-Agent, 대형 콜센터 없이 응대 체계를 갖추고 싶으신 조직은 LiteCX-Voice를 도입하실 수 있습니다. 스타트업부터 대기업까지 30+ 클라이언트와 함께 진행해왔습니다.',
   },
   {
     question: '개발 지식이 없어도 의뢰할 수 있나요?',
     answer:
-      '물론입니다. 비개발자가 이해할 수 있는 언어로 소통하며, 기획·설계·개발·교육 전 과정을 리드합니다. R-PIPELINE은 칸반 카드 한 장으로 시작 가능하고, LX-CONVERSATION은 브라우저 관리자 콘솔 로그인만으로 가동을 시작합니다.',
+      '물론 가능합니다. 비개발자께서도 이해하실 수 있는 언어로 소통드리며, 기획·설계·개발·교육 전 과정을 저희가 리드합니다. Relayed-Agent는 칸반 카드 한 장으로 시작 가능하고, LiteCX-Voice는 브라우저 관리자 콘솔에 로그인하시는 것만으로 가동이 시작됩니다.',
   },
   {
     question: '프로젝트 기간은 얼마나 걸리나요?',
     answer:
-      '규모에 따라 2주~3개월. G24-DISCOVERY는 초기 설정 후 지속 최적화 루프, R-PIPELINE의 MVP는 평균 4~6주, LX-CONVERSATION은 대표번호·CTI 연동 후 즉시 가동. 초기 진단에서 정확한 일정을 안내합니다.',
+      '규모에 따라 2주에서 3개월 사이입니다. Citora(GeoRank24)는 초기 설정 후 주 단위 자동 리포트와 지속 최적화 루프로 운영되고, Relayed-Agent의 MVP는 평균 4–6주, LiteCX-Voice는 대표번호·CTI 연동 후 즉시 가동됩니다. 초기 진단에서 정확한 일정을 안내드립니다.',
   },
   {
     question: '도입 후 유지보수는 어떻게 진행되나요?',
     answer:
-      'G24-DISCOVERY는 실시간 모니터링과 월간 리포트, R-PIPELINE은 도입 후 귀사 팀이 직접 유지·확장할 수 있도록 에이전트와 워크플로우를 함께 이전, LX-CONVERSATION은 웹 콘솔에서 상담 이력·VOC 분석·통화 요약을 실시간 확인 + 지속 기술 지원.',
+      'Citora는 실시간 대시보드와 매주 월요일 09:00 자동 리포트로 운영됩니다. Relayed-Agent는 도입 후 귀사 팀이 직접 유지·확장하실 수 있도록 에이전트와 워크플로우를 함께 이전해드리고, LiteCX-Voice는 웹 콘솔에서 상담 이력·VOC 분석·통화 요약을 실시간으로 확인하실 수 있으며 지속적인 기술 지원이 제공됩니다.',
   },
   {
-    question: '여러 모델을 같이 가동하면 시너지가 있나요?',
+    question: '여러 모델을 함께 가동하면 시너지가 있나요?',
     answer:
-      '있습니다. G24-DISCOVERY로 유입을 키우고, R-PIPELINE으로 내부 운영을 자동화하며, LX-CONVERSATION으로 응대까지 닫는 풀 펀넬 패키지가 가장 강한 조합입니다. 세 모델 묶음 문의 시 맞춤형 제안을 드립니다.',
+      '있습니다. Citora로 유입을 키우고, Relayed-Agent로 내부 운영을 자동화하며, LiteCX-Voice로 응대까지 닫는 풀 펀넬 조합이 가장 강력합니다. 세 모델 묶음 문의 시 맞춤형 제안을 드립니다.',
   },
 ];
 
@@ -61,7 +66,7 @@ export function FAQ() {
               <em className="font-display italic font-light">asked</em> questions.
             </h2>
             <p className="mt-6 mono-meta text-[color:var(--mute-1)] max-w-xs">
-              논문 각주처럼 짧게. 더 깊은 질문은 아래 inquiry 채널로.
+              논문 각주처럼 짧게 정리했습니다. 더 깊은 질문은 아래 inquiry 채널로 보내주세요.
             </p>
           </div>
         </motion.aside>
