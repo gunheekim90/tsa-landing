@@ -4,7 +4,7 @@ import { trackEvent } from '@/lib/gtag';
 
 const models = [
   { code: 'Citora',         url: 'https://georank24.com', label: 'georank24.com' },
-  { code: 'Relayed-Agent',  url: 'https://relayed.co.kr', label: 'relayed.co.kr' },
+  { code: 'Citora-Lead',    url: 'https://lead.georank24.com', label: 'lead.georank24.com' },
   { code: 'LiteCX-Voice',   url: 'https://litecx.com',    label: 'litecx.com' },
 ];
 

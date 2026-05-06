@@ -24,11 +24,11 @@ const stages = [
     label: 'Activation',
     position: 'mid funnel',
     question: 'What activates them?',
-    model: 'Relayed-Agent',
+    model: 'Citora Lead',
     role: 'extended',
     answer:
-      'AI 에이전트가 마케팅·세일즈 팀의 반복 작업을 인계받아, 도입 이후에도 다음 빌드를 이어갑니다. Citora의 측정 결과를 실행 가능한 워크플로우로 옮기는 단계입니다.',
-    metric: 'agent · 24/7 build loop',
+      '방문 기업을 IP·도메인 신호로 식별하고, 가격·데모 같은 구매 의도 페이지의 행동을 영업팀 Slack으로 즉시 전달합니다. Citora가 키운 익명 트래픽을 실제 영업 파이프라인으로 옮기는 단계입니다.',
+    metric: 'first alert in 5min · slack-native',
   },
   {
     code: 'C',
