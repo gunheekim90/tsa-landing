@@ -214,6 +214,11 @@ function CitoraDialog({ children }: { children: React.ReactNode }) {
               플랫폼에서 어떤 콘텐츠가 인용될지를 발행 전에 추정합니다. URL 한 줄을 입력하시면
               플랫폼별 인용 확률(0–100%)과 GEO 점수, 우선 개선 액션을 한 번에 출력합니다.
             </p>
+            <p className="mt-4 text-sm md:text-base text-[color:var(--paper-soft)] leading-relaxed">
+              또한 도메인 외부의 인용 신호 — YouTube · Instagram · X · TikTok · Threads의 5대 SNS와
+              Reddit · HN · Quora · G2 · Trustpilot의 5대 커뮤니티, 80+ 리뷰·언론 매체 — 를
+              매주 합산해 모델에 반영합니다. AI는 도메인 한 곳을 보고 답하지 않기 때문입니다.
+            </p>
           </section>
 
           {/* Pipeline */}
@@ -252,6 +257,7 @@ function CitoraDialog({ children }: { children: React.ReactNode }) {
                 ['avg GEO', '97.1'],
                 ['cycle', 'weekly · Tue 03:00 KST'],
                 ['horizon', '7 days'],
+                ['signals', '5 SNS · 5 comms · 80+ outlets'],
               ].map(([k, v]) => (
                 <div key={k}>
                   <dt className="mono-meta text-[color:var(--mute-2)] mb-1">{k}</dt>

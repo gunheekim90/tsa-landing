@@ -9,6 +9,11 @@ const notes = [
       'Citora는 검색과 AI 검색에서의 인용 가능성을 발행 전에 추정하는 측정·예측 모델입니다. ChatGPT, Claude, Perplexity, Gemini, AI Mode, AI Overview, DeepSeek 등 7개 AI 플랫폼과 12개국 실 ISP IP 환경에서의 인용 확률, GEO 점수, 노출 경로를 한 번에 출력합니다. 현재 v0.4가 운영 중이며, 매주 화요일 03:00 KST에 자동 캡처를 수행합니다.',
   },
   {
+    question: '소셜과 커뮤니티는 어떻게 반영되나요?',
+    answer:
+      'Citora는 도메인 한 곳만 보지 않습니다. YouTube · Instagram · X · TikTok · Threads 5대 SNS, Reddit · HN · Quora · G2 · Trustpilot 5대 커뮤니티, 그리고 80+ 리뷰·언론 매체의 인용·언급을 매주 함께 합산해 학습합니다. AI가 답을 지을 때 참고하는 외부 신호 전체를 하나의 모델로 파악해, 도메인 안쪽 최적화만으로는 잡히지 않는 인용 경로까지 측정합니다.',
+  },
+  {
     question: '어디부터 도입하면 좋은가요?',
     answer:
       '펀넬 위치에 맞춰 시작하시면 됩니다. 발견 단계의 가시성이 약하시면 코어 모델 Citora(GeoRank24)부터, 운영 자동화가 병목이시면 Relayed-Agent, 응대·전환 단계라면 LiteCX-Voice를 권장드립니다. 한 모델만 도입하시든, 풀 펀넬을 한 번에 가동하시든 모듈러로 구성됩니다.',
