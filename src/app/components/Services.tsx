@@ -51,11 +51,11 @@ const models: Model[] = [
   },
   {
     index: '02',
-    code: 'Pluora-Lead',
+    code: 'Plurank-Lead',
     stageCode: 'A',
     stagePosition: 'mid funnel',
     status: 'live',
-    brand: 'Pluora Lead',
+    brand: 'Plurank Lead',
     subtitle: '방문자 식별 + 영업 알림 엔진',
     description:
       '누가 조용히 우리 사이트를 보고 갔는지 놓치지 않습니다. IP·도메인 신호로 방문 기업을 식별하고, 가격·데모 같은 구매 의도 페이지의 행동을 Slack으로 즉시 전달합니다. Pluora가 키운 익명 트래픽을 실제 영업 파이프라인으로 옮기는 단계입니다.',

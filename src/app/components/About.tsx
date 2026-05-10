@@ -24,7 +24,7 @@ const stages = [
     label: 'Activation',
     position: 'mid funnel',
     question: 'What activates them?',
-    model: 'Pluora Lead',
+    model: 'Plurank Lead',
     role: 'extended',
     answer:
       '방문 기업을 IP·도메인 신호로 식별하고, 가격·데모 같은 구매 의도 페이지의 행동을 영업팀 Slack으로 즉시 전달합니다. Pluora가 키운 익명 트래픽을 실제 영업 파이프라인으로 옮기는 단계입니다.',

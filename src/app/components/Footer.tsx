@@ -4,7 +4,7 @@ import { trackEvent } from '@/lib/gtag';
 
 const models = [
   { code: 'Pluora',         url: 'https://georank24.com', label: 'georank24.com' },
-  { code: 'Pluora-Lead',    url: 'https://lead.georank24.com', label: 'lead.georank24.com' },
+  { code: 'Plurank-Lead',    url: 'https://lead.georank24.com', label: 'lead.georank24.com' },
   { code: 'LiteCX-Voice',   url: 'https://litecx.com',    label: 'litecx.com' },
 ];
 
