@@ -13,21 +13,21 @@ const stages = [
     label: 'Discovery',
     position: 'top of funnel · core',
     question: 'Who finds you?',
-    model: 'Citora · v0.4',
+    model: 'Pluora · v0.4',
     role: 'core',
     answer:
-      'TwoStepsAhead가 직접 학습·운영하는 코어 모델입니다. AI는 모든 콘텐츠를 인용하지 않습니다 — Citora는 검색과 AI 검색에서 어떤 콘텐츠가 인용될지 발행 전에 알려드립니다. GEO 점수, 인용 확률, 노출 경로를 한 번에 출력합니다.',
-    metric: '7 AI platforms · 12 countries · MAPE 8.6%',
+      'TwoStepsAhead가 직접 학습·운영하는 코어 모델입니다. AI가 결정하는 모든 노출 — AI 검색 · SNS · 추천 알고리즘 — 을 Pluora가 발행 전에 예측합니다. 12개국 7 AI 검색과 5대 SNS에서 3천만 건+ 데이터를 학습해, 채널별 노출 확률·GEO 점수·우선 개선 액션을 한 번에 출력합니다.',
+    metric: '7 AI · 5 SNS · 12 countries · MAPE 8.6%',
   },
   {
     code: 'A',
     label: 'Activation',
     position: 'mid funnel',
     question: 'What activates them?',
-    model: 'Citora Lead',
+    model: 'Pluora Lead',
     role: 'extended',
     answer:
-      '방문 기업을 IP·도메인 신호로 식별하고, 가격·데모 같은 구매 의도 페이지의 행동을 영업팀 Slack으로 즉시 전달합니다. Citora가 키운 익명 트래픽을 실제 영업 파이프라인으로 옮기는 단계입니다.',
+      '방문 기업을 IP·도메인 신호로 식별하고, 가격·데모 같은 구매 의도 페이지의 행동을 영업팀 Slack으로 즉시 전달합니다. Pluora가 키운 익명 트래픽을 실제 영업 파이프라인으로 옮기는 단계입니다.',
     metric: 'first alert in 5min · slack-native',
   },
   {
@@ -216,9 +216,9 @@ export function About() {
                 <em className="font-display italic font-light text-[color:var(--signal)]">who finds you?</em>
               </h2>
               <p className="mt-6 text-[color:var(--mute-1)] text-base md:text-lg leading-relaxed max-w-xl">
-                <span className="text-[color:var(--paper)]">노출 측정이 첫 모델입니다.</span>{' '}
-                코어 모델 <span className="text-[color:var(--paper)]">Citora</span>가
-                7개 AI 플랫폼 · 12개국에서의 인용 가능성을 발행 전에 추정하고,
+                <span className="text-[color:var(--paper)]">노출 예측이 첫 모델입니다.</span>{' '}
+                코어 모델 <span className="text-[color:var(--paper)]">Pluora</span>가
+                12개국 7 AI 검색과 5대 SNS에서의 노출·인용·추천을 발행 전에 예측하고,
                 그 위에 활성화·응대·인접 영역의 모델이 풀 펀넬로 이어집니다.
               </p>
             </motion.div>

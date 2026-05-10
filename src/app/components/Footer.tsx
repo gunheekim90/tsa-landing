@@ -3,8 +3,8 @@ import { ArrowUpRight } from 'lucide-react';
 import { trackEvent } from '@/lib/gtag';
 
 const models = [
-  { code: 'Citora',         url: 'https://georank24.com', label: 'georank24.com' },
-  { code: 'Citora-Lead',    url: 'https://lead.georank24.com', label: 'lead.georank24.com' },
+  { code: 'Pluora',         url: 'https://georank24.com', label: 'georank24.com' },
+  { code: 'Pluora-Lead',    url: 'https://lead.georank24.com', label: 'lead.georank24.com' },
   { code: 'LiteCX-Voice',   url: 'https://litecx.com',    label: 'litecx.com' },
 ];
 
@@ -53,7 +53,7 @@ export function Footer() {
               </span>
             </h2>
             <p className="mt-8 max-w-2xl text-[color:var(--mute-1)] text-base md:text-lg leading-relaxed">
-              <span className="text-[color:var(--paper)]">Citora 진단(GeoRank24)</span>,
+              <span className="text-[color:var(--paper)]">Pluora 진단(Plurank)</span>,
               단일 모델 도입, 풀 펀넬 프로젝트, 인접 영역 공동 연구 — 어떤 형태든 환영합니다.
               초기 진단은 무료로 제공해드립니다.
             </p>

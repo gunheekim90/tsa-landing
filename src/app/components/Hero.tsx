@@ -124,8 +124,8 @@ export function Hero() {
               className="flex flex-col gap-2"
             >
               <span className="text-[color:var(--mute-2)]">— core</span>
-              <span className="font-mono text-[color:var(--paper)]">Citora · v0.4</span>
-              <span className="font-mono text-[color:var(--mute-1)]">7 AI · 12 countries</span>
+              <span className="font-mono text-[color:var(--paper)]">Pluora · v0.4</span>
+              <span className="font-mono text-[color:var(--mute-1)]">7 AI · 5 SNS · 12 countries</span>
             </motion.div>
             <motion.div
               initial={{ opacity: 0, x: -10 }}
@@ -224,16 +224,16 @@ export function Hero() {
               className="grid md:grid-cols-12 gap-6 md:gap-10 max-w-4xl"
             >
               <div className="md:col-span-7 text-[color:var(--mute-1)] text-base md:text-lg leading-relaxed">
-                <span className="text-[color:var(--paper)]">AI는 모든 콘텐츠를 인용하지 않습니다.</span>{' '}
+                <span className="text-[color:var(--paper)]">AI가 결정하는 모든 노출 — AI 검색 · SNS · 추천 알고리즘.</span>{' '}
                 TwoStepsAhead는 코어 모델{' '}
-                <span className="text-[color:var(--paper)]">Citora</span>로
-                7개 AI 플랫폼·12개국에서의 인용 가능성을 발행 전에 추정하고,
+                <span className="text-[color:var(--paper)]">Pluora</span>로
+                12개국 7 AI 검색과 5대 SNS에서의 노출·인용·추천을 발행 전에 예측하고,
                 그 위에 활성화·응대·인접 영역을 잇는 모델 라이브러리를 운영합니다.
               </div>
               <div className="md:col-span-5 mono-meta border-l border-[color:var(--ink-line)] pl-5 flex flex-col gap-2">
                 <span className="text-[color:var(--mute-1)]">core model</span>
-                <span className="text-[color:var(--paper)]">Citora · v0.4</span>
-                <span className="text-[color:var(--mute-2)]">MAPE 8.6% · 4M+ rows · 192 cases</span>
+                <span className="text-[color:var(--paper)]">Pluora · v0.4</span>
+                <span className="text-[color:var(--mute-2)]">MAPE 8.6% · 30M+ rows · 192 cases</span>
               </div>
             </motion.div>
 

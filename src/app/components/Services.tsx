@@ -29,36 +29,36 @@ interface Model {
 const models: Model[] = [
   {
     index: '01',
-    code: 'Citora · v0.4',
+    code: 'Pluora · v0.4',
     stageCode: 'D',
     stagePosition: 'top of funnel · core',
     status: 'live',
     core: true,
-    brand: 'GeoRank24',
-    subtitle: 'TwoStepsAhead의 코어 모델 · 노출 측정 + 인용 예측 엔진',
+    brand: 'Plurank',
+    subtitle: 'TwoStepsAhead의 코어 모델 · 멀티시그널 노출·인용·추천 예측 엔진',
     description:
-      'AI는 모든 콘텐츠를 인용하지 않습니다. Citora는 7개 AI 플랫폼 · 12개국 환경에서 어떤 콘텐츠가 인용될지를 발행 전에 알려드립니다. GEO 점수, 인용 확률, 노출 경로를 한 번에 출력하는 측정·예측 엔진입니다.',
-    metric: 'MAPE 8.6% · 4M+ rows · 248 features',
+      'AI가 결정하는 모든 노출 — AI 검색 · SNS · 추천 알고리즘. Pluora는 12개국 7 AI 검색과 YouTube · Instagram · X · TikTok · Threads에서 3천만 건+ 데이터를 학습해, 콘텐츠가 어디서 노출·인용·추천될지 발행 전에 예측합니다.',
+    metric: 'MAPE 8.6% · 30M+ rows · 248 features',
     features: [
       'GEO 점수 · 인용 확률 (0–100%)',
       'ChatGPT · Claude · Perplexity · Gemini',
       'AI Mode · AI Overview · DeepSeek',
+      'YouTube · Instagram · X · TikTok · Threads',
       '12개국 실 ISP IP · 60대 EC2',
       '주 1회 재학습 · 매주 월 09:00 리포트',
-      '192건 검증 사례 · 평균 GEO 97.1',
     ],
     url: 'https://georank24.com',
   },
   {
     index: '02',
-    code: 'Citora-Lead',
+    code: 'Pluora-Lead',
     stageCode: 'A',
     stagePosition: 'mid funnel',
     status: 'live',
-    brand: 'Citora Lead',
+    brand: 'Pluora Lead',
     subtitle: '방문자 식별 + 영업 알림 엔진',
     description:
-      '누가 조용히 우리 사이트를 보고 갔는지 놓치지 않습니다. IP·도메인 신호로 방문 기업을 식별하고, 가격·데모 같은 구매 의도 페이지의 행동을 Slack으로 즉시 전달합니다. Citora가 키운 익명 트래픽을 실제 영업 파이프라인으로 옮기는 단계입니다.',
+      '누가 조용히 우리 사이트를 보고 갔는지 놓치지 않습니다. IP·도메인 신호로 방문 기업을 식별하고, 가격·데모 같은 구매 의도 페이지의 행동을 Slack으로 즉시 전달합니다. Pluora가 키운 익명 트래픽을 실제 영업 파이프라인으로 옮기는 단계입니다.',
     metric: 'first alert in 5min · 3-tier confidence',
     features: [
       '방문 회사 식별 (IP · 도메인)',
@@ -145,7 +145,7 @@ function StatusBadge({ status }: { status: Status }) {
   );
 }
 
-const citoraPipeline = [
+const pluoraPipeline = [
   {
     step: 'COLLECT',
     detail:
@@ -167,14 +167,14 @@ const citoraPipeline = [
   },
 ];
 
-const citoraInsights = [
+const pluoraInsights = [
   'AI는 검색하지 않고 답을 짓습니다 — 인용된 출처가 곧 가시성입니다.',
   '핵심 출처와 단순 언급의 가시성 격차는 약 5배입니다.',
   '사용자는 SEO 키워드가 아니라 life context로 질문합니다.',
   '형식(Schema · FAQ · 명확한 출처)이 인용 여부를 결정합니다.',
 ];
 
-function CitoraDialog({ children }: { children: React.ReactNode }) {
+function PluoraDialog({ children }: { children: React.ReactNode }) {
   return (
     <Dialog>
       <DialogTrigger asChild>{children}</DialogTrigger>
@@ -188,21 +188,28 @@ function CitoraDialog({ children }: { children: React.ReactNode }) {
             </span>
           </div>
           <DialogTitle className="display-md text-[color:var(--paper)] mb-3">
-            <em className="font-display italic font-light text-[color:var(--signal)]">Citora</em>
+            <em className="font-display italic font-light text-[color:var(--signal)]">Pluora</em>
             <span className="text-[color:var(--mute-2)] font-display"> · v0.4</span>
           </DialogTitle>
           <p className="mono-meta text-[color:var(--mute-1)]">
-            노출 측정 + 인용 예측 엔진 · v1 launch 2026 H2
+            멀티시그널 노출·인용·추천 예측 엔진 · v1 launch 2026 H2
           </p>
 
-          {/* Etymology */}
+          {/* Positioning */}
           <section className="mt-8 pt-6 border-t border-[color:var(--ink-line)]">
-            <div className="mono-eyebrow mb-3">— 이름의 의미</div>
+            <div className="mono-eyebrow mb-3">— positioning</div>
             <p className="text-[color:var(--paper-soft)] text-base leading-relaxed">
-              <span className="font-display italic text-[color:var(--signal)]">Citora</span>는
-              라틴어 <span className="font-display italic">citare</span>(소환하다·인용하다)에서
-              출발한 작명입니다. AI 검색이 어떤 콘텐츠를 <em className="font-display italic">cite</em>할지
-              사전에 추정한다는 본질을 모델 이름에 그대로 담았습니다.
+              <span className="text-[color:var(--paper)]">AI가 결정하는 모든 노출</span> —
+              AI 검색 · SNS · 추천 알고리즘.
+              <em className="font-display italic text-[color:var(--signal)]"> Pluora</em>가
+              발행 전에 예측합니다.
+            </p>
+            <p className="mt-3 text-sm md:text-base text-[color:var(--paper-soft)] leading-relaxed">
+              <span className="font-display italic text-[color:var(--signal)]">Pluora</span>는
+              <span className="text-[color:var(--paper)]"> Plurank</span>가 만든
+              멀티시그널 마케팅 AI 모델입니다. 12개국 7 AI 검색 +
+              YouTube · Instagram · X · TikTok · Threads에서 3천만 건+ 데이터를 학습해,
+              콘텐츠가 어디서 노출·인용·추천될지 발행 전에 예측합니다.
             </p>
           </section>
 
@@ -211,13 +218,14 @@ function CitoraDialog({ children }: { children: React.ReactNode }) {
             <div className="mono-eyebrow mb-3">— 무엇을 측정하나요</div>
             <p className="text-sm md:text-base text-[color:var(--paper-soft)] leading-relaxed">
               ChatGPT · Claude · Perplexity · Gemini · AI Mode · AI Overview · DeepSeek 등 7개 AI
-              플랫폼에서 어떤 콘텐츠가 인용될지를 발행 전에 추정합니다. URL 한 줄을 입력하시면
-              플랫폼별 인용 확률(0–100%)과 GEO 점수, 우선 개선 액션을 한 번에 출력합니다.
+              검색과 YouTube · Instagram · X · TikTok · Threads의 5대 SNS에서, 콘텐츠가 어디서
+              노출·인용·추천될지를 발행 전에 예측합니다. URL 한 줄을 입력하시면 채널별 노출
+              확률(0–100%)과 GEO 점수, 우선 개선 액션을 한 번에 출력합니다.
             </p>
             <p className="mt-4 text-sm md:text-base text-[color:var(--paper-soft)] leading-relaxed">
-              또한 도메인 외부의 인용 신호 — YouTube · Instagram · X · TikTok · Threads의 5대 SNS와
-              Reddit · HN · Quora · G2 · Trustpilot의 5대 커뮤니티, 80+ 리뷰·언론 매체 — 를
-              매주 합산해 모델에 반영합니다. AI는 도메인 한 곳을 보고 답하지 않기 때문입니다.
+              또한 도메인 외부의 인용 신호 — Reddit · HN · Quora · G2 · Trustpilot의 5대 커뮤니티,
+              80+ 리뷰·언론 매체 — 를 매주 합산해 모델에 반영합니다.
+              AI는 도메인 한 곳을 보고 답하지 않기 때문입니다.
             </p>
           </section>
 
@@ -225,7 +233,7 @@ function CitoraDialog({ children }: { children: React.ReactNode }) {
           <section className="mt-8 pt-6 border-t border-[color:var(--ink-line)]">
             <div className="mono-eyebrow mb-4">— 4-step pipeline</div>
             <ol className="space-y-4">
-              {citoraPipeline.map((p, i) => (
+              {pluoraPipeline.map((p, i) => (
                 <li key={p.step} className="grid grid-cols-12 gap-3">
                   <div className="col-span-3 sm:col-span-2 mono-meta text-[color:var(--mute-2)]">
                     {String(i + 1).padStart(2, '0')}
@@ -248,16 +256,16 @@ function CitoraDialog({ children }: { children: React.ReactNode }) {
             <div className="mono-eyebrow mb-4">— specs</div>
             <dl className="grid grid-cols-2 sm:grid-cols-3 gap-x-6 gap-y-5">
               {[
-                ['platforms', '7 AI'],
+                ['ai search', '7 platforms'],
+                ['social', '5 SNS · 5 comms · 80+ outlets'],
                 ['countries', '12'],
                 ['features', '248'],
-                ['training data', '4M+ rows'],
+                ['training data', '30M+ rows'],
                 ['accuracy', 'MAPE 8.6%'],
                 ['cases', '192 verified'],
                 ['avg GEO', '97.1'],
                 ['cycle', 'weekly · Tue 03:00 KST'],
                 ['horizon', '7 days'],
-                ['signals', '5 SNS · 5 comms · 80+ outlets'],
               ].map(([k, v]) => (
                 <div key={k}>
                   <dt className="mono-meta text-[color:var(--mute-2)] mb-1">{k}</dt>
@@ -271,7 +279,7 @@ function CitoraDialog({ children }: { children: React.ReactNode }) {
           <section className="mt-8 pt-6 border-t border-[color:var(--ink-line)]">
             <div className="mono-eyebrow mb-4">— field notes</div>
             <ul className="space-y-2">
-              {citoraInsights.map((line, i) => (
+              {pluoraInsights.map((line, i) => (
                 <li key={i} className="text-sm text-[color:var(--mute-1)] leading-relaxed">
                   — {line}
                 </li>
@@ -286,7 +294,7 @@ function CitoraDialog({ children }: { children: React.ReactNode }) {
               target="_blank"
               rel="noopener noreferrer"
               onClick={() =>
-                trackEvent('citora_click', { action: 'visit_georank24' })
+                trackEvent('pluora_click', { action: 'visit_georank24' })
               }
               className="inline-flex items-center justify-center gap-2 bg-[color:var(--signal)] text-[color:var(--ink-base)] px-6 py-3 rounded-full text-sm font-medium hover:bg-[color:var(--paper)] transition-colors group/cta"
             >
@@ -297,7 +305,7 @@ function CitoraDialog({ children }: { children: React.ReactNode }) {
               <button
                 type="button"
                 onClick={() => {
-                  trackEvent('citora_click', { action: 'inquiry' });
+                  trackEvent('pluora_click', { action: 'inquiry' });
                   setTimeout(() => {
                     document
                       .getElementById('contact')
@@ -340,18 +348,18 @@ function ModelCard({ model, idx }: { model: Model; idx: number }) {
       <div className="md:col-span-9 lg:col-span-10 flex flex-col gap-6">
         <div className="flex flex-wrap items-center gap-3">
           {model.core ? (
-            <CitoraDialog>
+            <PluoraDialog>
               <button
                 type="button"
                 onClick={() =>
-                  trackEvent('citora_click', { action: 'open_detail', from: 'model_code' })
+                  trackEvent('pluora_click', { action: 'open_detail', from: 'model_code' })
                 }
                 className="link-signal mono-meta text-[color:var(--paper)] inline-flex items-center gap-1.5"
               >
                 <span>{model.code}</span>
                 <ArrowUpRight className="w-3 h-3 opacity-60" aria-hidden />
               </button>
-            </CitoraDialog>
+            </PluoraDialog>
           ) : (
             <span className="mono-meta text-[color:var(--paper)]">{model.code}</span>
           )}
@@ -435,7 +443,7 @@ export function Services() {
               The <em className="font-display italic font-light">library.</em>
             </h2>
             <p className="mt-6 max-w-xl text-[color:var(--mute-1)] text-base md:text-lg leading-relaxed">
-              노출 측정 모델 <span className="text-[color:var(--paper)]">Citora</span>를 코어로,
+              노출·인용·추천 예측 모델 <span className="text-[color:var(--paper)]">Pluora</span>를 코어로,
               그 위에 활성화·응대 모델이 풀 펀넬로 이어집니다.
               각 모델은 정확히 한 단계의 추론을 책임집니다.
             </p>
