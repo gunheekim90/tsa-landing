@@ -7,12 +7,10 @@ interface NavigationProps {
 }
 
 const navItems = [
-  { name: 'Research',    href: '#research',    code: '01' },
-  { name: 'Models',      href: '#models',      code: '02' },
-  { name: 'Deployments', href: '#deployments', code: '03' },
-  { name: 'Researchers', href: '#researchers', code: '04' },
-  { name: 'Notes',       href: '#notes',       code: '05' },
-  { name: 'Inquiry',     href: '#contact',     code: '06' },
+  { name: 'Thesis',   href: '#manifesto', code: '01' },
+  { name: 'Products', href: '#products',  code: '02' },
+  { name: 'Numbers',  href: '#numbers',   code: '03' },
+  { name: 'Inquiry',  href: '#contact',   code: '04' },
 ];
 
 function useClock() {
@@ -61,7 +59,7 @@ export function Navigation({ scrollY }: NavigationProps) {
             </span>
             <span className="hidden lg:flex items-center gap-2 mono-meta">
               <span className="signal-dot" aria-hidden />
-              <span>measurement · v0.7</span>
+              <span>predictive marketing AI · v0.8</span>
             </span>
           </a>
 
@@ -157,7 +155,7 @@ export function Navigation({ scrollY }: NavigationProps) {
                 ))}
               </div>
               <div className="mt-auto pt-10 mono-meta flex justify-between">
-                <span>rev.layer · v0.7</span>
+                <span>pluora · v0.8</span>
                 <span className="tabular-nums">{formatUTC(clock)}</span>
               </div>
             </div>

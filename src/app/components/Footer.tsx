@@ -44,17 +44,17 @@ export function Footer() {
           </div>
           <div className="md:col-span-9 lg:col-span-10">
             <h2 className="display-xl text-[color:var(--paper)]">
-              <span className="block">Open for</span>
+              <span className="block">Predict</span>
               <span className="block">
                 <em className="font-display italic font-light text-[color:var(--signal)]">
-                  full-funnel
+                  before
                 </em>{' '}
-                collaboration.
+                you publish.
               </span>
             </h2>
             <p className="mt-8 max-w-2xl text-[color:var(--mute-1)] text-base md:text-lg leading-relaxed">
               <span className="text-[color:var(--paper)]">Pluora 진단(Plurank)</span>,
-              단일 모델 도입, 풀 펀넬 프로젝트, 인접 영역 공동 연구 — 어떤 형태든 환영합니다.
+              단일 모델 도입, 풀 펀넬 프로젝트 — 어떤 형태든 환영합니다.
               초기 진단은 무료로 제공해드립니다.
             </p>
 
@@ -92,9 +92,9 @@ export function Footer() {
               Two<span className="text-[color:var(--signal)]">Steps</span>Ahead
             </div>
             <p className="mt-2 mono-meta">
-              marketing intelligence lab
+              predictive marketing AI lab
               <br />
-              measurement-first · v0.7
+              pluora · v0.8
             </p>
           </div>
 
