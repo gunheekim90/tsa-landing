@@ -1,6 +1,7 @@
 import { motion } from 'motion/react';
 import { ArrowUpRight } from 'lucide-react';
 import { trackEvent } from '@/lib/gtag';
+import { InquiryDialog } from './InquiryDialog';
 
 const models = [
   { code: 'Pluora',         url: 'https://georank24.com', label: 'georank24.com' },
@@ -59,14 +60,16 @@ export function Footer() {
             </p>
 
             <div className="mt-10 flex flex-col sm:flex-row gap-4">
-              <a
-                href="mailto:glenn.kim@twostepsahead.co.kr?subject=TwoStepsAhead%20%E2%80%94%20%EC%97%B0%EB%9D%BD%EC%B0%BD%EA%B5%AC"
-                onClick={() => trackEvent('contact_click', { type: 'email' })}
-                className="group inline-flex items-center gap-3 bg-[color:var(--signal)] text-[color:var(--ink-base)] px-7 py-4 rounded-full text-sm font-medium hover:bg-[color:var(--paper)] transition-colors"
-              >
-                <span>Open inquiry</span>
-                <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-              </a>
+              <InquiryDialog>
+                <button
+                  type="button"
+                  onClick={() => trackEvent('contact_click', { type: 'inquiry_modal' })}
+                  className="group inline-flex items-center gap-3 bg-[color:var(--signal)] text-[color:var(--ink-base)] px-7 py-4 rounded-full text-sm font-medium hover:bg-[color:var(--paper)] transition-colors"
+                >
+                  <span>Open inquiry</span>
+                  <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                </button>
+              </InquiryDialog>
               <a
                 href="mailto:glenn.kim@twostepsahead.co.kr"
                 onClick={() => trackEvent('contact_click', { type: 'email_secondary' })}

@@ -2,6 +2,7 @@ import { motion, useScroll, useTransform, useReducedMotion } from 'motion/react'
 import { useRef } from 'react';
 import { trackEvent } from '@/lib/gtag';
 import { SignalNetwork } from './SignalNetwork';
+import { InquiryDialog } from './InquiryDialog';
 
 export function Hero() {
   const ref = useRef<HTMLElement>(null);
@@ -159,13 +160,15 @@ export function Hero() {
                   <span>View products</span>
                   <span className="font-mono text-xs opacity-70 group-hover:opacity-100">↗</span>
                 </a>
-                <a
-                  href="#contact"
-                  onClick={() => trackEvent('cta_click', { cta_name: 'hero_inquiry' })}
-                  className="inline-flex items-center gap-3 border border-[color:var(--ink-line)] hover:border-[color:var(--signal-line)] hover:text-[color:var(--signal)] text-[color:var(--paper)] px-6 py-3 rounded-full text-sm transition-colors"
-                >
-                  Open inquiry
-                </a>
+                <InquiryDialog>
+                  <button
+                    type="button"
+                    onClick={() => trackEvent('cta_click', { cta_name: 'hero_inquiry' })}
+                    className="inline-flex items-center gap-3 border border-[color:var(--ink-line)] hover:border-[color:var(--signal-line)] hover:text-[color:var(--signal)] text-[color:var(--paper)] px-6 py-3 rounded-full text-sm transition-colors"
+                  >
+                    Open inquiry
+                  </button>
+                </InquiryDialog>
               </div>
             </motion.div>
           </div>
