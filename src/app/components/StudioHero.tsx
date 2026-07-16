@@ -4,10 +4,8 @@ import { WordsPullUp } from './anim/WordsPullUp';
 
 const EASE: [number, number, number, number] = [0.16, 1, 0.3, 1];
 
-// NOTE: external asset (Higgsfield / CloudFront) used to lock the look.
-// Self-host before production — see renewal notes.
-const HERO_VIDEO =
-  'https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260405_170732_8a9ccda6-5cff-4628-b164-059c500a2b41.mp4';
+// Self-hosted background video (public/hero.mp4).
+const HERO_VIDEO = '/hero.mp4';
 
 // Results-oriented, split across both services (GEO = purple, ToonAgent = orange).
 const STATS = [

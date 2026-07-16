@@ -48,7 +48,7 @@ export function SiteFooter() {
       </div>
       <div className="mx-auto mt-10 flex max-w-[1240px] items-center justify-between border-t border-[color:var(--dc-line)] pt-6 font-dc-label text-[11px] text-[color:var(--dc-mute-2)]">
         <span>© {year} TwoStepsAhead</span>
-        <span>v3 · renewal preview</span>
+        <span>GEO 모니터링 × ToonAgent</span>
       </div>
     </footer>
   );
