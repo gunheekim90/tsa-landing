@@ -32,6 +32,15 @@ function clip(s: unknown, n = MAX_LEN): string {
   return str.length > n ? str.slice(0, n) + '…' : str;
 }
 
+/**
+ * Slack mrkdwn 주입 방어 — 인증 없는 공개 엔드포인트이므로 사용자 입력의
+ * &, <, > 를 이스케이프해 <!channel> 멘션·위장 링크 삽입을 차단한다.
+ * https://api.slack.com/reference/surfaces/formatting#escaping
+ */
+function escapeMrkdwn(s: string): string {
+  return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+
 export default async function handler(req: Request): Promise<Response> {
   if (req.method !== 'POST') {
     return jsonResponse({ error: 'method_not_allowed' }, 405);
@@ -47,22 +56,28 @@ export default async function handler(req: Request): Promise<Response> {
   // Honeypot — silently drop bot traffic so they think it worked.
   if (body._hp) return jsonResponse({ ok: true });
 
-  const name = clip(body.name, 200).trim();
-  const company = clip(body.company, 200).trim();
-  const email = clip(body.email, 200).trim();
+  const rawName = clip(body.name, 200).trim();
+  const rawCompany = clip(body.company, 200).trim();
+  const rawEmail = clip(body.email, 200).trim();
   const interestKey = clip(body.interest, 40).trim() || 'other';
-  const message = clip(body.message).trim();
-  const interest = INTEREST_LABEL[interestKey] ?? interestKey;
+  const rawMessage = clip(body.message).trim();
 
-  if (!name || !company || !email || !message) {
+  if (!rawName || !rawCompany || !rawEmail || !rawMessage) {
     return jsonResponse({ error: 'missing_fields' }, 400);
   }
-  if (!EMAIL_RE.test(email)) {
+  if (!EMAIL_RE.test(rawEmail)) {
     return jsonResponse({ error: 'invalid_email' }, 400);
   }
-  if (message.length < 10) {
+  if (rawMessage.length < 10) {
     return jsonResponse({ error: 'message_too_short' }, 400);
   }
+
+  // 검증은 원본 기준, Slack 표시용은 전부 이스케이프.
+  const name = escapeMrkdwn(rawName);
+  const company = escapeMrkdwn(rawCompany);
+  const email = escapeMrkdwn(rawEmail);
+  const message = escapeMrkdwn(rawMessage);
+  const interest = INTEREST_LABEL[interestKey] ?? escapeMrkdwn(interestKey);
 
   const webhookUrl = (globalThis as { process?: { env?: Record<string, string | undefined> } })
     .process?.env?.SLACK_WEBHOOK_URL;

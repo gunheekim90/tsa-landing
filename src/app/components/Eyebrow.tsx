@@ -5,7 +5,7 @@
 export function Eyebrow({ index, label }: { index: string; label: string }) {
   return (
     <div className="flex items-center gap-3 font-dc-mono text-[11px] uppercase tracking-[0.22em]">
-      <span className="text-[color:var(--dc-purple)]">{index}</span>
+      <span className="text-[color:var(--dc-purple-text)]">{index}</span>
       <span aria-hidden="true" className="h-px w-8 bg-[color:var(--dc-line)]" />
       <span className="text-[color:var(--dc-mute-2)]">{label}</span>
     </div>

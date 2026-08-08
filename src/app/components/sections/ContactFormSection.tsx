@@ -33,7 +33,7 @@ function FieldLabel({ children, required }: { children: string; required?: boole
   return (
     <span className="font-dc-mono text-[10.5px] uppercase tracking-[0.16em] text-[color:var(--dc-mute-2)]">
       {children}
-      {required && <span className="text-[color:var(--dc-purple)]"> *</span>}
+      {required && <span className="text-[color:var(--dc-purple-text)]"> *</span>}
     </span>
   );
 }
@@ -136,7 +136,7 @@ export function ContactFormSection() {
                   <dd>
                     <a
                       href="mailto:glenn.kim@twostepsahead.co.kr"
-                      className="text-[color:var(--dc-ink)] transition-colors hover:text-[color:var(--dc-purple)]"
+                      className="text-[color:var(--dc-ink)] transition-colors hover:text-[color:var(--dc-purple-text)]"
                     >
                       glenn.kim@twostepsahead.co.kr
                     </a>

@@ -1,4 +1,4 @@
-import { motion } from 'motion/react';
+import { motion, useReducedMotion } from 'motion/react';
 import { ArrowUpRight } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { NAV_LINKS } from '../content';
@@ -7,6 +7,7 @@ const EASE: [number, number, number, number] = [0.16, 1, 0.3, 1];
 
 export function SiteNav() {
   const [elevated, setElevated] = useState(false);
+  const reduce = useReducedMotion();
 
   useEffect(() => {
     const onScroll = () => setElevated(window.scrollY > 24);
@@ -17,9 +18,9 @@ export function SiteNav() {
 
   return (
     <motion.header
-      initial={{ y: -20, opacity: 0 }}
+      initial={reduce ? false : { y: -20, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.7, ease: EASE }}
+      transition={{ duration: reduce ? 0 : 0.7, ease: EASE }}
       className="fixed inset-x-0 top-0 z-50"
     >
       <div className="mx-auto max-w-[1240px] px-4 pt-4 md:px-8 md:pt-6">

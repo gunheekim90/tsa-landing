@@ -79,7 +79,7 @@ export function AxHero() {
               <div className="mt-7 flex flex-col gap-3">
                 <a
                   href={HERO.primaryCta.href}
-                  className="group inline-flex items-center gap-2 font-dc-mono text-[13px] uppercase tracking-[0.08em] text-[color:var(--dc-purple)] transition-colors hover:text-[color:var(--dc-ink)]"
+                  className="group inline-flex items-center gap-2 font-dc-mono text-[13px] uppercase tracking-[0.08em] text-[color:var(--dc-purple-text)] transition-colors hover:text-[color:var(--dc-ink)]"
                 >
                   <span aria-hidden="true" className="transition-transform group-hover:translate-x-1">↳</span>
                   {HERO.primaryCta.label}

@@ -1,4 +1,4 @@
-import { motion, useInView } from 'motion/react';
+import { motion, useInView, useReducedMotion } from 'motion/react';
 import { useRef } from 'react';
 
 const EASE: [number, number, number, number] = [0.16, 1, 0.3, 1];
@@ -34,6 +34,19 @@ export function WordsPullUp({
 }: WordsPullUpProps) {
   const ref = useRef<HTMLSpanElement>(null);
   const inView = useInView(ref, { once: true, margin: '-8%' });
+  const reduce = useReducedMotion();
+
+  if (reduce) {
+    return (
+      <span className={className}>
+        {segments.map((seg, si) => (
+          <span key={si} className={seg.className}>
+            {seg.text}{' '}
+          </span>
+        ))}
+      </span>
+    );
+  }
 
   const words = segments.flatMap((seg, si) =>
     seg.text
