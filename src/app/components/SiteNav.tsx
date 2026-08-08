@@ -1,14 +1,9 @@
 import { motion } from 'motion/react';
 import { ArrowUpRight } from 'lucide-react';
 import { useEffect, useState } from 'react';
+import { NAV_LINKS } from '../content';
 
 const EASE: [number, number, number, number] = [0.16, 1, 0.3, 1];
-
-const NAV = [
-  { label: 'GEO 모니터링', href: '#geo' },
-  { label: '툰에이전트', href: '#toon' },
-  { label: 'Studio', href: '#studio' },
-];
 
 export function SiteNav() {
   const [elevated, setElevated] = useState(false);
@@ -39,8 +34,8 @@ export function SiteNav() {
           >
             Two<span className="text-[color:var(--dc-purple)]">Steps</span>Ahead
           </a>
-          <nav className="hidden items-center gap-8 md:flex">
-            {NAV.map((n) => (
+          <nav className="hidden items-center gap-8 md:flex" aria-label="주요 메뉴">
+            {NAV_LINKS.map((n) => (
               <a
                 key={n.label}
                 href={n.href}
@@ -54,7 +49,7 @@ export function SiteNav() {
             href="#contact"
             className="group inline-flex items-center gap-1.5 rounded-full bg-[color:var(--dc-purple)] py-2 pl-4 pr-3 text-[13px] font-semibold text-white shadow-[0_10px_30px_-10px_rgba(123,57,252,0.9)] transition-transform hover:-translate-y-0.5"
           >
-            무료 진단
+            도입 문의
             <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           </a>
         </div>

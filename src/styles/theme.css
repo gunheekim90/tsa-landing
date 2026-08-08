@@ -432,10 +432,10 @@
   --dc-orange: #f87b52;
   --dc-navy: #12132b;
 
-  --font-dc-display: 'Manrope', 'Inter', system-ui, sans-serif;
-  --font-dc-body: 'Inter', system-ui, sans-serif;
+  --font-dc-display: 'Manrope', 'Pretendard Variable', 'Inter', system-ui, sans-serif;
+  --font-dc-body: 'Inter', 'Pretendard Variable', system-ui, sans-serif;
   --font-dc-serif: 'Instrument Serif', Georgia, serif;
-  --font-dc-label: 'Cabin', 'Inter', system-ui, sans-serif;
+  --font-dc-label: 'Cabin', 'Pretendard Variable', 'Inter', system-ui, sans-serif;
 }
 
 @layer utilities {
