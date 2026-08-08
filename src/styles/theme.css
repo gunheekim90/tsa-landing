@@ -443,6 +443,8 @@
   .font-dc-body    { font-family: var(--font-dc-body); }
   .font-dc-serif   { font-family: var(--font-dc-serif); }
   .font-dc-label   { font-family: var(--font-dc-label); }
+  /* Engineering-studio signal: 시스템 모노 스택 (폰트 로드 0) — 아이브로우·태그·메타 전용 */
+  .font-dc-mono    { font-family: ui-monospace, 'SF Mono', 'Cascadia Mono', 'Roboto Mono', monospace; }
 
   /* Glassmorphism surface */
   .dc-glass {

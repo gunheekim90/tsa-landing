@@ -13,11 +13,11 @@ const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const MAX_LEN = 4000;
 
 const INTEREST_LABEL: Record<string, string> = {
-  pluora: 'Pluora · 노출·인용·추천 예측',
-  lead: 'Plurank Lead · 방문 기업 식별',
-  litecx: 'LiteCX · AI 콜센터',
-  full: 'Full funnel · 풀 펀넬 도입',
-  other: 'Other · 기타 협업',
+  ax: 'AX 도입 · AI 상담/자동화/에이전트',
+  dx: 'DX 구축 · SaaS/관제/CRM 개발',
+  aicx: 'AICX · AI 전화/채팅 응대',
+  studio: '스튜디오 협업 · 제휴',
+  other: '기타',
 };
 
 function jsonResponse(body: unknown, status = 200) {
