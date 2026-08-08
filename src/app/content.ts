@@ -95,7 +95,7 @@ export const PROFILES = [
 export const STUDIO = {
   heading: '직접 만들고,\n직접 운영합니다.',
   lead: '투스텝스어헤드는 스타트업 스튜디오를 지향합니다. 아이디어를 서비스로 만들고, 운영하며 배운 것을 기업 프로젝트에 그대로 넣습니다.',
-  founderNote: '대표는 세 번 창업해 세 번 매각했습니다. 호텔 예약 시스템은 야놀자에, 커머스 플랫폼은 KREAM에 인수됐습니다.',
+  founderNote: '대표 김건희는 세 번 창업해 세 번 매각했습니다. COO 김지현은 B2B 스타트업에서 8년간 운영을 맡으며 시리즈 A와 B 투자 유치를 이끌었습니다.',
 };
 
 export const SERVICES = [
