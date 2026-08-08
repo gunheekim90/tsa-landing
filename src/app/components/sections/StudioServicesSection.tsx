@@ -69,6 +69,9 @@ export function StudioServicesSection() {
             <p className="max-w-md font-dc-body text-[15px] leading-[1.75] text-[color:var(--dc-mute)]">
               {STUDIO.lead}
             </p>
+            <p className="mt-4 max-w-md font-dc-body text-[13.5px] leading-[1.75] text-[color:var(--dc-mute-2)]">
+              {STUDIO.founderNote}
+            </p>
           </Reveal>
         </div>
 

@@ -116,9 +116,9 @@ export function ContactFormSection() {
         </Reveal>
         <Reveal delay={0.06}>
           <h2 className="mt-6 font-dc-display text-[clamp(2.4rem,6vw,4.6rem)] font-medium leading-[1.08] tracking-[-0.03em] text-[color:var(--dc-ink)]">
-            다음 두 걸음은,
+            지금 하시는 일부터
             <br />
-            함께<span className="text-[color:var(--dc-purple)]">.</span>
+            들려주세요<span className="text-[color:var(--dc-purple)]">.</span>
           </h2>
         </Reveal>
 
@@ -127,8 +127,8 @@ export function ContactFormSection() {
           <Reveal delay={0.1} className="lg:col-span-5">
             <div className="flex flex-col gap-8">
               <p className="max-w-sm font-dc-body text-[15px] leading-[1.8] text-[color:var(--dc-mute)]">
-                첫 미팅에서 데모가 아니라, 귀사 업무의 AI 적용 지점을 짚어드립니다.
-                어디서부터 시작할지 모르셔도 됩니다 — 지금 하고 있는 일을 그대로 들려주세요.
+                첫 미팅에서 데모가 아니라 귀사 업무의 AI 적용 지점을 짚어드립니다.
+                어디서부터 시작할지는 저희가 같이 찾습니다.
               </p>
               <dl className="flex flex-col gap-4 font-dc-mono text-[12px] tracking-[0.04em]">
                 <div className="flex flex-col gap-1">

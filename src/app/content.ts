@@ -11,18 +11,11 @@ export const NAV_LINKS = [
 ];
 
 export const HERO = {
-  headline: ['기업의 AI 전환,', '두 걸음 앞서.'],
-  sub: '투스텝스어헤드는 기업에 AX·DX를 설계하고 구축하는 AI 개발사입니다.\n직접 만들어 운영하며 검증한 AI를 기업 안에 넣습니다.',
+  headline: ['기업 안에서 실제로 돌아가는', 'AI를 만듭니다'],
+  sub: '투스텝스어헤드는 AX·DX를 설계하고 구축하는 AI 개발사입니다.\n자체 AI 서비스 다섯 개를 직접 운영하며, 그 경험 그대로 기업에 적용합니다.',
   primaryCta: { label: '도입 문의', href: '#contact' },
   secondaryCta: { label: '운영 중인 서비스 보기', href: '#studio' },
 };
-
-export const STATS = [
-  { v: '5', k: 'Live Services' },
-  { v: '15+', k: '프로젝트' },
-  { v: '3개국', k: '해외 프로젝트' },
-  { v: '3×3', k: '창업 · EXIT' },
-];
 
 export const CAPABILITIES = [
   {
@@ -48,7 +41,7 @@ export const CAPABILITIES = [
 export const CASES = [
   {
     client: '한솔엠에스 · ChargeFLOW',
-    summary: '전기차 충전 관제 SaaS 구축 + Claude 기반 24시간 AI 상담',
+    summary: '전기차 충전 관제를 SaaS로 옮기고, Claude 기반 AI 상담이 24시간 문의를 받습니다',
     tags: ['AX', 'DX'],
   },
   {
@@ -58,8 +51,23 @@ export const CASES = [
   },
   {
     client: 'BridgeLeaf · 미국',
-    summary: '아마존 셀러 아웃리치 CRM',
+    summary: '아마존 셀러 아웃리치 CRM 구축',
     tags: ['DX'],
+  },
+  {
+    client: 'Kozy.care · 프랑스',
+    summary: '유럽 시장 AI 검색 노출 분석 리포트',
+    tags: ['AI'],
+  },
+  {
+    client: '올댓아너스클럽 · K-Trip ONE',
+    summary: '외국인 관광객용 여행 앱 개발',
+    tags: ['DX'],
+  },
+  {
+    client: '어센트코리아',
+    summary: '글로벌 대기업 계열 신제품의 AI 검색 노출 검증',
+    tags: ['AI'],
   },
   {
     client: '레비타로',
@@ -68,9 +76,26 @@ export const CASES = [
   },
 ];
 
+/** 제3자 검증 — 발급기관이 있는 인증·선정만. 임의 추가 금지. */
+export const CREDENTIALS = [
+  '한국관광공사 관광벤처사업 선정',
+  '중소벤처기업부 창업기업·중소기업 확인',
+  '한국인공지능협회(KORAIA) 회원사',
+  '연구개발전담부서 보유',
+];
+
+/**
+ * 외부 파트너 프로필 — 클릭해서 검증 가능한 실적 페이지.
+ * ⚠ 위시켓 파트너 페이지는 로그인 벽(auth 리다이렉트)이라 제외 (2026-08-09 실측).
+ */
+export const PROFILES = [
+  { name: '크몽 전문가 프로필', url: 'https://kmong.com/@투스텝스어헤드' },
+];
+
 export const STUDIO = {
-  heading: '만드는 회사가,\n도입도 잘합니다.',
-  lead: '투스텝스어헤드는 스타트업 스튜디오를 지향합니다. 아이디어를 직접 서비스로 만들고, 운영하며 배운 것을 기업 프로젝트에 그대로 넣습니다.',
+  heading: '직접 만들고,\n직접 운영합니다.',
+  lead: '투스텝스어헤드는 스타트업 스튜디오를 지향합니다. 아이디어를 서비스로 만들고, 운영하며 배운 것을 기업 프로젝트에 그대로 넣습니다.',
+  founderNote: '대표는 세 번 창업해 세 번 매각했습니다. 호텔 예약 시스템은 야놀자에, 커머스 플랫폼은 KREAM에 인수됐습니다.',
 };
 
 export const SERVICES = [
@@ -93,6 +118,7 @@ export const FOOTER = {
   corp: '주식회사 투스텝스어헤드',
   lines: [
     '대표 김건희 · 사업자등록번호 319-87-03770',
+    '통신판매업신고 2025-서울강남-05963',
     '서울특별시 강남구 압구정로 306, 지하1층 4-s 10호(신사동)',
     'glenn.kim@twostepsahead.co.kr · 010-9990-7868',
   ],

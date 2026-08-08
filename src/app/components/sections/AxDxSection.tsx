@@ -4,9 +4,9 @@ import { CAPABILITIES } from '../../content';
 
 /** 역량별 변화 서사형 태그 — "무엇에서 무엇으로"가 기능 나열보다 강하다. */
 const FROM_TO: Record<string, string> = {
-  AX: 'FROM 수작업 TO 에이전트',
-  DX: 'FROM 오프라인 TO 시스템',
-  AICX: 'FROM 대기 TO 즉답',
+  AX: '수작업 → 에이전트',
+  DX: '종이·전화 → 시스템',
+  AICX: '부재중 → 24시간',
 };
 
 const LETTER = ['A', 'B', 'C'];
@@ -26,9 +26,8 @@ export function AxDxSection() {
         </Reveal>
         <Reveal delay={0.06}>
           <h2 className="mt-6 max-w-2xl font-dc-display text-[clamp(2rem,4.5vw,3.4rem)] font-medium leading-[1.12] tracking-[-0.03em] text-[color:var(--dc-ink)]">
-            AI를 기업 안에 넣는
-            <br />
-            세 가지 방법.
+            하는 일은
+            <br />세 가지입니다.
           </h2>
         </Reveal>
 

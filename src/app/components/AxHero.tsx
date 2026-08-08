@@ -1,24 +1,7 @@
-import { motion, useReducedMotion } from 'motion/react';
 import { Reveal } from './anim/Reveal';
 import { WordsPullUp } from './anim/WordsPullUp';
 import { Eyebrow } from './Eyebrow';
-import { HERO, STATS } from '../content';
-
-/** 뷰포트 진입 시 좌→우로 그려지는 퍼플 언더라인 — 퍼플이 허용되는 유일한 장식 지점. */
-function StatUnderline({ delay }: { delay: number }) {
-  const reduce = useReducedMotion();
-  if (reduce) return <div className="mt-3 h-px w-full bg-[color:var(--dc-purple)] opacity-60" aria-hidden="true" />;
-  return (
-    <motion.div
-      className="mt-3 h-px w-full origin-left bg-[color:var(--dc-purple)] opacity-60"
-      initial={{ scaleX: 0 }}
-      whileInView={{ scaleX: 1 }}
-      viewport={{ once: true, margin: '-10%' }}
-      transition={{ duration: 0.8, delay, ease: [0.16, 1, 0.3, 1] }}
-      aria-hidden="true"
-    />
-  );
-}
+import { HERO } from '../content';
 
 /**
  * Hero — "기업의 AI 전환, 두 걸음 앞서."
@@ -29,7 +12,7 @@ export function AxHero() {
   return (
     <section
       id="top"
-      className="relative flex min-h-[100svh] flex-col justify-end overflow-hidden bg-[color:var(--dc-bg)] px-5 pb-14 pt-32 md:px-8 md:pb-20"
+      className="relative flex min-h-[88svh] flex-col justify-end overflow-hidden bg-[color:var(--dc-bg)] px-5 pb-10 pt-32 md:px-8 md:pb-14"
     >
       {/* 배경: 헤어라인 세로 그리드 + 우하단 초저채도 퍼플 글로우 + 그레인 */}
       <div
@@ -96,22 +79,7 @@ export function AxHero() {
           </div>
         </div>
 
-        {/* 스탯 스트립 — 숫자를 타이포 오브제로. 퍼플 언더라인 드로잉이 허용되는 유일 지점 */}
-        <Reveal delay={0.5}>
-          <dl className="mt-16 grid grid-cols-2 gap-x-8 gap-y-10 border-t border-[color:var(--dc-line)] pt-10 md:grid-cols-4">
-            {STATS.map((s, i) => (
-              <div key={s.k}>
-                <dt className="font-dc-mono text-[11px] uppercase tracking-[0.18em] text-[color:var(--dc-mute-2)]">
-                  {s.k}
-                </dt>
-                <dd className="mt-2 font-dc-display text-[clamp(2rem,4vw,3.2rem)] font-medium leading-none tracking-[-0.02em] text-[color:var(--dc-ink)]">
-                  {s.v}
-                </dd>
-                <StatUnderline delay={0.3 + i * 0.12} />
-              </div>
-            ))}
-          </dl>
-        </Reveal>
+        <div className="mt-20 border-t border-[color:var(--dc-line)]" aria-hidden="true" />
       </div>
     </section>
   );
