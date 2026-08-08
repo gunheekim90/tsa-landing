@@ -126,7 +126,7 @@ export function WorkSection() {
 
         <Reveal delay={0.22}>
           <p className="mt-8 font-dc-mono text-[12px] uppercase tracking-[0.14em] text-[color:var(--dc-mute-2)]">
-            + 미국 · 일본 · 프랑스 포함 15개 이상의 프로젝트
+            + 설립 6개월 차 누적 계약 2억 원 · 미국 · 일본 · 프랑스 포함 15개 이상의 프로젝트
           </p>
         </Reveal>
       </div>

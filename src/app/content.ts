@@ -41,7 +41,7 @@ export const CAPABILITIES = [
 export const CASES = [
   {
     client: '한솔엠에스 · ChargeFLOW',
-    summary: '전기차 충전 관제를 SaaS로 옮기고, Claude 기반 AI 상담이 24시간 문의를 받습니다',
+    summary: '전기차 충전기 1,467기의 관제를 SaaS로 옮기고, Claude 기반 AI 상담이 24시간 문의를 받습니다',
     tags: ['AX', 'DX'],
   },
   {
@@ -66,7 +66,7 @@ export const CASES = [
   },
   {
     client: '어센트코리아',
-    summary: '글로벌 대기업 계열 신제품의 AI 검색 노출 검증',
+    summary: '글로벌 대기업 계열 신제품의 AI 검색 노출 검증 · 연간 계약',
     tags: ['AI'],
   },
   {
