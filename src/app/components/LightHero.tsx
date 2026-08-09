@@ -88,6 +88,19 @@ export function LightHero() {
             </a>
           </div>
         </Reveal>
+        <Reveal delay={0.32}>
+          <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-2">
+            {HERO.badges.map((b) => (
+              <span
+                key={b}
+                className="inline-flex items-center gap-2 font-dc-mono text-[11px] tracking-[0.08em] text-[color:var(--lt-mute-2)]"
+              >
+                <span aria-hidden="true" className="text-[color:var(--lt-purple)]">✓</span>
+                {b}
+              </span>
+            ))}
+          </div>
+        </Reveal>
       </div>
     </section>
   );

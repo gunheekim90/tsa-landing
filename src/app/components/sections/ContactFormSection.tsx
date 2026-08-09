@@ -122,6 +122,7 @@ export function ContactFormSection() {
               <p className="max-w-sm font-dc-body text-[15px] leading-[1.8] text-[color:var(--lt-mute)]">
                 첫 미팅에서 데모가 아니라 귀사 업무의 AI 적용 지점을 짚어드립니다.
                 어디서부터 시작할지는 저희가 같이 찾습니다.
+                AI 바우처 공급기업이라, 정부 지원으로 도입 비용을 줄이는 방법도 함께 안내드립니다.
               </p>
               <dl className="flex flex-col gap-4 font-dc-mono text-[12px] tracking-[0.04em]">
                 <div className="flex flex-col gap-1">
