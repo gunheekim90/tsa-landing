@@ -23,24 +23,26 @@ export function SiteNav() {
       transition={{ duration: reduce ? 0 : 0.7, ease: EASE }}
       className="fixed inset-x-0 top-0 z-50"
     >
-      <div className="mx-auto max-w-[1240px] px-4 pt-4 md:px-8 md:pt-6">
+      <div className="mx-auto max-w-[1200px] px-4 pt-4 md:px-8 md:pt-5">
         <div
           className={`flex items-center justify-between gap-4 rounded-full py-2 pl-5 pr-2 transition-all duration-500 ${
-            elevated ? 'dc-glass' : 'border border-transparent'
+            elevated
+              ? 'border border-[color:var(--lt-line)] bg-[rgba(250,250,248,0.85)] shadow-[0_8px_30px_-18px_rgba(17,16,21,0.25)] backdrop-blur-md'
+              : 'border border-transparent'
           }`}
         >
           <a
             href="#top"
-            className="font-dc-display text-[15px] font-extrabold tracking-tight text-[color:var(--dc-ink)]"
+            className="font-dc-display text-[15px] font-extrabold tracking-tight text-[color:var(--lt-ink)]"
           >
-            Two<span className="text-[color:var(--dc-purple)]">Steps</span>Ahead
+            Two<span className="text-[color:var(--lt-purple)]">Steps</span>Ahead
           </a>
-          <nav className="hidden items-center gap-8 md:flex" aria-label="주요 메뉴">
+          <nav className="hidden items-center gap-7 md:flex" aria-label="주요 메뉴">
             {NAV_LINKS.map((n) => (
               <a
                 key={n.label}
                 href={n.href}
-                className="font-dc-label text-[13px] text-[color:var(--dc-mute)] transition-colors hover:text-[color:var(--dc-ink)]"
+                className="font-dc-label text-[13px] text-[color:var(--lt-mute)] transition-colors hover:text-[color:var(--lt-ink)]"
               >
                 {n.label}
               </a>
@@ -48,9 +50,9 @@ export function SiteNav() {
           </nav>
           <a
             href="#contact"
-            className="group inline-flex items-center gap-1.5 rounded-full bg-[color:var(--dc-purple)] py-2 pl-4 pr-3 text-[13px] font-semibold text-white shadow-[0_10px_30px_-10px_rgba(123,57,252,0.9)] transition-transform hover:-translate-y-0.5"
+            className="group inline-flex items-center gap-1.5 rounded-full bg-[color:var(--lt-ink)] py-2 pl-4 pr-3 text-[13px] font-semibold text-white transition-transform hover:-translate-y-0.5"
           >
-            도입 문의
+            문의하기
             <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           </a>
         </div>

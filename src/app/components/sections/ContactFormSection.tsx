@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import { Check } from 'lucide-react';
+import { ArrowUpRight, Check } from 'lucide-react';
 import { Reveal } from '../anim/Reveal';
 import { Eyebrow } from '../Eyebrow';
-import { INTERESTS } from '../../content';
+import { CREDENTIALS, INTERESTS, PROFILES } from '../../content';
 import { trackEvent } from '@/lib/gtag';
 
 type Status = 'idle' | 'submitting' | 'success' | 'error';
@@ -25,21 +25,22 @@ const initial: FormState = {
   _hp: '',
 };
 
-/** 인풋 — 박스 대신 하단 헤어라인만, focus 시 퍼플 라인 전이. */
+/** 인풋 — 하단 헤어라인만, focus 시 퍼플 라인. */
 const inputClass =
-  'w-full bg-transparent border-0 border-b border-[color:var(--dc-line)] px-0 py-3 font-dc-body text-[15px] text-[color:var(--dc-ink)] placeholder:text-[color:var(--dc-mute-2)] focus:outline-none focus:border-[color:var(--dc-purple)] transition-colors rounded-none';
+  'w-full bg-transparent border-0 border-b border-[color:var(--lt-line)] px-0 py-3 font-dc-body text-[15px] text-[color:var(--lt-ink)] placeholder:text-[color:var(--lt-mute-2)] focus:outline-none focus:border-[color:var(--lt-purple)] transition-colors rounded-none';
 
 function FieldLabel({ children, required }: { children: string; required?: boolean }) {
   return (
-    <span className="font-dc-mono text-[10.5px] uppercase tracking-[0.16em] text-[color:var(--dc-mute-2)]">
+    <span className="font-dc-mono text-[10.5px] uppercase tracking-[0.16em] text-[color:var(--lt-mute-2)]">
       {children}
-      {required && <span className="text-[color:var(--dc-purple-text)]"> *</span>}
+      {required && <span className="text-[color:var(--lt-purple)]"> *</span>}
     </span>
   );
 }
 
 /**
- * 문의 — 히어로와 북엔드(가장 어두운 배경 복귀 + 미러 헤드라인 "다음 두 걸음은, 함께.").
+ * 문의 — "지금 하시는 일부터 들려주세요." + 인라인 폼(라이트).
+ * 좌측에 실행형 오퍼 + 인증·선정 + 크몽 프로필 링크.
  * 폼 계약은 api/inquiry.ts 그대로: {name, company, email, interest, message, _hp}
  */
 export function ContactFormSection() {
@@ -100,72 +101,89 @@ export function ContactFormSection() {
   return (
     <section
       id="contact"
-      className="relative scroll-mt-24 overflow-hidden border-t border-[color:var(--dc-line)] bg-[color:var(--dc-bg)] px-5 py-24 md:px-8 md:py-32"
+      className="scroll-mt-24 border-t border-[color:var(--lt-line)] bg-[color:var(--lt-bg)] px-5 py-24 md:px-8 md:py-32"
     >
-      <div
-        className="pointer-events-none absolute inset-0"
-        aria-hidden="true"
-        style={{
-          background:
-            'radial-gradient(ellipse 55% 45% at 50% 115%, rgba(123,57,252,0.12), transparent 65%)',
-        }}
-      />
-      <div className="relative mx-auto max-w-[1240px]">
+      <div className="mx-auto max-w-[1200px]">
         <Reveal>
-          <Eyebrow index="04" label="Contact" />
+          <Eyebrow index="06" label="Contact" />
         </Reveal>
         <Reveal delay={0.06}>
-          <h2 className="mt-6 font-dc-display text-[clamp(2.4rem,6vw,4.6rem)] font-medium leading-[1.08] tracking-[-0.03em] text-[color:var(--dc-ink)]">
+          <h2 className="mt-6 break-keep font-dc-display text-[clamp(2.2rem,5vw,3.8rem)] font-semibold leading-[1.12] tracking-[-0.03em] text-[color:var(--lt-ink)]">
             지금 하시는 일부터
             <br />
-            들려주세요<span className="text-[color:var(--dc-purple)]">.</span>
+            들려주세요<span className="text-[color:var(--lt-purple)]">.</span>
           </h2>
         </Reveal>
 
         <div className="mt-14 grid grid-cols-1 gap-14 lg:grid-cols-12">
-          {/* 좌: 메타 + 실행형 오퍼 */}
+          {/* 좌: 오퍼 + 메타 + 검증 */}
           <Reveal delay={0.1} className="lg:col-span-5">
             <div className="flex flex-col gap-8">
-              <p className="max-w-sm font-dc-body text-[15px] leading-[1.8] text-[color:var(--dc-mute)]">
+              <p className="max-w-sm font-dc-body text-[15px] leading-[1.8] text-[color:var(--lt-mute)]">
                 첫 미팅에서 데모가 아니라 귀사 업무의 AI 적용 지점을 짚어드립니다.
                 어디서부터 시작할지는 저희가 같이 찾습니다.
               </p>
               <dl className="flex flex-col gap-4 font-dc-mono text-[12px] tracking-[0.04em]">
                 <div className="flex flex-col gap-1">
-                  <dt className="uppercase tracking-[0.16em] text-[color:var(--dc-mute-2)]">Email</dt>
+                  <dt className="uppercase tracking-[0.16em] text-[color:var(--lt-mute-2)]">Email</dt>
                   <dd>
                     <a
                       href="mailto:glenn.kim@twostepsahead.co.kr"
-                      className="text-[color:var(--dc-ink)] transition-colors hover:text-[color:var(--dc-purple-text)]"
+                      className="text-[color:var(--lt-ink)] transition-colors hover:text-[color:var(--lt-purple)]"
                     >
                       glenn.kim@twostepsahead.co.kr
                     </a>
                   </dd>
                 </div>
                 <div className="flex flex-col gap-1">
-                  <dt className="uppercase tracking-[0.16em] text-[color:var(--dc-mute-2)]">Response</dt>
-                  <dd className="text-[color:var(--dc-mute)]">평일 24시간 내 회신</dd>
+                  <dt className="uppercase tracking-[0.16em] text-[color:var(--lt-mute-2)]">Response</dt>
+                  <dd className="text-[color:var(--lt-mute)]">평일 24시간 내 회신</dd>
                 </div>
                 <div className="flex flex-col gap-1">
-                  <dt className="uppercase tracking-[0.16em] text-[color:var(--dc-mute-2)]">Office</dt>
-                  <dd className="text-[color:var(--dc-mute)]">서울 강남구 압구정로 306</dd>
+                  <dt className="uppercase tracking-[0.16em] text-[color:var(--lt-mute-2)]">Office</dt>
+                  <dd className="text-[color:var(--lt-mute)]">서울 강남구 압구정로 306</dd>
                 </div>
               </dl>
+              <div className="border-t border-[color:var(--lt-line)] pt-6">
+                <span className="font-dc-mono text-[10.5px] uppercase tracking-[0.18em] text-[color:var(--lt-mute-2)]">
+                  인증·선정
+                </span>
+                <ul className="mt-3 flex flex-col gap-2">
+                  {CREDENTIALS.map((c) => (
+                    <li key={c} className="flex items-baseline gap-2.5 font-dc-body text-[13px] text-[color:var(--lt-mute)]">
+                      <span aria-hidden="true" className="font-dc-mono text-[color:var(--lt-mute-2)]">↳</span>
+                      {c}
+                    </li>
+                  ))}
+                </ul>
+                {PROFILES.map((p) => (
+                  <a
+                    key={p.name}
+                    href={p.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group mt-4 inline-flex items-center gap-1.5 font-dc-body text-[13px] font-semibold text-[color:var(--lt-ink)] transition-colors hover:text-[color:var(--lt-purple)]"
+                  >
+                    {p.name}
+                    <ArrowUpRight className="h-3.5 w-3.5 text-[color:var(--lt-mute-2)] transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                  </a>
+                ))}
+              </div>
             </div>
           </Reveal>
 
           {/* 우: 인라인 폼 */}
           <Reveal delay={0.16} className="lg:col-span-7">
             {status === 'success' ? (
-              <div className="flex flex-col items-start gap-5 border border-[color:var(--dc-line)] p-10">
-                <div className="flex h-12 w-12 items-center justify-center rounded-full border border-[color:var(--dc-purple-line)] bg-[color:var(--dc-purple-soft)]">
-                  <Check className="h-6 w-6 text-[color:var(--dc-purple)]" />
+              <div className="flex flex-col items-start gap-5 rounded-2xl border border-[color:var(--lt-line)] bg-[color:var(--lt-card)] p-10">
+                <div className="flex h-12 w-12 items-center justify-center rounded-full border border-[color:var(--lt-purple-line)] bg-[color:var(--lt-purple-soft)]">
+                  <Check className="h-6 w-6 text-[color:var(--lt-purple)]" />
                 </div>
-                <h3 className="font-dc-display text-2xl font-semibold text-[color:var(--dc-ink)]">
+                <h3 className="font-dc-display text-2xl font-semibold text-[color:var(--lt-ink)]">
                   보내드렸습니다.
                 </h3>
-                <p className="font-dc-body text-[14px] leading-relaxed text-[color:var(--dc-mute)]">
-                  평일 24시간 내 <span className="text-[color:var(--dc-ink)]">{form.email}</span>로
+                <p className="font-dc-body text-[14px] leading-relaxed text-[color:var(--lt-mute)]">
+                  평일 24시간 내 <span className="font-semibold text-[color:var(--lt-ink)]">{form.email}</span>로
                   회신드립니다.
                 </p>
               </div>
@@ -204,7 +222,7 @@ export function ContactFormSection() {
                       onChange={update('company')}
                       autoComplete="organization"
                       className={inputClass}
-                      placeholder="회사명"
+                      placeholder="회사명 (개인이시면 '개인')"
                     />
                   </label>
                 </div>
@@ -225,7 +243,7 @@ export function ContactFormSection() {
                     <FieldLabel>Interest</FieldLabel>
                     <select value={form.interest} onChange={update('interest')} className={inputClass}>
                       {INTERESTS.map((o) => (
-                        <option key={o.value} value={o.value} className="bg-[color:var(--dc-bg-2)]">
+                        <option key={o.value} value={o.value}>
                           {o.label}
                         </option>
                       ))}
@@ -245,7 +263,7 @@ export function ContactFormSection() {
                 </label>
 
                 {status === 'error' && (
-                  <p role="alert" className="font-dc-body text-[13px] text-[color:var(--dc-orange)]">
+                  <p role="alert" className="font-dc-body text-[13px] text-[#c2410c]">
                     {errorMsg}
                   </p>
                 )}
@@ -253,7 +271,7 @@ export function ContactFormSection() {
                 <button
                   type="submit"
                   disabled={status === 'submitting'}
-                  className="mt-2 inline-flex items-center justify-center gap-2 self-start rounded-full bg-[color:var(--dc-purple)] px-8 py-4 font-dc-label text-[14px] font-semibold text-white shadow-[0_18px_50px_-16px_rgba(123,57,252,0.95)] transition-transform hover:-translate-y-0.5 disabled:opacity-60"
+                  className="mt-2 inline-flex items-center justify-center gap-2 self-start rounded-full bg-[color:var(--lt-ink)] px-8 py-4 font-dc-label text-[14px] font-semibold text-white transition-transform hover:-translate-y-0.5 disabled:opacity-60"
                 >
                   {status === 'submitting' ? '보내는 중…' : '문의 보내기'}
                 </button>

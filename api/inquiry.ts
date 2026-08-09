@@ -16,6 +16,7 @@ const INTEREST_LABEL: Record<string, string> = {
   ax: 'AX 도입 · AI 상담/자동화/에이전트',
   dx: 'DX 구축 · SaaS/관제/CRM 개발',
   aicx: 'AICX · AI 전화/채팅 응대',
+  edu: '기업교육 · 강의/워크숍',
   studio: '스튜디오 협업 · 제휴',
   other: '기타',
 };

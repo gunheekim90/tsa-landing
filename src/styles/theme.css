@@ -435,6 +435,23 @@
   --dc-orange: #f87b52;
   --dc-navy: #12132b;
 
+  /* ——————————————————————————————————————————————
+     Light editorial (2026-08-10 재구축) — 근백색 + 블랙 타이포 + 퍼플 액센트.
+     대비 검증(실측): ink/bg 18.1:1 · mute/bg 8.5:1 · mute2/bg 5.1:1 · purple/bg 6.1:1
+     —————————————————————————————————————————————— */
+  --lt-bg: #fafaf8;          /* 페이지 배경 */
+  --lt-bg-2: #f2f1ee;        /* 교대 섹션 */
+  --lt-card: #ffffff;        /* 카드 */
+  --lt-ink: #111015;         /* 본문·헤드라인 */
+  --lt-mute: #4c4857;        /* 서브 텍스트 */
+  --lt-mute-2: #6d6879;      /* 라벨·메타 (4.6:1) */
+  --lt-line: rgba(17, 16, 21, 0.1);
+  --lt-purple: #6d2ef0;      /* 액센트 — 텍스트 겸용 (6.2:1) */
+  --lt-purple-soft: rgba(109, 46, 240, 0.12);   /* 하이라이트 마크 배경 */
+  --lt-purple-line: rgba(109, 46, 240, 0.4);
+  --lt-dark: #0d0c12;        /* 솔루션 반전 카드 배경 */
+  --lt-dark-ink: #f5f3fb;
+
   --font-dc-display: 'Manrope', 'Pretendard Variable', 'Inter', system-ui, sans-serif;
   --font-dc-body: 'Inter', 'Pretendard Variable', system-ui, sans-serif;
   --font-dc-serif: 'Instrument Serif', Georgia, serif;

@@ -1,0 +1,122 @@
+import { ArrowUpRight } from 'lucide-react';
+import { Reveal } from '../anim/Reveal';
+import { Eyebrow } from '../Eyebrow';
+import { SOLUTIONS } from '../../content';
+
+/**
+ * 자체 솔루션 — 라이트 페이지에서 유일한 다크 반전 카드(joshua 문법).
+ * 우주콜 메인 피처: 이미지 대신 CSS 전화 응대 대화 목업.
+ */
+export function SolutionsSection() {
+  const { main, sub } = SOLUTIONS;
+
+  return (
+    <section
+      id="solutions"
+      className="scroll-mt-24 border-t border-[color:var(--lt-line)] bg-[color:var(--lt-bg)] px-5 py-24 md:px-8 md:py-32"
+    >
+      <div className="mx-auto max-w-[1200px]">
+        <Reveal>
+          <Eyebrow index="03" label="Our solutions" />
+        </Reveal>
+        <div className="mt-6 grid grid-cols-1 gap-6 lg:grid-cols-12 lg:items-end">
+          <Reveal delay={0.06} className="lg:col-span-7">
+            <h2 className="whitespace-pre-line break-keep font-dc-display text-[clamp(1.9rem,4vw,3rem)] font-semibold leading-[1.16] tracking-[-0.03em] text-[color:var(--lt-ink)]">
+              {SOLUTIONS.title}
+            </h2>
+          </Reveal>
+          <Reveal delay={0.12} className="lg:col-span-5">
+            <p className="max-w-md font-dc-body text-[15px] leading-[1.75] text-[color:var(--lt-mute)]">
+              {SOLUTIONS.lead}
+            </p>
+          </Reveal>
+        </div>
+
+        <div className="mt-14 grid grid-cols-1 gap-5 lg:grid-cols-3">
+          {/* 메인 — 우주콜 다크 카드 */}
+          <Reveal delay={0.06} className="lg:col-span-2">
+            <a
+              href={main.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex h-full flex-col gap-8 rounded-2xl bg-[color:var(--lt-dark)] p-9 transition-transform duration-300 hover:-translate-y-0.5 md:flex-row md:items-center md:p-11"
+            >
+              <div className="flex-1">
+                <span className="font-dc-mono text-[10.5px] uppercase tracking-[0.18em] text-[rgba(245,243,251,0.5)]">
+                  Flagship — Live
+                </span>
+                <h3 className="mt-4 font-dc-display text-[2rem] font-semibold tracking-[0.24em] text-[color:var(--lt-dark-ink)]">
+                  {main.name}
+                </h3>
+                <p className="mt-1 font-dc-body text-[15px] font-medium text-[rgba(245,243,251,0.85)]">
+                  {main.tagline}
+                </p>
+                <p className="mt-4 max-w-sm font-dc-body text-[13.5px] leading-[1.8] text-[rgba(245,243,251,0.6)]">
+                  {main.desc}
+                </p>
+                <span className="mt-6 inline-flex items-center gap-1.5 font-dc-mono text-[12px] uppercase tracking-[0.08em] text-[rgba(245,243,251,0.85)]">
+                  woojoocall.com
+                  <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                </span>
+              </div>
+              {/* CSS 대화 목업 */}
+              <div
+                className="w-full max-w-[300px] shrink-0 rounded-xl border border-[rgba(255,255,255,0.1)] bg-[rgba(255,255,255,0.04)] p-4"
+                role="img"
+                aria-label="우주콜 AI 전화 응대 예시 대화"
+              >
+                <div className="flex items-center gap-2 border-b border-[rgba(255,255,255,0.08)] pb-3">
+                  <span className="h-2 w-2 rounded-full bg-[#4ade80]" aria-hidden="true" />
+                  <span className="font-dc-mono text-[10px] uppercase tracking-[0.14em] text-[rgba(245,243,251,0.55)]">
+                    통화 중 · AI 응대
+                  </span>
+                </div>
+                <div className="mt-3 flex flex-col gap-2.5">
+                  {main.dialogue.map((m, i) => (
+                    <div
+                      key={i}
+                      className={`max-w-[85%] rounded-lg px-3 py-2 font-dc-body text-[11.5px] leading-[1.6] ${
+                        m.role === 'ai'
+                          ? 'self-start bg-[rgba(139,92,246,0.22)] text-[rgba(245,243,251,0.92)]'
+                          : 'self-end bg-[rgba(255,255,255,0.08)] text-[rgba(245,243,251,0.75)]'
+                      }`}
+                    >
+                      {m.text}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </a>
+          </Reveal>
+
+          {/* 서브 — 사장노트 */}
+          <Reveal delay={0.14} className="h-full">
+            <a
+              href={sub.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex h-full flex-col rounded-2xl border border-[color:var(--lt-line)] bg-[color:var(--lt-card)] p-9 transition-all duration-300 hover:-translate-y-0.5 hover:border-[color:var(--lt-purple-line)]"
+            >
+              <span className="font-dc-mono text-[10.5px] uppercase tracking-[0.18em] text-[color:var(--lt-mute-2)]">
+                Live
+              </span>
+              <h3 className="mt-4 font-dc-display text-[1.5rem] font-semibold tracking-[0.08em] text-[color:var(--lt-ink)]">
+                {sub.name}
+              </h3>
+              <p className="mt-1 font-dc-body text-[14px] font-medium text-[color:var(--lt-mute)]">
+                {sub.tagline}
+              </p>
+              <p className="mt-4 font-dc-body text-[13.5px] leading-[1.8] text-[color:var(--lt-mute)]">
+                {sub.desc}
+              </p>
+              <span className="mt-auto inline-flex items-center gap-1.5 pt-6 font-dc-mono text-[12px] uppercase tracking-[0.08em] text-[color:var(--lt-ink)]">
+                sajangnote.kr
+                <ArrowUpRight className="h-3.5 w-3.5 text-[color:var(--lt-mute-2)] transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </span>
+            </a>
+          </Reveal>
+        </div>
+      </div>
+    </section>
+  );
+}
