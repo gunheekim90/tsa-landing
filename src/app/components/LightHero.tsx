@@ -11,21 +11,23 @@ function HighlightMark({ children }: { children: React.ReactNode }) {
   const reduce = useReducedMotion();
   return (
     <span className="relative inline-block whitespace-nowrap">
+      {/* 마크는 z-auto로 깔고, 텍스트를 relative로 올려 페인트 순서로 겹침 해결
+          (-z-10은 섹션 배경 뒤로 숨는 버그) */}
       {reduce ? (
         <span
-          className="absolute inset-x-[-0.08em] bottom-[0.02em] top-[0.12em] -z-10 rounded-[0.18em] bg-[color:var(--lt-purple-soft)]"
+          className="absolute inset-x-[-0.08em] bottom-[0.02em] top-[0.12em] rounded-[0.18em] bg-[color:var(--lt-purple-soft)]"
           aria-hidden="true"
         />
       ) : (
         <motion.span
-          className="absolute inset-x-[-0.08em] bottom-[0.02em] top-[0.12em] -z-10 origin-left rounded-[0.18em] bg-[color:var(--lt-purple-soft)]"
+          className="absolute inset-x-[-0.08em] bottom-[0.02em] top-[0.12em] origin-left rounded-[0.18em] bg-[color:var(--lt-purple-soft)]"
           initial={{ scaleX: 0 }}
           animate={{ scaleX: 1 }}
           transition={{ duration: 0.9, delay: 0.55, ease: [0.16, 1, 0.3, 1] }}
           aria-hidden="true"
         />
       )}
-      {children}
+      <span className="relative">{children}</span>
     </span>
   );
 }
