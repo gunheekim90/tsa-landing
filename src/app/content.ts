@@ -16,22 +16,29 @@ export const HERO = {
   chip: 'AX · DX · 교육 · 스타트업 스튜디오',
   /** headline: highlight=true 세그먼트에 형광 마크 */
   headline: [
-    { text: '기업 안에서 ', highlight: false },
-    { text: '실제로 돌아가는', highlight: true },
-    { text: ' AI를 만듭니다', highlight: false },
+    { text: '이제, AI에게 ', highlight: false },
+    { text: '일을 시키세요', highlight: true },
   ],
   sub: '투스텝스어헤드는 AX·DX를 설계하고 구축하는 AI 개발사입니다.\n자체 AI 서비스 다섯 개를 직접 운영하며, 그 경험 그대로 기업에 적용합니다.',
   primaryCta: { label: '무료 상담받기', href: '#contact' },
   secondaryCta: { label: '사례 보기', href: '#work' },
 };
 
+/**
+ * 성과 스토리형 스탯 — 숫자가 속도·역량의 변화를 말하게(joshua 문법의 변주).
+ * 전부 공개 검증분: 24개월→2주·1,467기(ChargeFLOW 공개 제안서), 2억+(위시켓 프로필).
+ */
 export const STATS = [
-  { v: '15+', k: '프로젝트' },
-  { v: '2억+', k: '누적 계약 · 설립 6개월' },
-  { v: '5개', k: '직접 운영하는 서비스' },
-  { v: '1,467기', k: '충전기 실운영 관제' },
+  { v: '24개월 → 2주', k: '충전 관제 구축, 구독 도입으로 단축' },
+  { v: '1,467기', k: '실운영 중인 충전기 관제' },
+  { v: '2억+', k: '설립 6개월 차 누적 계약' },
+  { v: '5개', k: '직접 만들어 운영하는 AI 서비스' },
 ];
 
+/**
+ * 포트폴리오·파트너 전체 — 무한 횡스크롤 마퀴용.
+ * 전부 위시켓·크몽에 공개된 실명(의료기관 등 익명 건 제외).
+ */
 export const CLIENTS = [
   '한솔엠에스',
   '어센트코리아',
@@ -40,6 +47,10 @@ export const CLIENTS = [
   'Kozy.care',
   '올댓아너스클럽',
   '레비타로',
+  '아워컨설팅',
+  '한인텔',
+  '더블유디자인호텔',
+  '한국관광공사',
 ];
 
 export const JOURNEY = {

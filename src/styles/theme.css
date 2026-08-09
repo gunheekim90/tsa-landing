@@ -479,6 +479,17 @@
   /* Engineering-studio signal: 시스템 모노 스택 (폰트 로드 0) — 아이브로우·태그·메타 전용 */
   .font-dc-mono    { font-family: ui-monospace, 'SF Mono', 'Cascadia Mono', 'Roboto Mono', monospace; }
 
+  /* 클라이언트 마퀴 — 트랙을 2벌 복제해 -50% 이동으로 무한 루프. 호버 일시정지,
+     reduced-motion에선 애니메이션 없이 줄바꿈 나열로 폴백(컴포넌트에서 처리). */
+  @media (prefers-reduced-motion: no-preference) {
+    @keyframes lt-marquee {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+    .lt-marquee-track { animation: lt-marquee 38s linear infinite; }
+    .lt-marquee:hover .lt-marquee-track { animation-play-state: paused; }
+  }
+
   /* Glassmorphism surface */
   .dc-glass {
     background: rgba(255, 255, 255, 0.05);
