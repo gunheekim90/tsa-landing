@@ -70,7 +70,7 @@ export const JOURNEY = {
 export const CASES_FEATURED = [
   {
     client: '한솔엠에스 · ChargeFLOW',
-    headline: '충전기 1,467기 — 전기차 충전 관제가 2주 만에 돌아가다',
+    headline: '충전기 1,467기 — 실운영 중인 전기차 충전 관제를 만들다',
     detail: 'OCPP 기반 통합 관제 SaaS를 구축하고, Claude 기반 AI 상담이 24시간 문의를 받습니다.',
     tags: ['AX', 'DX'],
   },
