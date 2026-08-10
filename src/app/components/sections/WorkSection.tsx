@@ -1,3 +1,4 @@
+import { ArrowUpRight } from 'lucide-react';
 import { Reveal } from '../anim/Reveal';
 import { Eyebrow } from '../Eyebrow';
 import { CASES_FEATURED, CASES_LIST, TECH_META } from '../../content';
@@ -14,13 +15,11 @@ export function WorkSection() {
     >
       <div className="mx-auto max-w-[1200px]">
         <Reveal>
-          <Eyebrow index="02" label="Case studies" />
+          <Eyebrow index="03" label="구축 사례" />
         </Reveal>
         <Reveal delay={0.06}>
           <h2 className="mt-6 max-w-2xl break-keep font-dc-display text-[clamp(1.9rem,4vw,3rem)] font-semibold leading-[1.16] tracking-[-0.03em] text-[color:var(--lt-ink)]">
-            이런 걸
-            <br />
-            만들어 왔습니다.
+            주요 구축 사례입니다.
           </h2>
         </Reveal>
 
@@ -79,6 +78,12 @@ export function WorkSection() {
               </span>
             ))}
           </div>
+        </Reveal>
+        <Reveal delay={0.2}>
+          <a href="#contact" className="group mt-9 inline-flex items-center gap-1.5 font-dc-body text-[14px] font-semibold text-[color:var(--lt-ink)] hover:text-[color:var(--lt-purple)]">
+            비슷한 프로젝트 상담하기
+            <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+          </a>
         </Reveal>
       </div>
     </section>

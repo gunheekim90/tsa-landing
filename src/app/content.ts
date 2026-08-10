@@ -5,37 +5,61 @@
  */
 
 export const NAV_LINKS = [
-  { label: '여정', href: '#journey' },
+  { label: '회사', href: '#studio' },
+  { label: '서비스', href: '#services' },
   { label: '사례', href: '#work' },
+  { label: '도입 과정', href: '#journey' },
   { label: '솔루션', href: '#solutions' },
   { label: '교육', href: '#education' },
-  { label: '스튜디오', href: '#studio' },
 ];
 
 export const HERO = {
-  chip: 'AX · DX · 교육 · 스타트업 스튜디오',
   /** headline: highlight=true 세그먼트에 형광 마크 */
   headline: [
-    { text: '이제, AI에게 ', highlight: false },
-    { text: '일을 시키세요', highlight: true },
+    { text: '기업의 반복 업무를\n', highlight: false },
+    { text: 'AI로 전환합니다', highlight: true },
   ],
-  sub: '투스텝스어헤드는 AX·DX를 설계하고 구축하는 AI 개발사입니다.\n자체 AI 서비스 다섯 개를 직접 운영하며, 그 경험 그대로 기업에 적용합니다.',
+  sub: '투스텝스어헤드는 AI 상담·업무 자동화와 SaaS·관제·CRM 시스템을 설계하고 구축합니다.\n진단부터 개발, 운영과 교육까지 한 팀이 맡습니다.',
   primaryCta: { label: '무료 상담받기', href: '#contact' },
   secondaryCta: { label: '사례 보기', href: '#work' },
   /** CTA 아래 신뢰 뱃지 — 대표 확인 사실(2026-08-10) */
   badges: ['한국관광공사 관광벤처 선정', 'AI 바우처 공급기업', '벤처기업 인증'],
 };
 
-/**
- * 성과 스토리형 스탯 — 숫자가 속도·역량의 변화를 말하게(joshua 문법의 변주).
- * 전부 공개 검증분: 24개월→2주·1,467기(ChargeFLOW 공개 제안서), 2억+(위시켓 프로필).
- */
+/** 첫 화면에서 회사의 규모와 운영 경험을 바로 이해할 수 있는 핵심 지표. */
 export const STATS = [
-  { v: '24개월 → 2주', k: '충전 관제 구축, 구독 도입으로 단축' },
-  { v: '1,467기', k: '실운영 중인 충전기 관제' },
-  { v: '15+', k: '국내외 프로젝트 · 미국 일본 프랑스' },
-  { v: '5개', k: '직접 만들어 운영하는 AI 서비스' },
+  { v: '15+', k: '국내외 프로젝트 수행' },
+  { v: '3개국', k: '미국 · 일본 · 프랑스 프로젝트' },
+  { v: '5개', k: '직접 운영하는 자체 서비스' },
+  { v: '24시간', k: 'AI 고객 응대 시스템 운영' },
 ];
+
+export const OFFERINGS = {
+  title: '기업에 필요한 AI를\n실제 업무에 적용합니다.',
+  lead: '기술 시연에 그치지 않고 현장에서 사용할 수 있는 시스템을 구축합니다.',
+  items: [
+    {
+      num: '01',
+      title: 'AI 업무 자동화',
+      desc: '반복 상담, 문서 처리와 데이터 업무를 AI 에이전트로 자동화합니다.',
+    },
+    {
+      num: '02',
+      title: 'SaaS·업무 시스템',
+      desc: '관제, 예약, CRM 등 현장 업무에 맞는 웹과 앱을 개발합니다.',
+    },
+    {
+      num: '03',
+      title: 'AI 고객 응대',
+      desc: '전화와 채팅 문의를 24시간 처리하고 필요한 내용을 담당자에게 연결합니다.',
+    },
+    {
+      num: '04',
+      title: '기업 AI 교육',
+      desc: '리더 특강부터 부서별 실무 워크숍과 개발자 교육까지 진행합니다.',
+    },
+  ],
+};
 
 /**
  * 포트폴리오·파트너 전체 — 무한 횡스크롤 마퀴용.
@@ -74,7 +98,7 @@ export const JOURNEY = {
     {
       num: '03',
       name: '운영',
-      title: '도입 후를 함께 갑니다',
+      title: '운영까지 책임집니다',
       items: ['24시간 AI 고객 응대(AICX)', '모니터링·개선', '임직원 교육'],
     },
   ],
@@ -83,7 +107,7 @@ export const JOURNEY = {
 export const CASES_FEATURED = [
   {
     client: '한솔엠에스 · ChargeFLOW',
-    headline: '충전기 1,467기 — 실운영 중인 전기차 충전 관제를 만들다',
+    headline: '충전기 1,467기를 관리하는 전기차 충전 관제 시스템',
     detail: 'OCPP 기반 통합 관제 SaaS를 구축하고, Claude 기반 AI 상담이 24시간 문의를 받습니다.',
     tags: ['AX', 'DX'],
   },
@@ -116,7 +140,7 @@ export const TECH_META = [
 ];
 
 export const SOLUTIONS = {
-  title: '만들어 둔 것부터\n쓰셔도 됩니다.',
+  title: '바로 도입할 수 있는\n자체 솔루션',
   lead: '직접 운영 중인 자체 솔루션은 개발 없이 바로 도입할 수 있습니다.',
   main: {
     name: '우주콜',
@@ -132,8 +156,8 @@ export const SOLUTIONS = {
   },
   sub: {
     name: '사장노트',
-    tagline: '소상공인 AI 마케팅',
-    desc: '가게의 온라인 노출을 AI가 진단하고, 무엇을 하면 되는지 알려줍니다.',
+    tagline: '우리 가게의 AI 검색 성적표',
+    desc: '플레이스 링크나 가게 이름을 입력하면 AI 검색 노출을 분석하고, 오늘 해야 할 일을 정리해 줍니다.',
     url: 'https://www.sajangnote.kr',
   },
 };
@@ -163,16 +187,27 @@ export const EDUCATION = {
 };
 
 export const STUDIO = {
-  heading: '직접 만들고,\n직접 운영합니다.',
-  lead: '투스텝스어헤드는 스타트업 스튜디오를 지향합니다. 아이디어를 서비스로 만들고, 운영하며 배운 것을 기업 프로젝트에 그대로 넣습니다.',
-  founderNote: '대표 김건희는 세 번 창업해 세 번 매각했습니다. COO 김지현은 B2B 스타트업에서 8년간 운영을 맡으며 시리즈 A와 B 투자 유치를 이끌었습니다.',
+  heading: '모든 프로젝트는\n현장을 이해하는 것부터 시작합니다.',
+  lead: '현장의 업무 흐름과 반복되는 문제를 이해한 뒤, 필요한 곳에만 AI와 시스템을 적용합니다. 직접 서비스를 운영해 본 경험이 있기 때문에 구축 이후까지 함께 설계할 수 있습니다.',
+  team: [
+    {
+      role: '대표',
+      name: '김건희',
+      bio: '세 번 창업해 세 번 매각했으며, 제품 기획과 AI·소프트웨어 개발을 이끌고 있습니다.',
+    },
+    {
+      role: 'COO',
+      name: '김지현',
+      bio: 'B2B 스타트업에서 8년간 운영을 맡았으며, 시리즈 A와 B 투자 유치를 이끌었습니다.',
+    },
+  ],
 };
 
 export const SERVICES = [
   { name: '우주콜', tagline: '전화를 대신 받는 AI 직원', url: 'https://www.woojoocall.com' },
   { name: '텔링사주', tagline: '캐릭터와 채팅으로 보는 AI 사주', url: 'https://telling.ai.kr' },
   { name: '마이크로웨이브', tagline: '글로벌 인플루언서 마케팅', url: 'https://microwave.ai.kr' },
-  { name: '사장노트', tagline: '소상공인 AI 마케팅', url: 'https://www.sajangnote.kr' },
+  { name: '사장노트', tagline: '우리 가게의 AI 검색 성적표', url: 'https://www.sajangnote.kr' },
   { name: '투니', tagline: '손으로 그리는 콘텐츠 제작 앱', url: 'https://tooni.xyz' },
 ];
 
@@ -180,12 +215,12 @@ export const STATEMENT = '납품하고 떠나지 않습니다.\n운영까지 함
 
 /** 제3자 검증 — 발급기관이 있는 인증·선정만. 임의 추가 금지. */
 export const CREDENTIALS = [
-  '한국관광공사 관광벤처사업 선정',
-  'AI 바우처 공급기업',
-  '벤처기업 인증',
-  '중소벤처기업부 창업기업·중소기업 확인',
-  '한국인공지능협회(KORAIA) 회원사',
-  '연구개발전담부서 보유',
+  { date: '2026.03', title: 'AI 바우처 공급기업 Pool 등록 및 공급기업 참여' },
+  { date: '2026.06', title: '한국인공지능협회 회원사 가입' },
+  { date: '2026.06', title: '연구개발전담부서 인정' },
+  { date: '2026.06', title: '한국관광공사 제18회 관광벤처 지원사업 최종 선정' },
+  { date: '2026.06', title: '중소벤처기업부 창업기업 확인' },
+  { date: '2026.07', title: '벤처기업 인증 획득(혁신성장유형)' },
 ];
 
 /**

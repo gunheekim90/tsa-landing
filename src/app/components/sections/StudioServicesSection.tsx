@@ -1,16 +1,7 @@
 import { ArrowUpRight } from 'lucide-react';
 import { Reveal } from '../anim/Reveal';
 import { Eyebrow } from '../Eyebrow';
-import { SERVICES, STUDIO } from '../../content';
-
-/** 서비스명 타이포 워드마크 — 서비스별 자간·웨이트 개성 (라이트). */
-const WORDMARK_STYLE: Record<string, string> = {
-  우주콜: 'tracking-[0.26em] font-semibold',
-  텔링사주: 'tracking-[0.14em] font-light',
-  마이크로웨이브: 'tracking-[-0.04em] font-bold',
-  사장노트: 'tracking-[0.1em] font-medium',
-  투니: 'tracking-[-0.02em] font-extrabold',
-};
+import { CREDENTIALS, PROFILES, SERVICES, STATS, STUDIO } from '../../content';
 
 export function StudioServicesSection() {
   return (
@@ -20,7 +11,7 @@ export function StudioServicesSection() {
     >
       <div className="mx-auto max-w-[1200px]">
         <Reveal>
-          <Eyebrow index="05" label="Startup studio — built & operated" />
+          <Eyebrow index="01" label="회사와 운영 경험" />
         </Reveal>
         <div className="mt-6 grid grid-cols-1 gap-6 lg:grid-cols-12 lg:items-end">
           <Reveal delay={0.06} className="lg:col-span-6">
@@ -32,13 +23,89 @@ export function StudioServicesSection() {
             <p className="max-w-lg font-dc-body text-[15px] leading-[1.75] text-[color:var(--lt-mute)]">
               {STUDIO.lead}
             </p>
-            <p className="mt-4 max-w-lg font-dc-body text-[13.5px] leading-[1.75] text-[color:var(--lt-mute-2)]">
-              {STUDIO.founderNote}
-            </p>
           </Reveal>
         </div>
 
-        <div className="mt-14 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-5">
+        <Reveal delay={0.14}>
+          <h3 className="mt-14 font-dc-display text-[1.35rem] font-bold tracking-[-0.02em] text-[color:var(--lt-ink)]">
+            핵심 인력
+          </h3>
+        </Reveal>
+        <div className="mt-6 grid grid-cols-1 gap-5 md:grid-cols-2">
+          {STUDIO.team.map((person, i) => (
+            <Reveal key={person.name} delay={0.06 * i}>
+              <article className="rounded-2xl border border-[color:var(--lt-line)] bg-[color:var(--lt-card)] p-7">
+                <span className="font-dc-mono text-[10.5px] tracking-[0.14em] text-[color:var(--lt-purple)]">{person.role}</span>
+                <h3 className="mt-3 font-dc-display text-[1.35rem] font-bold tracking-[-0.02em] text-[color:var(--lt-ink)]">{person.name}</h3>
+                <p className="mt-3 max-w-lg font-dc-body text-[13.5px] leading-[1.75] text-[color:var(--lt-mute)]">{person.bio}</p>
+              </article>
+            </Reveal>
+          ))}
+        </div>
+
+        <Reveal delay={0.14}>
+          <h3 className="mt-16 font-dc-display text-[1.35rem] font-bold tracking-[-0.02em] text-[color:var(--lt-ink)]">
+            프로젝트와 운영 실적
+          </h3>
+        </Reveal>
+        <div className="mt-6 grid grid-cols-2 border-y border-[color:var(--lt-line)] md:grid-cols-4">
+          {STATS.map((stat) => (
+            <div key={stat.k} className="border-b border-r border-[color:var(--lt-line)] px-4 py-6 last:border-r-0 md:border-b-0 md:px-6 md:first:pl-0">
+              <strong className="block font-dc-display text-[1.65rem] font-semibold tracking-[-0.02em] text-[color:var(--lt-ink)]">{stat.v}</strong>
+              <span className="mt-1 block font-dc-body text-[12px] leading-snug text-[color:var(--lt-mute-2)]">{stat.k}</span>
+            </div>
+          ))}
+        </div>
+
+        <Reveal delay={0.12}>
+          <div className="mt-16 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
+            <div>
+              <span className="font-dc-mono text-[10.5px] tracking-[0.14em] text-[color:var(--lt-purple)]">인증·선정</span>
+              <h3 className="mt-2 font-dc-display text-[1.5rem] font-bold tracking-[-0.02em] text-[color:var(--lt-ink)]">
+                공식적으로 검증된 기업입니다
+              </h3>
+            </div>
+            <p className="max-w-md font-dc-body text-[13px] leading-[1.7] text-[color:var(--lt-mute)]">
+              기술력과 사업 수행 역량을 정부기관과 전문기관에서 인정받았습니다.
+            </p>
+          </div>
+        </Reveal>
+
+        <Reveal delay={0.16}>
+          <div className="mt-7 rounded-2xl border border-[color:var(--lt-line)] bg-[color:var(--lt-card)] px-6 md:px-8">
+            <div className="grid sm:grid-cols-2 sm:gap-x-10 lg:grid-cols-3">
+              {CREDENTIALS.map((item) => (
+                <div key={item.title} className="flex min-h-[96px] flex-col justify-center border-b border-[color:var(--lt-line)] py-4 lg:[&:nth-last-child(-n+3)]:border-b-0">
+                  <time className="font-dc-mono text-[10.5px] tracking-[0.08em] text-[color:var(--lt-purple)]">
+                    {item.date}
+                  </time>
+                  <p className="mt-1.5 break-keep font-dc-body text-[13.5px] font-semibold leading-[1.55] text-[color:var(--lt-ink)]">
+                    {item.title}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </Reveal>
+
+        {PROFILES.map((profile) => (
+          <a
+            key={profile.name}
+            href={profile.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group mt-4 inline-flex items-center gap-1.5 font-dc-body text-[12px] text-[color:var(--lt-mute-2)] transition-colors hover:text-[color:var(--lt-ink)]"
+          >
+            {profile.name}
+            <ArrowUpRight className="h-3 w-3 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+          </a>
+        ))}
+
+        <Reveal delay={0.12}>
+          <h3 className="mt-20 font-dc-display text-[1.5rem] font-bold tracking-[-0.02em] text-[color:var(--lt-ink)]">직접 운영하는 서비스</h3>
+        </Reveal>
+
+        <div className="mt-7 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-5">
           {SERVICES.map((s, i) => (
             <Reveal key={s.name} delay={0.06 * i} className="h-full">
               <a
@@ -54,7 +121,7 @@ export function StudioServicesSection() {
                   <ArrowUpRight className="h-4 w-4 text-[color:var(--lt-mute-2)] transition-all duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-[color:var(--lt-purple)]" />
                 </div>
                 <div>
-                  <div className={`font-dc-display text-[1.15rem] text-[color:var(--lt-ink)] ${WORDMARK_STYLE[s.name] ?? ''}`}>
+                  <div className="whitespace-nowrap font-dc-display text-[1.15rem] font-bold tracking-[-0.02em] text-[color:var(--lt-ink)]">
                     {s.name}
                   </div>
                   <p className="mt-1.5 font-dc-body text-[12.5px] leading-relaxed text-[color:var(--lt-mute)]">

@@ -1,11 +1,7 @@
 import { useReducedMotion } from 'motion/react';
-import { Reveal } from './anim/Reveal';
-import { CLIENTS, STATS } from '../content';
+import { CLIENTS } from '../content';
 
-/**
- * 히어로 직후 신뢰 밴드 — 성과 스토리형 스탯 4개(숫자가 변화를 말하게)
- * + 전체 포트폴리오·파트너 무한 횡스크롤 마퀴.
- */
+/** 히어로 직후 프로젝트·파트너 무한 횡스크롤 마퀴. */
 function ClientMarquee() {
   const reduce = useReducedMotion();
 
@@ -61,23 +57,7 @@ export function StatsBand() {
   return (
     <section className="border-y border-[color:var(--lt-line)] bg-[color:var(--lt-card)] px-5 md:px-8">
       <div className="mx-auto max-w-[1200px]">
-        <Reveal>
-          <dl className="grid grid-cols-2 gap-x-8 gap-y-8 py-10 md:grid-cols-4">
-            {STATS.map((s) => (
-              <div key={s.k} className="flex flex-col gap-1.5">
-                <dd className="order-1 break-keep font-dc-display text-[clamp(1.5rem,2.6vw,2.1rem)] font-semibold leading-tight tracking-[-0.02em] text-[color:var(--lt-ink)]">
-                  {s.v}
-                </dd>
-                <dt className="order-2 break-keep font-dc-body text-[12.5px] leading-snug text-[color:var(--lt-mute-2)]">
-                  {s.k}
-                </dt>
-              </div>
-            ))}
-          </dl>
-        </Reveal>
-        <div className="border-t border-[color:var(--lt-line)]">
-          <ClientMarquee />
-        </div>
+        <ClientMarquee />
       </div>
     </section>
   );

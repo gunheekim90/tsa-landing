@@ -14,7 +14,7 @@ export function JourneySection() {
     >
       <div className="mx-auto max-w-[1200px]">
         <Reveal>
-          <Eyebrow index="01" label="The journey" />
+          <Eyebrow index="04" label="도입 과정" />
         </Reveal>
         <div className="mt-6 grid grid-cols-1 gap-6 lg:grid-cols-12 lg:items-end">
           <Reveal delay={0.06} className="lg:col-span-7">

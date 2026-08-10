@@ -1,12 +1,12 @@
 import { SiteNav } from './components/SiteNav';
 import { LightHero } from './components/LightHero';
 import { StatsBand } from './components/StatsBand';
+import { OfferingsSection } from './components/sections/OfferingsSection';
 import { JourneySection } from './components/sections/JourneySection';
 import { WorkSection } from './components/sections/WorkSection';
 import { SolutionsSection } from './components/sections/SolutionsSection';
 import { EducationSection } from './components/sections/EducationSection';
 import { StudioServicesSection } from './components/sections/StudioServicesSection';
-import { StatementSection } from './components/sections/StatementSection';
 import { ContactFormSection } from './components/sections/ContactFormSection';
 import { SiteFooter } from './components/SiteFooter';
 
@@ -17,12 +17,12 @@ export default function App() {
       <main>
         <LightHero />
         <StatsBand />
-        <JourneySection />
+        <StudioServicesSection />
+        <OfferingsSection />
         <WorkSection />
+        <JourneySection />
         <SolutionsSection />
         <EducationSection />
-        <StudioServicesSection />
-        <StatementSection />
         <ContactFormSection />
       </main>
       <SiteFooter />

@@ -48,14 +48,8 @@ export function LightHero() {
         }}
       />
       <div className="relative mx-auto max-w-[1200px]">
-        <Reveal>
-          <span className="inline-flex items-center gap-2 rounded-full border border-[color:var(--lt-line)] bg-[color:var(--lt-card)] px-4 py-1.5 font-dc-mono text-[11px] uppercase tracking-[0.18em] text-[color:var(--lt-mute-2)]">
-            <span className="h-1.5 w-1.5 rounded-full bg-[color:var(--lt-purple)]" aria-hidden="true" />
-            {HERO.chip}
-          </span>
-        </Reveal>
         <Reveal delay={0.08}>
-          <h1 className="mt-8 max-w-4xl break-keep font-dc-display text-[clamp(2.5rem,6.5vw,4.8rem)] font-semibold leading-[1.16] tracking-[-0.03em] text-[color:var(--lt-ink)]">
+          <h1 className="max-w-4xl whitespace-pre-line break-keep font-dc-display text-[clamp(2.5rem,6.5vw,4.8rem)] font-semibold leading-[1.16] tracking-[-0.03em] text-[color:var(--lt-ink)]">
             {HERO.headline.map((seg, i) =>
               seg.highlight ? (
                 <HighlightMark key={i}>{seg.text}</HighlightMark>

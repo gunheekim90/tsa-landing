@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { ArrowUpRight, Check } from 'lucide-react';
 import { Reveal } from '../anim/Reveal';
 import { Eyebrow } from '../Eyebrow';
-import { CREDENTIALS, INTERESTS, PROFILES } from '../../content';
+import { INTERESTS } from '../../content';
 import { trackEvent } from '@/lib/gtag';
 
 type Status = 'idle' | 'submitting' | 'success' | 'error';
@@ -105,7 +105,7 @@ export function ContactFormSection() {
     >
       <div className="mx-auto max-w-[1200px]">
         <Reveal>
-          <Eyebrow index="06" label="Contact" />
+          <Eyebrow index="07" label="프로젝트 문의" />
         </Reveal>
         <Reveal delay={0.06}>
           <h2 className="mt-6 break-keep font-dc-display text-[clamp(2.2rem,5vw,3.8rem)] font-semibold leading-[1.12] tracking-[-0.03em] text-[color:var(--lt-ink)]">
@@ -145,31 +145,6 @@ export function ContactFormSection() {
                   <dd className="text-[color:var(--lt-mute)]">서울 강남구 압구정로 306</dd>
                 </div>
               </dl>
-              <div className="border-t border-[color:var(--lt-line)] pt-6">
-                <span className="font-dc-mono text-[10.5px] uppercase tracking-[0.18em] text-[color:var(--lt-mute-2)]">
-                  인증·선정
-                </span>
-                <ul className="mt-3 flex flex-col gap-2">
-                  {CREDENTIALS.map((c) => (
-                    <li key={c} className="flex items-baseline gap-2.5 font-dc-body text-[13px] text-[color:var(--lt-mute)]">
-                      <span aria-hidden="true" className="font-dc-mono text-[color:var(--lt-mute-2)]">↳</span>
-                      {c}
-                    </li>
-                  ))}
-                </ul>
-                {PROFILES.map((p) => (
-                  <a
-                    key={p.name}
-                    href={p.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group mt-4 inline-flex items-center gap-1.5 font-dc-body text-[13px] font-semibold text-[color:var(--lt-ink)] transition-colors hover:text-[color:var(--lt-purple)]"
-                  >
-                    {p.name}
-                    <ArrowUpRight className="h-3.5 w-3.5 text-[color:var(--lt-mute-2)] transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                  </a>
-                ))}
-              </div>
             </div>
           </Reveal>
 

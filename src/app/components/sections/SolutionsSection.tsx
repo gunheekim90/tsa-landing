@@ -17,7 +17,7 @@ export function SolutionsSection() {
     >
       <div className="mx-auto max-w-[1200px]">
         <Reveal>
-          <Eyebrow index="03" label="Our solutions" />
+          <Eyebrow index="05" label="자체 솔루션" />
         </Reveal>
         <div className="mt-6 grid grid-cols-1 gap-6 lg:grid-cols-12 lg:items-end">
           <Reveal delay={0.06} className="lg:col-span-7">
@@ -42,10 +42,7 @@ export function SolutionsSection() {
               className="group flex h-full flex-col gap-8 rounded-2xl bg-[color:var(--lt-dark)] p-9 transition-transform duration-300 hover:-translate-y-0.5 md:flex-row md:items-center md:p-11"
             >
               <div className="flex-1">
-                <span className="font-dc-mono text-[10.5px] uppercase tracking-[0.18em] text-[rgba(245,243,251,0.5)]">
-                  Flagship — Live
-                </span>
-                <h3 className="mt-4 font-dc-display text-[2rem] font-semibold tracking-[0.24em] text-[color:var(--lt-dark-ink)]">
+                <h3 className="whitespace-nowrap font-dc-display text-[2rem] font-bold tracking-[-0.02em] text-[color:var(--lt-dark-ink)]">
                   {main.name}
                 </h3>
                 <p className="mt-1 font-dc-body text-[15px] font-medium text-[rgba(245,243,251,0.85)]">
@@ -95,12 +92,10 @@ export function SolutionsSection() {
               href={sub.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex h-full flex-col rounded-2xl border border-[color:var(--lt-line)] bg-[color:var(--lt-card)] p-9 transition-all duration-300 hover:-translate-y-0.5 hover:border-[color:var(--lt-purple-line)]"
+              className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-[color:var(--lt-purple-line)] bg-[linear-gradient(145deg,var(--lt-card)_0%,rgba(109,46,240,0.07)_100%)] p-9 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_18px_50px_rgba(109,46,240,0.12)]"
             >
-              <span className="font-dc-mono text-[10.5px] uppercase tracking-[0.18em] text-[color:var(--lt-mute-2)]">
-                Live
-              </span>
-              <h3 className="mt-4 font-dc-display text-[1.5rem] font-semibold tracking-[0.08em] text-[color:var(--lt-ink)]">
+              <div className="pointer-events-none absolute -right-16 -top-16 h-40 w-40 rounded-full bg-[rgba(109,46,240,0.09)] blur-2xl" aria-hidden="true" />
+              <h3 className="whitespace-nowrap font-dc-display text-[1.5rem] font-bold tracking-[-0.02em] text-[#241b59]">
                 {sub.name}
               </h3>
               <p className="mt-1 font-dc-body text-[14px] font-medium text-[color:var(--lt-mute)]">
@@ -109,6 +104,13 @@ export function SolutionsSection() {
               <p className="mt-4 font-dc-body text-[13.5px] leading-[1.8] text-[color:var(--lt-mute)]">
                 {sub.desc}
               </p>
+              <div className="mt-6 overflow-hidden rounded-xl border border-[rgba(78,61,216,0.18)] bg-white shadow-[0_8px_24px_rgba(36,27,89,0.08)]">
+                <img
+                  src="/product/sajangnote-preview.webp"
+                  alt="사장노트 가게 AI 검색 분석 화면"
+                  className="h-[190px] w-full object-cover object-center"
+                />
+              </div>
               <span className="mt-auto inline-flex items-center gap-1.5 pt-6 font-dc-mono text-[12px] uppercase tracking-[0.08em] text-[color:var(--lt-ink)]">
                 sajangnote.kr
                 <ArrowUpRight className="h-3.5 w-3.5 text-[color:var(--lt-mute-2)] transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -116,6 +118,12 @@ export function SolutionsSection() {
             </a>
           </Reveal>
         </div>
+        <Reveal delay={0.2}>
+          <a href="#contact" className="group mt-8 inline-flex items-center gap-1.5 font-dc-body text-[14px] font-semibold text-[color:var(--lt-ink)] hover:text-[color:var(--lt-purple)]">
+            솔루션 도입 문의하기
+            <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+          </a>
+        </Reveal>
       </div>
     </section>
   );
