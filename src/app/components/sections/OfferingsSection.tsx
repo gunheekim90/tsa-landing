@@ -13,14 +13,14 @@ export function OfferingsSection() {
         <Reveal>
           <Eyebrow index="02" label="제공 서비스" />
         </Reveal>
-        <div className="mt-6 grid grid-cols-1 gap-6 lg:grid-cols-12 lg:items-end">
-          <Reveal delay={0.06} className="lg:col-span-7">
+        <div className="mt-6 max-w-[820px]">
+          <Reveal delay={0.06}>
             <h2 className="whitespace-pre-line break-keep font-dc-display text-[clamp(1.9rem,4vw,3rem)] font-semibold leading-[1.16] tracking-[-0.03em] text-[color:var(--lt-ink)]">
               {OFFERINGS.title}
             </h2>
           </Reveal>
-          <Reveal delay={0.12} className="lg:col-span-5">
-            <p className="max-w-md font-dc-body text-[15px] leading-[1.75] text-[color:var(--lt-mute)]">
+          <Reveal delay={0.12}>
+            <p className="mt-7 max-w-[720px] font-dc-body text-[15px] leading-[1.8] text-[color:var(--lt-mute)]">
               {OFFERINGS.lead}
             </p>
           </Reveal>

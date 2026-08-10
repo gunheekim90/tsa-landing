@@ -24,7 +24,7 @@ export function SiteNav() {
       transition={{ duration: reduce ? 0 : 0.7, ease: EASE }}
       className="fixed inset-x-0 top-0 z-50"
     >
-      <div className="mx-auto max-w-[1200px] px-4 pt-4 md:px-8 md:pt-5">
+      <div className="mx-auto max-w-[1264px] px-5 pt-4 md:px-8 md:pt-5">
         <div
           className={`flex items-center justify-between gap-4 rounded-full py-2 pl-5 pr-2 transition-all duration-500 ${
             elevated

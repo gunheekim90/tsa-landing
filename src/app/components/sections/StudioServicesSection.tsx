@@ -58,14 +58,14 @@ export function StudioServicesSection() {
         </div>
 
         <Reveal delay={0.12}>
-          <div className="mt-16 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
+          <div className="mt-16 max-w-[820px]">
             <div>
               <span className="font-dc-mono text-[10.5px] tracking-[0.14em] text-[color:var(--lt-purple)]">인증·선정</span>
               <h3 className="mt-2 font-dc-display text-[1.5rem] font-bold tracking-[-0.02em] text-[color:var(--lt-ink)]">
                 공식적으로 검증된 기업입니다
               </h3>
             </div>
-            <p className="max-w-md font-dc-body text-[13px] leading-[1.7] text-[color:var(--lt-mute)]">
+            <p className="mt-4 max-w-[720px] font-dc-body text-[13px] leading-[1.7] text-[color:var(--lt-mute)]">
               기술력과 사업 수행 역량을 정부기관과 전문기관에서 인정받았습니다.
             </p>
           </div>
