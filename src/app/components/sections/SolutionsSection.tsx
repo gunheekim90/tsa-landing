@@ -32,14 +32,14 @@ export function SolutionsSection() {
           </Reveal>
         </div>
 
-        <div className="mt-14 grid grid-cols-1 gap-5 lg:grid-cols-3">
+        <div className="mt-14 grid grid-cols-1 gap-5 lg:grid-cols-2">
           {/* 메인 — 우주콜 다크 카드 */}
-          <Reveal delay={0.06} className="lg:col-span-2">
+          <Reveal delay={0.06} className="h-full">
             <a
               href={main.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex h-full flex-col gap-8 rounded-2xl bg-[color:var(--lt-dark)] p-9 transition-transform duration-300 hover:-translate-y-0.5 md:flex-row md:items-center md:p-11"
+              className="group flex h-full flex-col gap-8 rounded-2xl bg-[color:var(--lt-dark)] p-9 transition-transform duration-300 hover:-translate-y-0.5 md:p-11"
             >
               <div className="flex-1">
                 <h3 className="whitespace-nowrap font-dc-display text-[2rem] font-bold tracking-[-0.02em] text-[color:var(--lt-dark-ink)]">
@@ -58,7 +58,7 @@ export function SolutionsSection() {
               </div>
               {/* CSS 대화 목업 */}
               <div
-                className="w-full max-w-[300px] shrink-0 rounded-xl border border-[rgba(255,255,255,0.1)] bg-[rgba(255,255,255,0.04)] p-4"
+                className="mt-auto w-full rounded-xl border border-[rgba(255,255,255,0.1)] bg-[rgba(255,255,255,0.04)] p-4"
                 role="img"
                 aria-label="우주콜 AI 전화 응대 예시 대화"
               >
@@ -92,7 +92,7 @@ export function SolutionsSection() {
               href={sub.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-[color:var(--lt-purple-line)] bg-[linear-gradient(145deg,var(--lt-card)_0%,rgba(109,46,240,0.07)_100%)] p-9 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_18px_50px_rgba(109,46,240,0.12)]"
+              className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-[color:var(--lt-purple-line)] bg-[linear-gradient(145deg,var(--lt-card)_0%,rgba(109,46,240,0.07)_100%)] p-9 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_18px_50px_rgba(109,46,240,0.12)] md:p-11"
             >
               <div className="pointer-events-none absolute -right-16 -top-16 h-40 w-40 rounded-full bg-[rgba(109,46,240,0.09)] blur-2xl" aria-hidden="true" />
               <h3 className="whitespace-nowrap font-dc-display text-[1.5rem] font-bold tracking-[-0.02em] text-[#241b59]">
@@ -108,7 +108,7 @@ export function SolutionsSection() {
                 <img
                   src="/product/sajangnote-preview.webp"
                   alt="사장노트 가게 AI 검색 분석 화면"
-                  className="h-[190px] w-full object-cover object-center"
+                  className="block h-auto w-full"
                 />
               </div>
               <span className="mt-auto inline-flex items-center gap-1.5 pt-6 font-dc-mono text-[12px] uppercase tracking-[0.08em] text-[color:var(--lt-ink)]">

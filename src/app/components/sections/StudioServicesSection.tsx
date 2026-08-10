@@ -13,14 +13,14 @@ export function StudioServicesSection() {
         <Reveal>
           <Eyebrow index="01" label="회사와 운영 경험" />
         </Reveal>
-        <div className="mt-6 grid grid-cols-1 gap-6 lg:grid-cols-12 lg:items-end">
-          <Reveal delay={0.06} className="lg:col-span-6">
+        <div className="mt-6 max-w-[820px]">
+          <Reveal delay={0.06}>
             <h2 className="whitespace-pre-line break-keep font-dc-display text-[clamp(1.9rem,4vw,3rem)] font-semibold leading-[1.16] tracking-[-0.03em] text-[color:var(--lt-ink)]">
               {STUDIO.heading}
             </h2>
           </Reveal>
-          <Reveal delay={0.12} className="lg:col-span-6">
-            <p className="max-w-lg font-dc-body text-[15px] leading-[1.75] text-[color:var(--lt-mute)]">
+          <Reveal delay={0.12}>
+            <p className="mt-7 max-w-[720px] font-dc-body text-[15px] leading-[1.8] text-[color:var(--lt-mute)]">
               {STUDIO.lead}
             </p>
           </Reveal>
