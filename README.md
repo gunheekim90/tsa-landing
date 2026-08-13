@@ -51,6 +51,20 @@ docs/superpowers/specs/   # 설계 문서
 
 미설정 시 `/api/inquiry`가 500 `webhook_not_configured`를 반환합니다.
 
+## 브랜드 아이콘
+
+`scripts/make-icons.py` 가 마스터 소스입니다. 마크를 바꾸려면 이 파일만 고치고 재실행하세요.
+
+```bash
+python3 scripts/make-icons.py public
+```
+
+favicon.ico(16/32/48) · favicon-32/48 · apple-touch-icon(180) · icon-192/512 · logo-square(512)를
+한 번에 다시 만듭니다. `favicon.svg` 는 같은 도형을 손으로 옮긴 것이라 함께 수정해야 합니다.
+
+⚠️ **파비콘 경로와 이미지는 되도록 바꾸지 마세요.** 구글은 파비콘을 자주 바꾸면 재수집이 늦어지고,
+그동안 검색결과에 기본 아이콘이 나옵니다.
+
 ## 원칙
 
 - 수치·클라이언트명은 **공개 검증된 것만** 사용 (위시켓·크몽 프로필, 공개 제안서 기준)
