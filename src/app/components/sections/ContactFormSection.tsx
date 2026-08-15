@@ -3,7 +3,7 @@ import { ArrowUpRight, Check } from 'lucide-react';
 import { Reveal } from '../anim/Reveal';
 import { Eyebrow } from '../Eyebrow';
 import { INTERESTS } from '../../content';
-import { trackEvent } from '@/lib/gtag';
+import { trackAdsConversion, trackEvent } from '@/lib/gtag';
 
 type Status = 'idle' | 'submitting' | 'success' | 'error';
 
@@ -75,6 +75,7 @@ export function ContactFormSection() {
 
     setStatus('submitting');
     setErrorMsg('');
+    // 제출 "시도" — GA4 퍼널 분석용. 전환으로 쓰지 않습니다(실패한 제출도 포함되므로).
     trackEvent('inquiry_submit', { interest: form.interest });
 
     try {
@@ -87,6 +88,9 @@ export function ContactFormSection() {
         const body = await res.json().catch(() => ({}));
         throw new Error(body.error || `status_${res.status}`);
       }
+      // 여기가 상담 신청이 실제로 접수된 시점 = 전환.
+      trackEvent('generate_lead', { interest: form.interest });
+      trackAdsConversion('lead');
       setStatus('success');
     } catch (err) {
       setStatus('error');
