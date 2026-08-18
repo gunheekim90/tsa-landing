@@ -31,7 +31,7 @@ export function StudioServicesSection() {
             핵심 인력
           </h3>
         </Reveal>
-        <div className="mt-6 grid grid-cols-1 gap-5 md:grid-cols-2">
+        <div className="mt-6 grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
           {STUDIO.team.map((person, i) => (
             <Reveal key={person.name} delay={0.06 * i}>
               <article className="rounded-2xl border border-[color:var(--lt-line)] bg-[color:var(--lt-card)] p-7">

@@ -29,7 +29,7 @@ export function OfferingsSection() {
         <div className="mt-14 grid grid-cols-1 border-y border-[color:var(--lt-line)] sm:grid-cols-2 lg:grid-cols-4">
           {OFFERINGS.items.map((item, i) => (
             <Reveal key={item.num} delay={0.05 * i} className="h-full">
-              <article className="h-full border-b border-[color:var(--lt-line)] px-0 py-7 sm:px-6 lg:border-b-0 lg:border-r lg:px-7 lg:first:pl-0 lg:last:border-r-0 lg:last:pr-0">
+              <article className="h-full border-b border-[color:var(--lt-line)] px-0 py-10 sm:px-8 lg:border-b-0 lg:border-r lg:px-10 lg:first:pl-0 lg:last:border-r-0 lg:last:pr-0">
                 <span className="font-dc-mono text-[11px] text-[color:var(--lt-purple)]">{item.num}</span>
                 <h3 className="mt-5 font-dc-display text-[1.2rem] font-bold tracking-[-0.02em] text-[color:var(--lt-ink)]">
                   {item.title}
