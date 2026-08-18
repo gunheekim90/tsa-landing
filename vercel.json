@@ -1,0 +1,10 @@
+{
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "has": [{ "type": "host", "value": "www.twostepsahead.co.kr" }],
+      "destination": "https://twostepsahead.co.kr/$1",
+      "permanent": true
+    }
+  ]
+}
