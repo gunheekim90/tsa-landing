@@ -17,6 +17,8 @@ type LoadState = 'loading' | 'ready' | 'error';
 type SubmitState = 'idle' | 'uploading' | 'submitting' | 'success' | 'error';
 
 const PUBLIC_JOB_SLUGS = new Set(['engineer']);
+const APPLICATION_FORM_URL = '/TwoStepsAhead-Application-Form.docx';
+const APPLICATION_FORM_NAME = '투스텝스어헤드_입사_지원서.docx';
 
 interface ApplicationForm {
   name: string;
@@ -134,6 +136,7 @@ function OpenRoles({ jobs, state, onApply }: { jobs: CareerJob[]; state: LoadSta
               {job.formTemplateUrl && (
                 <a
                   href={job.formTemplateUrl}
+                  download={job.formTemplateName || undefined}
                   target="_blank"
                   rel="noreferrer"
                   className="inline-flex items-center gap-2 rounded-full border border-[color:var(--lt-line)] px-6 py-3 font-dc-label text-[13px] font-semibold text-[color:var(--lt-ink)] transition-[border-color,background-color] duration-300 hover:border-[color:var(--lt-purple-line)] hover:bg-[color:var(--lt-purple-soft)]"
@@ -162,7 +165,13 @@ export function CareersPage() {
     const controller = new AbortController();
     fetchCareerJobs(controller.signal)
       .then((data) => {
-        setJobs(data.filter((job) => PUBLIC_JOB_SLUGS.has(job.slug)));
+        setJobs(data
+          .filter((job) => PUBLIC_JOB_SLUGS.has(job.slug))
+          .map((job) => ({
+            ...job,
+            formTemplateUrl: APPLICATION_FORM_URL,
+            formTemplateName: APPLICATION_FORM_NAME,
+          })));
         setLoadState('ready');
       })
       .catch((error: unknown) => {
