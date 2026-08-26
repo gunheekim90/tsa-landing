@@ -109,7 +109,7 @@ export function ContactFormSection() {
     >
       <div className="mx-auto max-w-[1200px]">
         <Reveal>
-          <Eyebrow index="07" label="프로젝트 문의" />
+          <Eyebrow index="08" label="프로젝트 문의" />
         </Reveal>
         <Reveal delay={0.06}>
           <h2 className="mt-6 break-keep font-dc-display text-[clamp(2.2rem,5vw,3.8rem)] font-semibold leading-[1.12] tracking-[-0.03em] text-[color:var(--lt-ink)]">

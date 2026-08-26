@@ -1,4 +1,10 @@
 {
+  "rewrites": [
+    {
+      "source": "/api/careers/:path*",
+      "destination": "https://api.plurank.com/api/careers/:path*"
+    }
+  ],
   "redirects": [
     {
       "source": "/(.*)",

@@ -9,8 +9,13 @@ import { EducationSection } from './components/sections/EducationSection';
 import { StudioServicesSection } from './components/sections/StudioServicesSection';
 import { ContactFormSection } from './components/sections/ContactFormSection';
 import { SiteFooter } from './components/SiteFooter';
+import { PeopleSection } from './components/sections/PeopleSection';
+import { CareersPage } from './careers/CareersPage';
 
 export default function App() {
+  const path = window.location.pathname.replace(/\/+$/, '') || '/';
+  if (path === '/careers') return <CareersPage />;
+
   return (
     <div className="min-h-screen bg-[color:var(--lt-bg)] font-dc-body text-[color:var(--lt-ink)] antialiased">
       <SiteNav />
@@ -23,6 +28,7 @@ export default function App() {
         <JourneySection />
         <SolutionsSection />
         <EducationSection />
+        <PeopleSection />
         <ContactFormSection />
       </main>
       <SiteFooter />

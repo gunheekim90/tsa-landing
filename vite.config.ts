@@ -16,6 +16,23 @@ export default defineConfig({
       '@': path.resolve(__dirname, './src'),
     },
   },
+  build: {
+    rollupOptions: {
+      input: {
+        main: path.resolve(__dirname, 'index.html'),
+        careers: path.resolve(__dirname, 'careers/index.html'),
+      },
+    },
+  },
+  server: {
+    proxy: {
+      '/api/careers': {
+        target: 'https://api.plurank.com',
+        changeOrigin: true,
+        secure: true,
+      },
+    },
+  },
 
   // File types to support raw imports. Never add .css, .tsx, or .ts files to this.
   assetsInclude: ['**/*.svg', '**/*.csv'],

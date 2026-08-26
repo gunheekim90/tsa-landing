@@ -50,10 +50,16 @@ export function SiteFooter() {
               glenn.kim@twostepsahead.co.kr
             </a>
             <a
-              href="#contact"
+              href="/#contact"
               className="font-dc-body text-[13px] text-[color:var(--lt-mute)] transition-colors hover:text-[color:var(--lt-ink)]"
             >
               도입·교육 문의
+            </a>
+            <a
+              href="/careers/"
+              className="font-dc-body text-[13px] text-[color:var(--lt-mute)] transition-colors hover:text-[color:var(--lt-ink)]"
+            >
+              채용과 조직문화
             </a>
             <span className="font-dc-body text-[13px] text-[color:var(--lt-mute-2)]">Seoul · KST</span>
           </div>

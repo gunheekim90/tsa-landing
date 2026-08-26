@@ -1,14 +1,16 @@
 import { motion, useReducedMotion } from 'motion/react';
 import { ArrowUpRight, Menu, X } from 'lucide-react';
 import { useEffect, useState } from 'react';
-import { NAV_LINKS } from '../content';
+import { CAREERS_NAV_LINKS, NAV_LINKS } from '../content';
 
 const EASE: [number, number, number, number] = [0.16, 1, 0.3, 1];
 
-export function SiteNav() {
+export function SiteNav({ variant = 'home' }: { variant?: 'home' | 'careers' }) {
   const [elevated, setElevated] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const reduce = useReducedMotion();
+  const isCareers = variant === 'careers';
+  const links = isCareers ? CAREERS_NAV_LINKS : NAV_LINKS;
 
   useEffect(() => {
     const onScroll = () => setElevated(window.scrollY > 24);
@@ -33,13 +35,13 @@ export function SiteNav() {
           }`}
         >
           <a
-            href="#top"
+            href={isCareers ? '/' : '#top'}
             className="font-dc-display text-[15px] font-extrabold tracking-tight text-[color:var(--lt-ink)]"
           >
             Two<span className="text-[color:var(--lt-purple)]">Steps</span>Ahead
           </a>
           <nav className="hidden items-center gap-5 md:flex" aria-label="주요 메뉴">
-            {NAV_LINKS.map((n) => (
+            {links.map((n) => (
               <a
                 key={n.label}
                 href={n.href}
@@ -51,10 +53,10 @@ export function SiteNav() {
           </nav>
           <div className="flex items-center gap-1.5">
             <a
-              href="#contact"
+              href={isCareers ? '#apply' : '#contact'}
               className="group inline-flex items-center gap-1.5 rounded-full bg-[color:var(--lt-ink)] py-2 pl-4 pr-3 text-[13px] font-semibold text-white transition-transform hover:-translate-y-0.5"
             >
-              문의하기
+              {isCareers ? '지원하기' : '문의하기'}
               <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </a>
             <button
@@ -75,7 +77,7 @@ export function SiteNav() {
             className="mt-2 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-[color:var(--lt-line)] bg-[color:var(--lt-line)] shadow-[0_16px_40px_-20px_rgba(17,16,21,0.28)] md:hidden"
             aria-label="모바일 주요 메뉴"
           >
-            {NAV_LINKS.map((n) => (
+            {links.map((n) => (
               <a
                 key={n.label}
                 href={n.href}
